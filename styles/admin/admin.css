@@ -115,6 +115,10 @@ body {
   align-items: center;
 }
 
+h1 {
+  font-family: "Quicksand", sans-serif;
+}
+
 .site-footer {
   background-color: #3BB77E;
 }
@@ -133,7 +137,6 @@ body {
 }
 
 .footer-h1 {
-  font-family: "REM", sans-serif;
   margin-bottom: 10px;
 }
 

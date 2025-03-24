@@ -1,12 +1,18 @@
-site-header {
-  background: #eaeaea;
-  padding: 1rem;
+@charset "UTF-8";
+.site-header {
+  font-family: Quicksand;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  color: #3BB77E;
 }
 
 .site-header nav {
+  background-color: #fff;
+  padding: 25px 25px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .logo {
@@ -26,8 +32,193 @@ site-header {
   color: black;
 }
 
+.upper-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 h1 {
   font-size: 10;
+}
+
+body {
+  margin: 0;
+} 
+.profile-cart-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.logo-menu-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+
+.logo-upper {
+  font-size: 24px;
+}
+
+.logo-lower {
+  font-size: 14px;
+  color: grey;
+}
+
+.lower-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-mobile {
+  border-right: 1px solid #3BB77E;
+  border-top: 1px solid #3BB77E;
+  border-bottom: 1px solid #3BB77E;
+  border-left: none;
+  height: 100%;
+  width: 205px;
+  padding: 0;
+  padding: 4px 0;
+  border-radius: 0 20px 20px 0;
+}
+
+.search-container-mobile {
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-mobile:focus {
+  outline: none;
+}
+
+.magnifying-glass {
+  border-left: 1px solid #3BB77E;
+  border-top: 1px solid #3BB77E;
+  border-bottom: 1px solid #3BB77E;
+  border-right: none;
+  background-color: #fff;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+  padding: 3px 3px 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: "Quicksand", sans-serif;
+}
+
+.site-footer {
+  background-color: #3BB77E;
+}
+
+.site-footer {
+  background-color: #3BB77E;
+  color: white;
+  padding: 20px;
+  font-family: "Quicksand", sans-serif;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-h1 {
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* Expanderbar sektion stilar */
+.expandable-section {
+  display: inline-block;
+  position: relative;
+}
+
+.expand-trigger {
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+  margin-left: 15px;
+}
+
+.expand-trigger i {
+  font-size: 12px;
+  transition: transform 0.3s;
+}
+
+.expand-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  width: 100%;
+  color: white;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.expandable-section:hover .expand-content {
+  max-height: 200px; /* Justera detta värde baserat på innehållets faktiska höjd */
+}
+
+.expandable-section:hover .expand-trigger i {
+  transform: rotate(180deg);
+}
+
+/* Kontaktinformation stilar */
+.contact-info {
+  padding: 5px 0;
+}
+
+.contact-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* För att säkerställa att expandering inte bryter layouten */
+@media (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  .expand-content {
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.copyright-text {
+  font-size: 0.75rem;
 }
 
 body {

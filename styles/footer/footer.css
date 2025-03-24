@@ -1,6 +1,6 @@
 @charset "UTF-8";
-.site-footer {
-  background-color: #3BB77E;
+h1, p {
+  font-family: "Quicksand", sans-serif;
 }
 
 .site-footer {
@@ -17,7 +17,6 @@
 }
 
 .footer-h1 {
-  font-family: "REM", sans-serif;
   margin-bottom: 10px;
 }
 
