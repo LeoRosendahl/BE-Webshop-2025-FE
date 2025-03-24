@@ -1,3 +1,31 @@
+site-header {
+  background: #eaeaea;
+  padding: 1rem;
+}
+
+.site-header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+}
+
 :root {
   font-family: Arial, sans-serif;
   color: #333;
@@ -99,4 +127,4 @@ body {
 .footer-links a {
   text-decoration: none;
   color: black;
-}
+}/*# sourceMappingURL=style.css.map */
