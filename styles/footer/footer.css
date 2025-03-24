@@ -1,3 +1,102 @@
-h1 {
-  font-size: 10;
+@charset "UTF-8";
+h1, p {
+  font-family: "Quicksand", sans-serif;
+}
+
+.site-footer {
+  background-color: #3BB77E;
+  color: white;
+  padding: 20px;
+  font-family: "Quicksand", sans-serif;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-h1 {
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* Expanderbar sektion stilar */
+.expandable-section {
+  display: inline-block;
+  position: relative;
+}
+
+.expand-trigger {
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+  margin-left: 15px;
+}
+
+.expand-trigger i {
+  font-size: 12px;
+  transition: transform 0.3s;
+}
+
+.expand-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  width: 100%;
+  color: white;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.expandable-section:hover .expand-content {
+  max-height: 200px; /* Justera detta värde baserat på innehållets faktiska höjd */
+}
+
+.expandable-section:hover .expand-trigger i {
+  transform: rotate(180deg);
+}
+
+/* Kontaktinformation stilar */
+.contact-info {
+  padding: 5px 0;
+}
+
+.contact-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* För att säkerställa att expandering inte bryter layouten */
+@media (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  .expand-content {
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.copyright-text {
+  font-size: 0.75rem;
 }/*# sourceMappingURL=footer.css.map */
