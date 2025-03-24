@@ -1,11 +1,9 @@
 @import '../navbar/navbar.scss';
+@import '../footer/footer.scss';
 
 
-:root {
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #fff;
-  }
+
+
   
   body {
     margin: 0;
@@ -13,34 +11,7 @@
     min-height: 100vh;
   }
   
-  /* Header */
-  .site-header {
-    background: #eaeaea;
-    padding: 1rem;
-  }
   
-  .site-header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: black;
-  }
   
   /* Main Content */
   .main-content {
