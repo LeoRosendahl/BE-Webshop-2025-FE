@@ -1,12 +1,10 @@
 site-header {
-  background: #eaeaea;
+  background: #8e3030;
   padding: 1rem;
 }
 
 .site-header nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: red;
 }
 
 .logo {

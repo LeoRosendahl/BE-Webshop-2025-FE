@@ -1,1 +1,34 @@
-/*# sourceMappingURL=admin.css.map */
+site-header {
+  background: #8e3030;
+  padding: 1rem;
+}
+
+.site-header nav {
+  background-color: red;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+}
+
+h1 {
+  font-size: 10;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}/*# sourceMappingURL=admin.css.map */
