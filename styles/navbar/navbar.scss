@@ -1,28 +1,115 @@
-site-header {
-    background: #eaeaea;
-    padding: 1rem;
-  }
-  
-  .site-header nav {
+@import '../../partials/_variables.scss';
+
+
+.site-header {
+    font-family: Quicksand;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    color: $basegreen;
+}
+
+.site-header nav {
+  background-color: #fff;
+  padding: 25px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+}
+.upper-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+h1 {
+  font-size: 10;
+}
+
+body {
+  margin: 0;
+} /*# sourceMappingURL=admin.css.map */
+
+.profile-cart-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.logo-menu-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+.logo-upper {
+    font-size: 24px;
+}
+.logo-lower {
+    font-size: 14px;
+    color: grey;
+}
+
+.lower-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
+}
+
+.search-mobile {
+    border-right: 1px solid $basegreen;
+    border-top: 1px solid $basegreen;
+    border-bottom: 1px solid $basegreen;
+    border-left: none;
+
+    height: 100%;
+    width: 205px;
     padding: 0;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: black;
-  }
-  
+    padding: 4px 0;
+    border-radius: 0 20px 20px 0;
+}
+
+.search-container-mobile {
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-mobile:focus {
+    outline: none;
+}
+
+.magnifying-glass {
+    border-left: 1px solid $basegreen;
+    border-top: 1px solid $basegreen;
+    border-bottom: 1px solid $basegreen;
+    border-right: none;
+    background-color: #fff;
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+    padding: 3px 3px 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
