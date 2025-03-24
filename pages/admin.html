@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hakim Livs - products</title>
     <link rel="stylesheet" href="../styles/admin/admin.css" />
+    <script src="/src/scripts/admin.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -37,8 +38,19 @@
           </div>
         </div>
       </nav>
-      <script type="module" src="main.js"></script>
     </header>
+    <main>
+     <button id="toggle-form-btn">Lägg till ny produkt</button> 
+    <aside class="admin-sidebar">
+      <input type="text" id="product-img" placeholder="Produktbild (url)">
+      <input type="text" id="product-name" placeholder="Produktnamn">
+      <input type="text" id="product-description" placeholder="Beskrivning">
+      <input type="text" id="product-category" placeholder="Kategori">
+      <input type="text" id="product-quantity" placeholder="Antal">
+      <input type="text" id="product-price" placeholder="Pris">
+      <button id="product-add-btn">Lägg till</button>
+  </aside>
+</main>
     <footer class="site-footer">
       <div class="footer-content">
         <h1 class="footer-h1">Hakim livs<br>Din lokala mathandlare</h1>
@@ -63,6 +75,5 @@
         </div>
       </div>
     </footer>
-
   </body>
 </html>
