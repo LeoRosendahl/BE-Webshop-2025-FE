@@ -42,24 +42,29 @@
 
     <main>
       <button id="toggle-form-btn">Lägg till ny produkt</button> 
-      <aside class="admin-sidebar">
-        <h2 class="desktop-title">Lägg till produkt</h2>
-        <input type="text" id="product-img" placeholder="Produktbild (url)">
-        <input type="text" id="product-name" placeholder="Produktnamn">
-        <input type="text" id="product-description" placeholder="Beskrivning">
-
-        <select name="category" id="category">
-          <option disabled selected value="">Välj kategori</option>
-          <option value="Fruits">Frukt</option>
-          <option value="Meat">Kött</option>
-          <option value="Dairy">Mejeri</option>
-          <option value="Other">Övrigt</option>
-        </select>
-
-        <input type="number" id="product-quantity" placeholder="Antal">
-        <input type="number" id="product-price" placeholder="Pris i Kr">
-        <button id="product-add-btn">Lägg till</button>
-      </aside>
+      <div id="popupOverlay" class="popup-overlay">
+        <div class="popup-content">
+          <span class="close-btn" onclick="closePopup()">&times;</span>
+          
+          <h2 class="desktop-title">Lägg till produkt</h2>
+          
+          <input type="text" id="product-img" placeholder="Produktbild (url)">
+          <input type="text" id="product-name" placeholder="Produktnamn">
+          <input type="text" id="product-description" placeholder="Beskrivning">
+  
+          <select name="category" id="category">
+            <option disabled selected value="">Välj kategori</option>
+            <option value="Fruits">Frukt</option>
+            <option value="Meat">Kött</option>
+            <option value="Dairy">Mejeri</option>
+            <option value="Other">Övrigt</option>
+          </select>
+  
+          <input type="number" id="product-quantity" placeholder="Antal">
+          <input type="number" id="product-price" placeholder="Pris i Kr">
+          <button id="product-add-btn">Lägg till</button>
+        </div>
+      </div>
       <section class="products-container">
         
       </section>
@@ -92,5 +97,9 @@
   </body>
   <script type="module" src="../script.js"></script>
 </html>
+
+
+
+
 
   

@@ -22,118 +22,164 @@ main {
     }
 }
 
-#toggle-form-btn {
-    @include button-login-register;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
     
-    // Dölj knappen i desktop-läge
+    
+    @media (max-width: 767px) {
+        align-items: flex-end; 
+        padding-top: 60px; 
+    }
+    
     @media (min-width: 768px) {
-        display: none;
+        display: block !important;
+        position: static;
+        background-color: transparent;
+        width: auto;
+        height: auto;
+        z-index: 1;
+        align-items: center;
     }
 }
 
-.admin-sidebar {
+.popup-content {
     background-color: $white;
     font-family: $font-family-primary;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 90%;
+    max-width: 390px;
     gap: 20px;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 20px;
     padding: 30px;
-
-    h2.desktop-title {
-        display: none;
-        color: $basegreen;
-        margin-top: 0;
-        margin-bottom: 20px;
-        
-        @media (min-width: 768px) {
-            display: block;
-        }
+    position: relative;
+    
+    @media (max-width: 767px) {
+        height: calc(100vh - 130px); 
+        max-height: calc(100vh - 130px); 
+        border-radius: 20px 20px 0 0; 
+        overflow-y: auto; 
     }
     
     @media (min-width: 768px) {
-        width: 350px; 
+        width: 350px;
         min-height: calc(100vh - 100px);
-        border-radius: 20px;
-        margin-top: 20px;
         border-radius: 0px;
-
+        margin-top: 20px;
     }
 
     input {
-        width: 300px;
-        height: 30px;
-        border-radius: 5px;
-        border: 1px solid $basegreen;
-        padding: 5px;
-    }
-    
-    select {
-        width: 310px;
+        width: 100%; 
+        max-width: 310px; 
         height: 40px;
         border-radius: 5px;
         border: 1px solid $basegreen;
         padding: 5px;
+        box-sizing: border-box; 
+    }
+    
+    select {
+        width: 100%;
+        max-width: 310px; 
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid $basegreen;
+        padding: 5px;
+        box-sizing: border-box; 
+        background-color: $white; 
+        
+        @media (max-width: 767px) {
+            font-size: 16px; 
+        }
     }
 
     #product-add-btn {
         @include button-buy-big;
+        width: 100%; 
+        max-width: 310px; 
+    }
+
+    
+    h2.desktop-title {
+        color: $basegreen;
+        margin-top: 0;
+        margin-bottom: 20px;
+        display: block;
     }
 }
 
-// Om vi har innehåll som ska visas bredvid sidebaren i desktop (t.ex. en lista med produkter)
-.content-area {
-    width: 100%;
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 32px;
+    font-weight: bold;
+    color: $basegreen;
     
     @media (min-width: 768px) {
-        flex: 1; // Tar upp återstående utrymme
-        padding-left: 20px;
+        display: none; 
     }
 }
+
+#toggle-form-btn {
+    @include button-login-register;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    @media (min-width: 768px) {
+        display: none;
+    }
+}
+
 
 .product {
     display: flex;
     height: 240px;
     flex-direction: column;
-    background: #fff;
+    background: $white;
     width: 120px;
     padding: 20px 35px;
     font-weight: 600;
     border-radius: 15px;
     border: 2px solid $lightgreen;
-    h3{
+    
+    h3 {
         margin: 0;
         font-size: 16px;
         font-weight: 700;
-
-        
-        
     }
-    h2{
+    
+    h2 {
         margin: 0;
         text-align: center;
         color: $red;
         font-size: 24px;
         font-family: REM;
-        
     }
-    p{
+    
+    p {
         margin: 0;
         color: $grey;
         font-size: 14px;
-
     }
+    
     button {
         margin-top: 15px;
         @include button-base;
     }
 }
-.product-image{
+
+.product-image {
     height: 120px;
 }
 
@@ -145,14 +191,16 @@ main {
     justify-content: center;
     padding: 15px 5px;
     
+    
 }
 
-.name-button-container{
+.name-button-container {
     display: flex;
     flex-direction: column;
     height: 100px;
     justify-content: space-between;
-    button{
+    
+    button {
         margin: 0;
     }
 }
