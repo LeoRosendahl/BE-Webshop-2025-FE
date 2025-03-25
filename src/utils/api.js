@@ -37,3 +37,23 @@ export async function fetchProducts(endpoint = "api/products") {
       return null; 
     }
   }
+
+  export async function deleteProduct(productId) {
+    const url = `${getBaseUrl()}api/products/${productId}`; // Construct API endpoint
+  
+    try {
+      const response = await fetch(url, {
+        method: "DELETE",
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Failed to delete product: ${response.statusText}`);
+      }
+  
+      console.log("Product deleted successfully!");
+      return true; // Return success
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      return false; // Return failure
+    }
+  }
