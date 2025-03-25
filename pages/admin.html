@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hakim Livs - products</title>
     <link rel="stylesheet" href="../styles/admin/admin.css" />
+    <script src="/src/scripts/admin.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -15,7 +16,7 @@
       <nav>
         <div class="upper-nav">
           <div class="logo-menu-container">
-            <i class="fa-solid fa-bars "></i>
+            <i class="fa-solid fa-bars"></i>
             <div class="logo-container">
               <div class="logo-upper">Hakim</div>
               <div class="logo-lower">Livs</div>
@@ -23,7 +24,7 @@
           </div>
           <div class="profile-cart-container">
             <div class="cart">
-              <i class="fa-solid fa-cart-shopping "></i>
+              <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <i class="fa-solid fa-user"></i>
           </div>
@@ -38,16 +39,35 @@
         </div>
       </nav>
     </header>
-    
-    
-    
-    
-    
-    
-    
+
+    <main>
+      <button id="toggle-form-btn">Lägg till ny produkt</button> 
+      <aside class="admin-sidebar">
+        <h2 class="desktop-title">Lägg till produkt</h2>
+        <input type="text" id="product-img" placeholder="Produktbild (url)">
+        <input type="text" id="product-name" placeholder="Produktnamn">
+        <input type="text" id="product-description" placeholder="Beskrivning">
+
+        <select name="category" id="category">
+          <option disabled selected value="">Välj kategori</option>
+          <option value="fruits">Frukt</option>
+          <option value="meat">Kött</option>
+          <option value="dairy">Mejeri</option>
+          <option value="other">Övrigt</option>
+        </select>
+
+        <input type="number" id="product-quantity" placeholder="Antal">
+        <input type="number" id="product-price" placeholder="Pris i Kr">
+        <button id="product-add-btn">Lägg till</button>
+      </aside>
+      <section class="content-area">
+        <!-- UTRYMME FÖR PRODUKTER -->
+      </section>
+    </main>
+
     <footer class="site-footer">
       <div class="footer-content">
-        <h1 class="footer-h1">Hakims livs<br>Din lokala mathandlare</h1>
+        <h1 class="footer-h1">Hakim livs<br>Din lokala mathandlare</h1>
         <div class="footer-links">
           <div class="expandable-section">
             <div class="expand-trigger">
@@ -63,14 +83,14 @@
               </div>
             </div>
           </div>
-          <a href="/terms">Terms</a>
           <a href="/pages/admin.html">Tillbaka till toppen</a>
           <p class="copyright-text">2024 Hakim Livs. All rights reserved.</p>
         </div>
       </div>
     </footer>
-    
+
   </body>
   <script type="module" src="../script.js"></script>
-  </html>
+</html>
+
   
