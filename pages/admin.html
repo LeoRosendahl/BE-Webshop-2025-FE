@@ -12,59 +12,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=REM:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header class="site-header">
-      <nav>
-        <div class="upper-nav">
-          <div class="logo-menu-container">
-            <i class="fa-solid fa-bars hamburger-trigger" id="hamburger-menu-icon"></i>
-            <div class="logo-container">
-              <div class="logo-upper">Hakim</div>
-              <div class="logo-lower">Livs</div>
-            </div>
-          </div>
-          <div class="profile-cart-container">
-            <div class="cart">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-            <i class="fa-solid fa-user"></i>
-          </div>
-        </div>
-        <div class="lower-nav">
-          <div class="search-container-mobile">
-            <div class="magnifying-glass">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-            <input type="text" class="search-mobile" placeholder="Sök vara...">
-          </div>
-        </div>
-      </nav>
-      <div class="header-container">
-        <div class="header-img">
-          <img class="headerimg" src="https://static.bonniernews.se/ba/YTcwG4i-aE2y2qwMTstafDef6ZY.jpeg?width=1400&format=pjpg&auto=webp" alt="Picture of fruits in a store">
-        </div>
-        <div class="header-text">
-          <h2>
-            Handla lokalt <br> hos Hakim Livs.
-          </h2>
-          <h2>
-            Få maten till din dörr!
-          </h2>
-        </div>
-        <div class="header-stats">
-        </div>
-      </div>
-    </header>
     <div class="site-wrapper">
-
+      <header class="site-header">
+        <nav>
+          <div class="upper-nav">
+            <div class="logo-menu-container">
+              <i class="fa-solid fa-bars hamburger-trigger" id="hamburger-menu-icon"></i>
+              <div class="logo-container">
+                <div class="logo-upper">Hakim</div>
+                <div class="logo-lower">Livs</div>
+              </div>
+            </div>
+            <div class="lower-nav">
+              <div class="search-container-mobile">
+                <div class="magnifying-glass">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input type="text" class="search-mobile" placeholder="Sök vara...">
+              </div>
+            </div>
+            <div class="profile-cart-container">
+              <div class="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+              <i class="fa-solid fa-user"></i>
+            </div>
+          </div>
+        </nav>
+        <div class="header-container">
+          <div class="header-img">
+            <img class="headerimg" src="https://static.bonniernews.se/ba/YTcwG4i-aE2y2qwMTstafDef6ZY.jpeg?width=1400&format=pjpg&auto=webp" alt="Picture of fruits in a store">
+          </div>
+          <div class="header-text">
+            <h2>
+              Handla lokalt <br> hos Hakim Livs. <br>
+              Få maten till din dörr!
+            </h2>
+          </div>
+          <div class="header-stats">
+    
+          </div>
+        </div>  
+      </header>
     <main>
       <button id="toggle-form-btn">Lägg till ny produkt</button>
       <div id="popupOverlay" class="popup-overlay">
         <div class="popup-content productform">
           <span class="close-btn">&times;</span>
+          
           <h2 class="desktop-title">Lägg till produkt</h2>
           <input type="text" id="product-img" placeholder="Produktbild (url)">
           <input type="text" id="product-name" placeholder="Produktnamn">
           <input type="text" id="product-description" placeholder="Beskrivning">
+      
           <select name="category" id="category">
             <option disabled selected value="">Välj kategori</option>
             <option value="Fruits">Frukt</option>
@@ -72,11 +72,13 @@
             <option value="Dairy">Mejeri</option>
             <option value="Other">Övrigt</option>
           </select>
+      
           <input type="number" id="product-quantity" placeholder="Antal">
           <input type="number" id="product-price" placeholder="Pris i Kr">
           <button id="product-add-btn">Lägg till</button>
         </div>
       </div>
+      
       <div id="hamburgerMenuOverlay" class="popup-overlay">
         <div class="popup-content hamburger-menu">
           <span class="close-btn">&times;</span>
@@ -89,10 +91,12 @@
           </div>
         </div>
       </div>
-      <div class="products-wrapper">
-        <section class="products-container">
-        </section>
-      </div>
+     <section class="all-products">
+      <h2>Inlagda produkter</h2>
+      <section class="products-container">
+        
+      </section>
+    </section>
     </main>
   </div>
 

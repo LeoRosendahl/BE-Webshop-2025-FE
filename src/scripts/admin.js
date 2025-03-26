@@ -1,19 +1,23 @@
 // Funktion för att öppna popups
 function openPopup(popupId, contentSelector) {
     const popup = document.getElementById(popupId);
+    
     // Dölj alla popup-content först
     const allContents = document.querySelectorAll('.popup-content');
     allContents.forEach(content => {
         content.style.display = "none";
     });
+    
     // Visa bara den önskade popup-content
     const targetContent = document.querySelector(contentSelector);
     if (targetContent) {
         targetContent.style.display = "flex";
     }
+    
     // Visa popup overlay
     popup.style.display = "flex";
 }
+
 // Funktion för att stänga popups
 function closePopup() {
     const popups = document.querySelectorAll('.popup-overlay');

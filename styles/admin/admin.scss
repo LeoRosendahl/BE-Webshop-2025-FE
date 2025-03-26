@@ -5,9 +5,8 @@
 
 body {
     margin: 0;
-    padding: 0;
     font-family: $font-family-primary;
-    background-color: $background-primary;
+    background-color: $white;
 }
 
 main {
@@ -15,6 +14,8 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: $background-primary;
+    
     
     @media (min-width: 768px) {
         flex-direction: row;
@@ -100,7 +101,7 @@ main {
     
 }
 .popup-content {
-    background-color: $white;
+    background-color: $background-primary;
     font-family: $font-family-primary;
     display: flex;
     flex-direction: column;
@@ -109,7 +110,7 @@ main {
     max-width: 390px;
     gap: 20px;
     border-radius: 20px;
-    padding: 30px;
+    padding: 20px;
     position: relative;
     
     @media (max-width: 767px) {
@@ -123,6 +124,7 @@ main {
         width: 350px;
         min-height: calc(100vh - 100px);
         border-radius: 0px;
+        
     }
 
     input {
@@ -238,10 +240,15 @@ main {
     display: flex;
     justify-content: center;
     width: 100%;
+    
         @media (min-width: 767px) {
         justify-content: flex-start; 
         padding: 20px;
     }
+}
+.all-products {
+    background-color: $background-primary;
+    text-align: center;
 }
 
 .products-container {
@@ -251,6 +258,9 @@ main {
     justify-content: flex-start; 
     align-items: flex-start;
     max-width: 373px;
+    margin: 35px 0px 0px 10px;
+    background-color: $background-primary;
+    padding: 0px 20px;
     
         @media (min-width: 1018px) {
             max-width: 1000px;
@@ -276,8 +286,6 @@ main {
 .site-wrapper {
     max-width: 1250px;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
 }
 // .centered-div {
 //     width: 100%;
