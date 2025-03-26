@@ -11,7 +11,10 @@
   padding: 25px 25px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   gap: 20px;
+  border-bottom: 0.5px solid #ADADAD;
 }
 
 .logo {
@@ -36,9 +39,20 @@
   justify-content: space-between;
   align-items: center;
 }
+@media (min-width: 1250px) {
+  .upper-nav {
+    width: 1250px;
+  }
+}
+@media (max-width: 1250px) {
+  .upper-nav {
+    width: 100%;
+  }
+}
 @media (max-width: 768px) {
   .upper-nav {
     flex-wrap: wrap;
+    width: 100%;
   }
 }
 
@@ -59,6 +73,11 @@ body {
 @media (max-width: 768px) {
   .profile-cart-container {
     flex: 1;
+  }
+}
+@media (min-width: 768px) {
+  .profile-cart-container {
+    gap: 40px;
   }
 }
 
@@ -91,7 +110,6 @@ body {
   flex-direction: column;
   line-height: 0.9;
 }
-
 .logo-upper {
   font-size: 24px;
 }

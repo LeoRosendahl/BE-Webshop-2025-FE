@@ -12,7 +12,10 @@
   padding: 25px 25px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   gap: 20px;
+  border-bottom: 0.5px solid #ADADAD;
 }
 
 .logo {
@@ -37,9 +40,20 @@
   justify-content: space-between;
   align-items: center;
 }
+@media (min-width: 1250px) {
+  .upper-nav {
+    width: 1250px;
+  }
+}
+@media (max-width: 1250px) {
+  .upper-nav {
+    width: 100%;
+  }
+}
 @media (max-width: 768px) {
   .upper-nav {
     flex-wrap: wrap;
+    width: 100%;
   }
 }
 
@@ -60,6 +74,11 @@ body {
 @media (max-width: 768px) {
   .profile-cart-container {
     flex: 1;
+  }
+}
+@media (min-width: 768px) {
+  .profile-cart-container {
+    gap: 40px;
   }
 }
 
@@ -92,7 +111,6 @@ body {
   flex-direction: column;
   line-height: 0.9;
 }
-
 .logo-upper {
   font-size: 24px;
 }
@@ -276,7 +294,7 @@ main {
   main {
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-evenly;
   }
 }
 main h2 {
@@ -624,6 +642,9 @@ main h2 {
 .all-products {
   background-color: #F8F7F6;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .products-container {
@@ -633,13 +654,12 @@ main h2 {
   justify-content: flex-start;
   align-items: flex-start;
   max-width: 373px;
-  margin: 35px 0px 0px 10px;
   background-color: #F8F7F6;
-  padding: 0px 20px;
+  margin: 0 auto;
 }
 @media (min-width: 1018px) {
   .products-container {
-    max-width: 1000px;
+    min-width: 751px;
   }
 }
 @media (max-width: 394px) {
@@ -707,20 +727,21 @@ main h2 {
   margin-left: 20px;
   margin-right: 20px;
 }
+.header-text h3 {
+  font-size: 1rem;
+}
+.header-text h2 {
+  font-size: 30px;
+  text-align: center;
+  margin: 0px;
+}
 @media (min-width: 768px) {
   .header-text {
     width: 50%;
     max-height: 400px;
     margin: 0;
+    font-size: 2rem;
   }
-}
-.header-text h3 {
-  font-size: 1rem;
-}
-.header-text h2 {
-  font-size: 1.5rem;
-  text-align: center;
-  margin: 0px;
 }
 
 @media (min-width: 768px) {
