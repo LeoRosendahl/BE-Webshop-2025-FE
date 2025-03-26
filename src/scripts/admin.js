@@ -1,23 +1,43 @@
-//FUNKTION FÖR POPUP
-// Funktion för att öppna popup  
-function openPopup() {
-    const popup = document.getElementById("popupOverlay");
+// Funktion för att öppna popups
+function openPopup(popupId, contentSelector) {
+    const popup = document.getElementById(popupId);
+    // Dölj alla popup-content först
+    const allContents = document.querySelectorAll('.popup-content');
+    allContents.forEach(content => {
+        content.style.display = "none";
+    });
+    // Visa bara den önskade popup-content
+    const targetContent = document.querySelector(contentSelector);
+    if (targetContent) {
+        targetContent.style.display = "flex";
+    }
+    // Visa popup overlay
     popup.style.display = "flex";
 }
-
-// Funktion för att stänga popup
+// Funktion för att stänga popups
 function closePopup() {
-    const popup = document.getElementById("popupOverlay");
-    popup.style.display = "none";
+    const popups = document.querySelectorAll('.popup-overlay');
+    popups.forEach(popup => {
+        popup.style.display = "none";
+    });
 }
-
-// Lägg till event listener för att öppna popup
-document.getElementById("toggle-form-btn").addEventListener("click", openPopup);
-
+// Eventlistener för produkt-knappen
+document.getElementById("toggle-form-btn").addEventListener("click", function() {
+    openPopup("popupOverlay", ".popup-content.productform");
+});
+// Eventlistener för hamburger-ikonen
+document.querySelector(".hamburger-trigger").addEventListener("click", function() {
+    openPopup("hamburgerMenuOverlay", ".popup-content.hamburger-menu");
+});
+// Eventlistener för stängknappar
+document.querySelectorAll(".close-btn").forEach(button => {
+    button.addEventListener("click", function() {
+        closePopup();
+    });
+});
 // Stäng popup om användaren klickar utanför innehållsrutan
 window.onclick = function(event) {
-    const popup = document.getElementById("popupOverlay");
-    if (event.target === popup) {
-        popup.style.display = "none";
+    if (event.target.classList.contains("popup-overlay")) {
+        closePopup();
     }
-}
+};
