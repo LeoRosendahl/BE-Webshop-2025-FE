@@ -17,7 +17,7 @@
       <nav>
         <div class="upper-nav">
           <div class="logo-menu-container">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars hamburger-trigger" id="hamburger-menu-icon"></i>
             <div class="logo-container">
               <div class="logo-upper">Hakim</div>
               <div class="logo-lower">Livs</div>
@@ -39,10 +39,95 @@
           </div>
         </div>
       </nav>
+      <div class="header-container">
+        <div class="header-img">
+          <img class="headerimg" src="https://static.bonniernews.se/ba/YTcwG4i-aE2y2qwMTstafDef6ZY.jpeg?width=1400&format=pjpg&auto=webp" alt="Picture of fruits in a store">
+        </div>
+        <div class="header-text">
+          <h2>
+            Handla lokalt <br> hos Hakim Livs.
+          </h2>
+          <h2>
+            Få maten till din dörr!
+          </h2>
+        </div>
+        <div class="header-stats">
+  
+        </div>
+      </div>  
     </header>
     <div class="site-wrapper">
     
     <main>
+      <button id="toggle-form-btn">Lägg till ny produkt</button> 
+      <div id="popupOverlay" class="popup-overlay">
+        <div class="popup-content productform">
+          <span class="close-btn">&times;</span>
+          
+          <h2 class="desktop-title">Lägg till produkt</h2>
+          
+          <input type="text" id="product-img" placeholder="Produktbild (url)">
+          <input type="text" id="product-name" placeholder="Produktnamn">
+          <input type="text" id="product-description" placeholder="Beskrivning">
+      
+          <select name="category" id="category">
+            <option disabled selected value="">Välj kategori</option>
+            <option value="Fruits">Frukt</option>
+            <option value="Meat">Kött</option>
+            <option value="Dairy">Mejeri</option>
+            <option value="Other">Övrigt</option>
+          </select>
+      
+          <input type="number" id="product-quantity" placeholder="Antal">
+          <input type="number" id="product-price" placeholder="Pris i Kr">
+          <button id="product-add-btn">Lägg till</button>
+        </div>
+      </div>
+      
+      <div id="hamburgerMenuOverlay" class="popup-overlay">
+        <div class="popup-content hamburger-menu">
+          <span class="close-btn">&times;</span>
+          <h2>Kategorier</h2>
+          <div class="category-btns">
+            <button class="category-btn">Frukt</button>
+            <button class="category-btn">Kött</button>
+            <button class="category-btn">Mejeri</button>
+            <button class="category-btn">Övrigt</button>
+          </div>
+        </div>
+      </div>
+      
+      <section class="products-container">
+        
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <h1 class="footer-h1">Hakim livs<br>Din lokala mathandlare</h1>
+        <div class="footer-links">
+          <div class="expandable-section">
+            <div class="expand-trigger">
+              <span>Kontakt</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="expand-content">
+              <div class="contact-info">
+                <p><strong>E-post:</strong> info@hakimlivs.se</p>
+                <p><strong>Telefon:</strong> 070-123 45 67</p>
+                <p><strong>Adress:</strong> Storgatan 123, 123 45 Stockholm</p>
+                <p><strong>Öppettider:</strong> Mån-Fre: 08-20, Lör-Sön: 10-18</p>
+              </div>
+            </div>
+          </div>
+          <a href="/pages/admin.html">Tillbaka till toppen</a>
+          <p class="copyright-text">2024 Hakim Livs. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script type="module" src="../script.js"></script>
+</html>
         <button id="toggle-form-btn">Lägg till ny produkt</button> 
         <div id="popupOverlay" class="popup-overlay">
           <div class="popup-content">
