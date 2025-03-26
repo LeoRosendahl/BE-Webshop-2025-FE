@@ -587,7 +587,7 @@ main h2 {
 .products-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
   justify-content: flex-start;
   align-items: flex-start;
   max-width: 373px;
