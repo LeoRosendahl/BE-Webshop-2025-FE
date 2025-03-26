@@ -219,9 +219,8 @@ h1, p {
 
 body {
   margin: 0;
-  padding: 0;
   font-family: "Quicksand", sans-serif;
-  background-color: #F8F7F6;
+  background-color: #FFFFFF;
 }
 
 main {
@@ -229,6 +228,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #F8F7F6;
 }
 @media (min-width: 768px) {
   main {
@@ -348,7 +348,7 @@ main h2 {
 }
 
 .popup-content {
-  background-color: #FFFFFF;
+  background-color: #F8F7F6;
   font-family: "Quicksand", sans-serif;
   display: flex;
   flex-direction: column;
@@ -357,7 +357,7 @@ main h2 {
   max-width: 390px;
   gap: 20px;
   border-radius: 20px;
-  padding: 30px;
+  padding: 20px;
   position: relative;
 }
 @media (max-width: 767px) {
@@ -373,7 +373,6 @@ main h2 {
     width: 350px;
     min-height: calc(100vh - 100px);
     border-radius: 0px;
-    margin-top: 20px;
   }
 }
 .popup-content input {
@@ -580,13 +579,21 @@ main h2 {
   }
 }
 
+.all-products {
+  background-color: #F8F7F6;
+  text-align: center;
+}
+
 .products-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 10px;
   justify-content: flex-start;
   align-items: flex-start;
   max-width: 373px;
+  margin: 35px 0px 0px 10px;
+  background-color: #F8F7F6;
+  padding: 0px 20px;
 }
 @media (min-width: 1018px) {
   .products-container {
