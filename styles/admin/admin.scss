@@ -13,6 +13,7 @@ body {
 main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     
     @media (min-width: 768px) {
@@ -195,8 +196,8 @@ main {
     height: 240px;
     flex-direction: column;
     background: $white;
-    width: 120px;
-    padding: 20px 35px;
+    width: 160px;
+    padding: 15px 10px;
     font-weight: 600;
     border-radius: 15px;
     border: 2px solid $lightgreen;
@@ -224,23 +225,44 @@ main {
     button {
         margin-top: 15px;
         @include button-base;
-    }
+        width: 100%;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 5px 0;    }
 }
 
 .product-image {
     height: 120px;
 }
 
+.products-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+        @media (min-width: 767px) {
+        justify-content: flex-start; 
+        padding: 20px;
+    }
+}
+
 .products-container {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 5px;
+    justify-content: flex-start; 
+    align-items: flex-start;
+    max-width: 373px;
     
+        @media (min-width: 1018px) {
+            max-width: 1000px;
+        
+    }
+        @media (max-width: 394px) {
+            max-width: 184px;
     
 }
+}
+
 
 .name-button-container {
     display: flex;
@@ -252,6 +274,21 @@ main {
         margin: 0;
     }
 }
+.site-wrapper {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+// .centered-div {
+//     width: 100%;
+//     height: fit-content;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     @media (min-width: 767px) {
+//         justify-content: flex-start; 
+        
+//     }
+// }
 
 .header-img {
     width: 100%;
