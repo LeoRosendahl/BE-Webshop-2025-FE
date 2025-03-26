@@ -38,9 +38,9 @@
   justify-content: space-between;
   align-items: center;
   
-  // För mobilläge
+  
   @media (max-width: 768px) {
-    flex-wrap: wrap; // Tillåter att elementen flödar till nästa rad
+    flex-wrap: wrap; 
   }
 }
 
@@ -50,7 +50,7 @@ h1 {
 
 body {
   margin: 0;
-} /*# sourceMappingURL=admin.css.map */
+} 
 
 .profile-cart-container {
   display: flex;
@@ -59,7 +59,7 @@ body {
   justify-content: flex-end;
   
   @media (max-width: 768px) {
-    flex: 1; // Låt dessa element ta lika mycket plats
+    flex: 1; 
   }
 }
 
@@ -69,7 +69,16 @@ body {
   gap: 15px;
   
   @media (max-width: 768px) {
-    flex: 1; // Låt dessa element ta lika mycket plats
+    flex: 1; 
+  }
+}
+.hamburger-trigger,
+#hamburger-menu-icon,
+.fa-bars {
+  display: none ;
+  
+  @media (max-width: 768px) {
+    display: block ;
   }
 }
 
@@ -93,11 +102,11 @@ body {
     justify-content: center;
     align-items: center;
     
-    // För mobilläge
+  
     @media (max-width: 768px) {
-      width: 100%; // Ta upp hela bredden
-      order: 2; // Placera efter andra element
-      margin-top: 15px; // Lägg till lite mellanrum
+      width: 100%; 
+      order: 2; 
+      margin-top: 15px; 
     }
 }
 
@@ -123,7 +132,7 @@ body {
     align-items: center;
     
     @media (max-width: 768px) {
-      width: 100%; // Ta upp hela bredden
+      width: 100%; 
     }
 }
 

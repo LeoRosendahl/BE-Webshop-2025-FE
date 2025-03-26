@@ -48,7 +48,8 @@ h1 {
 
 body {
   margin: 0;
-} 
+}
+
 .profile-cart-container {
   display: flex;
   gap: 25px;
@@ -69,6 +70,19 @@ body {
 @media (max-width: 768px) {
   .logo-menu-container {
     flex: 1;
+  }
+}
+
+.hamburger-trigger,
+#hamburger-menu-icon,
+.fa-bars {
+  display: none;
+}
+@media (max-width: 768px) {
+  .hamburger-trigger,
+  #hamburger-menu-icon,
+  .fa-bars {
+    display: block;
   }
 }
 
