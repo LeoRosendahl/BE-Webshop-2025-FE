@@ -1,6 +1,5 @@
 @import '../../partials/_variables.scss';
 
-
 .site-header {
     font-family: Quicksand;
     font-size: 24px;
@@ -33,11 +32,18 @@
   text-decoration: none;
   color: black;
 }
+
 .upper-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  // För mobilläge
+  @media (max-width: 768px) {
+    flex-wrap: wrap; // Tillåter att elementen flödar till nästa rad
+  }
 }
+
 h1 {
   font-size: 10;
 }
@@ -48,13 +54,23 @@ body {
 
 .profile-cart-container {
   display: flex;
-  gap: 15px;
+  gap: 25px;
   align-items: center;
+  justify-content: flex-end;
+  
+  @media (max-width: 768px) {
+    flex: 1; // Låt dessa element ta lika mycket plats
+  }
 }
+
 .logo-menu-container {
   display: flex;
   align-items: center;
   gap: 15px;
+  
+  @media (max-width: 768px) {
+    flex: 1; // Låt dessa element ta lika mycket plats
+  }
 }
 
 .logo-container {
@@ -62,9 +78,11 @@ body {
   flex-direction: column;
   line-height: 0.9;
 }
+
 .logo-upper {
     font-size: 24px;
 }
+
 .logo-lower {
     font-size: 14px;
     color: grey;
@@ -74,6 +92,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    // För mobilläge
+    @media (max-width: 768px) {
+      width: 100%; // Ta upp hela bredden
+      order: 2; // Placera efter andra element
+      margin-top: 15px; // Lägg till lite mellanrum
+    }
 }
 
 .search-mobile {
@@ -83,10 +108,12 @@ body {
     border-left: none;
 
     height: 100%;
-    width: 205px;
+    width: 400px;
     padding: 0;
     padding: 4px 0;
     border-radius: 0 20px 20px 0;
+    
+  
 }
 
 .search-container-mobile {
@@ -94,6 +121,10 @@ body {
     height: 30px;
     justify-content: center;
     align-items: center;
+    
+    @media (max-width: 768px) {
+      width: 100%; // Ta upp hela bredden
+    }
 }
 
 .search-mobile:focus {
