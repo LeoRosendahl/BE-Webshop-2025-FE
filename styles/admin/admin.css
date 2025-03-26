@@ -227,6 +227,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 @media (min-width: 768px) {
@@ -426,8 +427,8 @@ main {
   height: 240px;
   flex-direction: column;
   background: #FFFFFF;
-  width: 120px;
-  padding: 20px 35px;
+  width: 160px;
+  padding: 15px 10px;
   font-weight: 600;
   border-radius: 15px;
   border: 2px solid #DEF9EC;
@@ -465,6 +466,10 @@ main {
   flex-shrink: 0;
   background-color: #3BB77E;
   color: #FFFFFF;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 0;
 }
 .product button:hover {
   background-color: transparent;
@@ -483,13 +488,35 @@ main {
   height: 120px;
 }
 
+.products-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+@media (min-width: 767px) {
+  .products-wrapper {
+    justify-content: flex-start;
+    padding: 20px;
+  }
+}
+
 .products-container {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  align-items: center;
-  justify-content: center;
-  padding: 15px 5px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 373px;
+}
+@media (min-width: 1018px) {
+  .products-container {
+    max-width: 1000px;
+  }
+}
+@media (max-width: 394px) {
+  .products-container {
+    max-width: 184px;
+  }
 }
 
 .name-button-container {
@@ -500,4 +527,9 @@ main {
 }
 .name-button-container button {
   margin: 0;
+}
+
+.site-wrapper {
+  max-width: 1250px;
+  margin: 0 auto;
 }/*# sourceMappingURL=admin.css.map */
