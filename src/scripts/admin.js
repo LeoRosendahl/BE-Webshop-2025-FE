@@ -53,3 +53,15 @@ window.onclick = function(event) {
         closePopup();
     }
 };
+
+document.addEventListener('click', (event) => {
+    // If the target is a button, do nothing (prevent event propagation)
+    if (event.target.tagName.toLowerCase() === 'button') {
+        return;
+    }
+    // Check if the click is on a .product (or its descendants)
+    const product = event.target.closest('.product');
+    if (product) {
+        openPopup("mainOverlay", ".popup-content.single-product");
+    }
+});
