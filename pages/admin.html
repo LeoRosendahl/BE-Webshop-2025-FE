@@ -32,9 +32,9 @@
             </div>
             <div class="profile-cart-container">
               <div class="cart">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-cart-shopping cart-trigger"></i>
               </div>
-              <i class="fa-solid fa-user"></i>
+              <i class="fa-solid fa-user user-trigger"></i>
             </div>
           </div>
         </nav>
@@ -81,7 +81,8 @@
         </div>
       </div>
       
-      <div id="hamburgerMenuOverlay" class="popup-overlay">
+      <div id="mainOverlay" class="popup-overlay">
+        <!-- Hamburger menu content -->
         <div class="popup-content hamburger-menu">
           <span class="close-btn">&times;</span>
           <h2>Kategorier</h2>
@@ -91,6 +92,18 @@
             <button class="category-btn">Mejeri</button>
             <button class="category-btn">Övrigt</button>
           </div>
+        </div>
+        
+        <!-- Cart content -->
+        <div class="popup-content cart">
+          <span class="close-btn">&times;</span>
+          <h2>Kundvagn</h2>
+        </div>
+
+        <!-- User content -->
+        <div class="popup-content user">
+          <span class="close-btn">&times;</span>
+          <h2>Min profil</h2>
         </div>
       </div>
      <section class="all-products">

@@ -31,7 +31,15 @@ document.getElementById("toggle-form-btn").addEventListener("click", function() 
 });
 // Eventlistener för hamburger-ikonen
 document.querySelector(".hamburger-trigger").addEventListener("click", function() {
-    openPopup("hamburgerMenuOverlay", ".popup-content.hamburger-menu");
+    openPopup("mainOverlay", ".popup-content.hamburger-menu");
+});
+//Eventlistner för kundvagns-ikonen
+document.querySelector(".cart-trigger").addEventListener("click", function() {
+    openPopup("mainOverlay", ".popup-content.cart");
+});
+//Eventlistner för user-ikonen
+document.querySelector(".user-trigger").addEventListener("click", function() {
+    openPopup("mainOverlay", ".popup-content.user");
 });
 // Eventlistener för stängknappar
 document.querySelectorAll(".close-btn").forEach(button => {
