@@ -1,40 +1,40 @@
-# Popup-system - Enkel Guide
+# Popup System - Simple Guide
 
-## Struktur
-- Använd **en** popup-overlay per typ:
-  - `popupOverlay` - för produktformulär
-  - `mainOverlay` - för meny, kundvagn och användarprofil
+## Structure
+- Use **one** popup overlay per type:
+  - `popupOverlay` - for product form
+  - `mainOverlay` - for menu, cart, and user profile
 
-## HTML-exempel
+## HTML Example
 ```html
 <div id="mainOverlay" class="popup-overlay">
-  <!-- Hamburger-meny -->
+  <!-- Hamburger menu -->
   <div class="popup-content hamburger-menu">
     <span class="close-btn">&times;</span>
-    <!-- innehåll här -->
+    <!-- content here -->
   </div>
   
-  <!-- Kundvagn -->
+  <!-- Cart -->
   <div class="popup-content cart">
     <span class="close-btn">&times;</span>
-    <!-- innehåll här -->
+    <!-- content here -->
   </div>
 </div>
 ```
 
-## Funktionerna
-- `openPopup(popupId, contentSelector)` - Öppnar en popup och visar valt innehåll
-- `closePopup()` - Stänger alla popups
+## Functions
+- `openPopup(popupId, contentSelector)` - Opens a popup and displays selected content
+- `closePopup()` - Closes all popups
 
-## Event-hantering
-- Olika knappar öppnar olika popup-innehåll:
-  - Produkt-knapp → produktformulär
-  - Hamburger-ikon → menyn
-  - Kundvagns-ikon → kundvagnen
-  - Användar-ikon → användarmenyn
-- Stäng-knappar och klick utanför innehållet stänger popups
+## Event Handling
+- Different buttons open different popup content:
+  - Product button → product form
+  - Hamburger icon → menu
+  - Cart icon → shopping cart
+  - User icon → user profile
+- Close buttons and clicks outside the content close popups
 
-## Kom ihåg
-- Varje ID måste vara unikt (använd inte samma ID flera gånger)
-- Ha alla innehållstyper (meny, kundvagn, etc.) inom samma overlay
-- CSS-display är "none" som standard och "flex" när de visas
+## Remember
+- Each ID must be unique (don't use the same ID multiple times)
+- Keep all content types (menu, cart, etc.) within the same overlay
+- CSS display is "none" by default and "flex" when shown
