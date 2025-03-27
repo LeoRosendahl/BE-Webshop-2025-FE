@@ -288,7 +288,8 @@ main {
         
     }
         @media (max-width: 394px) {
-            max-width: 184px;
+            max-width: 394px;
+            justify-content: center;
     
 }
 }
@@ -364,6 +365,7 @@ main {
     color: $black;
     margin-left: 20px;
     margin-right: 20px;
+    padding: 25px 0px 25px 0px;
     
     h3{
         font-size: $font-size-h3;

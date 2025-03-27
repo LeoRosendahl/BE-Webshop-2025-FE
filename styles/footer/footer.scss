@@ -35,7 +35,7 @@ h1, p{
     text-decoration: none;
     transition: color 0.3s;
   }  
-  /* Expanderbar sektion stilar */
+
   .expandable-section {
     display: inline-block;
     position: relative;
@@ -70,14 +70,14 @@ h1, p{
   }
   
   .expandable-section:hover .expand-content {
-    max-height: 200px; /* Justera detta värde baserat på innehållets faktiska höjd */
+    max-height: 200px; 
   }
   
   .expandable-section:hover .expand-trigger i {
     transform: rotate(180deg);
   }
   
-  /* Kontaktinformation stilar */
+ 
   .contact-info {
     padding: 5px 0;
   }
@@ -87,7 +87,7 @@ h1, p{
     font-size: 14px;
   }
   
-  /* För att säkerställa att expandering inte bryter layouten */
+
   @media (max-width: 768px) {
     .footer-links {
       flex-direction: column;
