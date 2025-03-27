@@ -310,7 +310,7 @@ main h2 {
   }
 }
 
-#hamburgerMenuOverlay {
+#mainOverlay {
   display: none;
   position: fixed;
   top: 0;
@@ -320,16 +320,12 @@ main h2 {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   justify-content: center;
+  align-items: center;
 }
 @media (max-width: 767px) {
-  #hamburgerMenuOverlay {
+  #mainOverlay {
     align-items: flex-end;
     padding-top: 60px;
-  }
-}
-@media (min-width: 768px) {
-  #hamburgerMenuOverlay {
-    display: none !important;
   }
 }
 
@@ -422,8 +418,8 @@ main h2 {
 }
 @media (max-width: 767px) {
   .popup-content {
-    height: calc(100vh - 130px);
-    max-height: calc(100vh - 130px);
+    height: calc(100vh - 110px);
+    max-height: calc(100vh - 50px);
     border-radius: 20px 20px 0 0;
     overflow-y: auto;
   }
@@ -501,6 +497,26 @@ main h2 {
   margin-top: 0;
   margin-bottom: 20px;
   display: block;
+}
+
+@media (min-width: 768px) {
+  .popup-content:nth-child(2) {
+    width: 500px;
+    max-width: 1000px;
+    min-height: calc(10vh - 100px);
+    height: 500px;
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .popup-content:nth-child(3) {
+    width: 500px;
+    max-width: 1000px;
+    min-height: calc(10vh - 100px);
+    height: 500px;
+    border-radius: 20px;
+  }
 }
 
 .close-btn {
