@@ -692,6 +692,11 @@ main h2 {
     min-width: 751px;
   }
 }
+@media (max-width: 372px) {
+  .products-container {
+    justify-content: center;
+  }
+}
 
 .name-button-container {
   display: flex;
