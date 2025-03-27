@@ -225,6 +225,7 @@ main {
 .product {
     display: flex;
     height: 240px;
+    cursor: pointer;
     flex-direction: column;
     background: $white;
     width: 160px;
@@ -232,6 +233,7 @@ main {
     font-weight: 600;
     border-radius: 15px;
     border: 2px solid $lightgreen;
+    transition: all 100ms;
     
     h3 {
         margin: 0;
@@ -260,8 +262,11 @@ main {
         font-size: 16px;
         font-weight: 700;
         padding: 5px 0;    }
+   
 }
-
+.product:hover {
+    transform: scale(1.05);
+}
 .product-image {
     height: 120px;
 }

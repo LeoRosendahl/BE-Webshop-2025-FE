@@ -592,6 +592,7 @@ main h2 {
 .product {
   display: flex;
   height: 240px;
+  cursor: pointer;
   flex-direction: column;
   background: #FFFFFF;
   width: 160px;
@@ -599,6 +600,7 @@ main h2 {
   font-weight: 600;
   border-radius: 15px;
   border: 2px solid #DEF9EC;
+  transition: all 100ms;
 }
 .product h3 {
   margin: 0;
@@ -649,6 +651,10 @@ main h2 {
 .product button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.product:hover {
+  transform: scale(1.05);
 }
 
 .product-image {
