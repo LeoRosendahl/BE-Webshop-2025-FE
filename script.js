@@ -27,9 +27,13 @@ function closePopup() {
   });
 }
 // Eventlistener för produkt-knappen
-document.getElementById("toggle-form-btn").addEventListener("click", function() {
-  openPopup("popupOverlay", ".popup-content.productform");
-});
+const addProductButton = document.getElementById("toggle-form-btn")
+if(addProductButton){
+
+  addProductButton.addEventListener("click", function() {
+    openPopup("popupOverlay", ".popup-content.productform");
+  });
+}
 // Eventlistener för hamburger-ikonen
 document.querySelector(".hamburger-trigger").addEventListener("click", function() {
   openPopup("mainOverlay", ".popup-content.hamburger-menu");

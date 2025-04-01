@@ -108,7 +108,9 @@ const renderSingleProduct = (product) => {
 })
 
 }
-
-document.getElementById("product-add-btn").addEventListener("click", addNewProduct);
+const productAddButton = document.getElementById("product-add-btn")
+if(productAddButton){
+  productAddButton.addEventListener("click", addNewProduct);
+}
 
 renderProducts();
