@@ -140,7 +140,11 @@ const renderSingleProduct = (product) => {
 
   const lowerContainer = document.querySelector('.lower-container');
   
- 
+  const existingButton = lowerContainer.querySelector('.cart-add-button');
+  if (existingButton) {
+    existingButton.remove();
+  }
+  
   const newButton = document.createElement('button');
   newButton.textContent = 'Lägg i Kundvagn';
   newButton.classList.add('cart-add-button');

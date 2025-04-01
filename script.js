@@ -76,3 +76,4 @@ document.addEventListener('click', (event) => {
       openPopup("mainOverlay", ".popup-content.single-product");
   }
 });
+
