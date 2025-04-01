@@ -59,8 +59,11 @@ window.onclick = function(event) {
   }
 };
 
-const deleteProductPopup = document.querySelector('.single-product-button')
-deleteProductPopup.addEventListener('click', closePopup)
+
+const deleteProductPopup = document.querySelector('.single-product-button');
+if (deleteProductPopup) {
+  deleteProductPopup.addEventListener('click', closePopup);
+}
 
 document.addEventListener('click', (event) => {
   // If the target is a button, do nothing (prevent event propagation)
