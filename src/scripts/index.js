@@ -2,6 +2,36 @@ import { addProduct, fetchProducts, deleteProduct } from "../utils/api.js"
 
 const productsContainer = document.querySelector(".products-container");
 
+// Funktion för att spara produkt i localStorage
+function saveToCart(product) {
+  // Hämta nuvarande kundvagn eller skapa en tom array
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  // Kolla om produkten redan finns i kundvagnen
+  const existingItem = cart.find(item => item.id === product._id);
+  
+  if (existingItem) {
+    // Öka antalet om produkten redan finns
+    existingItem.quantity += 1;
+  } else {
+    // Lägg till produkten om den inte finns
+    cart.push({
+      id: product._id,
+      name: product.name,
+      price: product.price,
+      category: product.category,
+      description: product.description,
+      quantity: 1
+    });
+  }
+  
+  // Spara till localStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  // Alert , kan senare göras om till en siffra vid sidan av kundvagnen
+  alert(`${product.name} har lagts till i kundvagnen`);
+}
+
 const renderProducts = async () => {
   productsContainer.innerHTML = "";
   const products = await fetchProducts();
@@ -31,15 +61,14 @@ const renderProducts = async () => {
     productCategory.classList.add("category");
     productCategory.textContent = product.category;
 
-
+    // Skapa köp-knapp
     const buyButton = document.createElement("button");
     buyButton.textContent = "Köp";
     buyButton.classList.add("buy-button");
     
-
     buyButton.addEventListener("click", (event) => {
       event.stopPropagation();
-
+      saveToCart(product);
     });
 
     const nameButtonContainer = document.createElement("div");
@@ -48,7 +77,7 @@ const renderProducts = async () => {
     nameCategoryContainer.appendChild(productName);
     nameCategoryContainer.appendChild(productCategory);
     nameButtonContainer.appendChild(nameCategoryContainer);
-    nameButtonContainer.appendChild(buyButton); 
+    nameButtonContainer.appendChild(buyButton);
 
     productDiv.appendChild(productImage);
     productDiv.appendChild(priceHeading);
@@ -90,7 +119,12 @@ const clearForm = () => {
   document.getElementById("product-price").value = "";
 };
 
+
+let currentPopupProduct = null;
+
 const renderSingleProduct = (product) => {
+  currentPopupProduct = product;
+  
   const productName = document.querySelector('.single-product-title')
   const productNameTop = document.querySelector('.title')
   const productPrice = document.querySelector('.single-product-price')
@@ -102,33 +136,35 @@ const renderSingleProduct = (product) => {
   productPrice.innerHTML = `${product.price}:-`
   productCategory.innerHTML = product.category
   productDesc.innerHTML = product.description
-
- 
-  const buyButton = document.createElement("button");
-  buyButton.textContent = "Köp";
-  buyButton.classList.add("single-product-buy-button");
   
-  buyButton.addEventListener("click", () => {
-   
-    console.log(`Produkt köpt från popup: ${product.name}`);
+
+  const lowerContainer = document.querySelector('.lower-container');
+  
+ 
+  const newButton = document.createElement('button');
+  newButton.textContent = 'Lägg i Kundvagn';
+  newButton.classList.add('cart-add-button');
+  
+
+  newButton.addEventListener('click', () => {
+    saveToCart(product);
   });
   
-  
-  const buttonContainer = document.querySelector('.single-product-button-container') || 
-                          document.querySelector('.single-product-content');
-                          
-  
-  if (buttonContainer) {
-   
-    const existingButton = buttonContainer.querySelector('.single-product-buy-button');
-    if (existingButton) {
-      existingButton.remove();
-    }
-    
-    
-    buttonContainer.appendChild(buyButton);
-  }
+ 
+  lowerContainer.appendChild(newButton);
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const addToCartButton = document.querySelector('.single-product-button');
+  if (addToCartButton) {
+    addToCartButton.addEventListener('click', () => {
+      if (currentPopupProduct) {
+        saveToCart(currentPopupProduct);
+      }
+    });
+  }
+});
 
 const productAddButton = document.getElementById("product-add-btn")
 if(productAddButton){
