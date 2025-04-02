@@ -21,6 +21,7 @@ function saveToCart(product) {
       price: product.price,
       category: product.category,
       description: product.description,
+      imageUrl: product.imageUrl || "",
       quantity: 1
     });
   }
@@ -28,9 +29,156 @@ function saveToCart(product) {
   // Spara till localStorage
   localStorage.setItem('cart', JSON.stringify(cart));
   
-  // Alert , kan senare göras om till en siffra vid sidan av kundvagnen
+  // Uppdatera kundvagnsvisningen och ikonen
+  displayCart();
+  updateCartIcon();
+  
+  // Alert, kan senare göras om till en siffra vid sidan av kundvagnen
   alert(`${product.name} har lagts till i kundvagnen`);
 }
+
+// Funktion för att visa kundvagnens innehåll
+function displayCart() {
+  const cartContainer = document.querySelector(".popup-content.cart");
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  // Rensa nuvarande innehåll
+  if (cartContainer) {
+  
+    let fullCartHTML = '<h2>Varukorg</h2>';
+    
+    if (cart.length === 0) {
+      fullCartHTML += '<p>Din kundvagn är tom</p>';
+      cartContainer.innerHTML = fullCartHTML;
+      return;
+    }
+    
+    // Skapa HTML för kundvagnsinnehållet
+    fullCartHTML += '<div class="cart-items">';
+    let totalSum = 0;
+    
+    cart.forEach(item => {
+      const itemTotal = item.price * item.quantity;
+      totalSum += itemTotal;
+      
+      fullCartHTML += `
+        <div class="cart-item">
+          ${item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}" class="cart-item-image">` : '<div class="cart-item-image-placeholder"></div>'}
+          <div class="cart-item-info">
+            <h4>${item.name}</h4>
+            <p class="category">${item.category}</p>
+          </div>
+          <div class="wrapper">
+          <div class="cart-item-price-actions">
+            <div class="price">${item.price} kr</div>
+            <button class="remove-item" data-id="${item.id}"><i class="fa-solid fa-trash"></i></button>
+          </div>
+            <div class="quantity-controls">
+              <button class="decrease-quantity" data-id="${item.id}"><i class="fa-solid fa-minus"></i></button>
+              <span>${item.quantity}</span>
+              <button class="increase-quantity" data-id="${item.id}"><i class="fa-solid fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    
+    fullCartHTML += '</div>';
+    fullCartHTML += `
+      <div class="cart-summary">
+        <div class="cart-total">
+          <span>Totalt:</span>
+          <span>${totalSum} kr</span>
+        </div>
+        <button class="checkout-btn">Gå till kassan</button>
+        <button class="clear-cart-btn">Töm kundvagn</button>
+      </div>
+    `;
+    
+  
+    cartContainer.innerHTML = fullCartHTML;
+    
+    
+    attachCartEventListeners();
+  }
+}
+
+//Kundvagnsknappar
+function attachCartEventListeners() {
+
+  // Öka antal
+  document.querySelectorAll('.increase-quantity').forEach(button => {
+    button.addEventListener('click', () => {
+      updateQuantity(button.dataset.id, 1);
+    });
+  });
+  
+  // Minska antal
+  document.querySelectorAll('.decrease-quantity').forEach(button => {
+    button.addEventListener('click', () => {
+      updateQuantity(button.dataset.id, -1);
+    });
+  });
+  
+  // Ta bort produkt
+  document.querySelectorAll('.remove-item').forEach(button => {
+    button.addEventListener('click', () => {
+      removeFromCart(button.dataset.id);
+    });
+  });
+  
+  // Töm kundvagnen
+  const clearCartBtn = document.querySelector('.clear-cart-btn');
+  if (clearCartBtn) {
+    clearCartBtn.addEventListener('click', clearCart);
+  }
+  
+// Ska senare länkas till checkout/kassan
+  const checkoutBtn = document.querySelector('.checkout-btn');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+      
+      alert('Går till kassan...');
+    });
+  }
+}
+
+// Uppdatera antal av en produkt
+function updateQuantity(id, change) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const itemIndex = cart.findIndex(item => item.id === id);
+  
+  if (itemIndex !== -1) {
+    cart[itemIndex].quantity += change;
+    
+    // Ta bort produkten om antalet är 0 eller mindre
+    if (cart[itemIndex].quantity <= 0) {
+      cart.splice(itemIndex, 1);
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    displayCart();
+    updateCartIcon();
+  }
+}
+
+// Ta bort en produkt från kundvagnen
+function removeFromCart(id) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const updatedCart = cart.filter(item => item.id !== id);
+  
+  localStorage.setItem('cart', JSON.stringify(updatedCart));
+  displayCart();
+  updateCartIcon();
+}
+
+// Töm kundvagnen
+function clearCart() {
+  localStorage.removeItem('cart');
+  displayCart();
+  updateCartIcon();
+}
+
 
 const renderProducts = async () => {
   productsContainer.innerHTML = "";
@@ -42,7 +190,7 @@ const renderProducts = async () => {
     productDiv.addEventListener('click', ()=>{renderSingleProduct(product)})
 
     const productImage = document.createElement("img");
-    productImage.src = "";
+    productImage.src = product.imageUrl || "";
     productImage.alt = product.name;
     productImage.classList.add("product-image");
 
@@ -160,11 +308,26 @@ const renderSingleProduct = (product) => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  displayCart();
+  updateCartIcon();
+  
   const addToCartButton = document.querySelector('.single-product-button');
   if (addToCartButton) {
     addToCartButton.addEventListener('click', () => {
       if (currentPopupProduct) {
         saveToCart(currentPopupProduct);
+      }
+    });
+  }
+  
+  
+  const cartToggleButton = document.querySelector('.cart-toggle');
+  if (cartToggleButton) {
+    cartToggleButton.addEventListener('click', () => {
+      const cartPopup = document.querySelector('.cart-popup');
+      if (cartPopup) {
+        cartPopup.classList.toggle('show');
       }
     });
   }
