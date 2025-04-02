@@ -1,12 +1,22 @@
 import { addProduct, fetchProducts, deleteProduct } from "../utils/api.js"
+import { closePopup } from "../../script.js";
 
 const productsContainer = document.querySelector(".products-container");
 
-const renderProducts = async () => {
-  productsContainer.innerHTML = "";
-  const products = await fetchProducts();
 
-  products.forEach((product) => {
+const fruitBtn = document.querySelectorAll(".fruit");
+const meatBtn = document.querySelectorAll(".meat");
+const dairyBtn = document.querySelectorAll(".dairy");
+const otherBtn = document.querySelectorAll(".other");
+const allbtn = document.querySelectorAll(".all");
+
+let allProducts = [];
+
+
+const renderProducts = async (productsToRender) => {
+  productsContainer.innerHTML = "";
+
+  productsToRender.forEach((product) => {
     const productDiv = document.createElement("div");
     productDiv.classList.add("product");
     productDiv.addEventListener('click', ()=>{renderSingleProduct(product)})
@@ -113,4 +123,27 @@ if(productAddButton){
   productAddButton.addEventListener("click", addNewProduct);
 }
 
-renderProducts();
+
+const fetchAndRenderProducts = async () => {
+  allProducts = await fetchProducts();
+  renderProducts(allProducts);
+};
+
+const setFilter = (category) => {
+  const filteredProducts =
+    category === "All"
+      ? allProducts
+      : allProducts.filter((product) => product.category === category);
+  console.log(category)
+  closePopup()
+  renderProducts(filteredProducts);
+};
+
+fruitBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Frukt")));
+meatBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Kött")));
+dairyBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Mejeri")));
+otherBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Övrigt")));
+allbtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("All")));
+
+
+fetchAndRenderProducts(); 

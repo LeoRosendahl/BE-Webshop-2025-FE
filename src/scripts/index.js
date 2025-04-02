@@ -1,4 +1,5 @@
 import { addProduct, fetchProducts, deleteProduct } from "../utils/api.js"
+import {closePopup} from '../../script.js'
 
 const productsContainer = document.querySelector(".products-container");
 
@@ -179,12 +180,19 @@ function clearCart() {
   updateCartIcon();
 }
 
+const fruitBtn = document.querySelectorAll(".fruit");
+const meatBtn = document.querySelectorAll(".meat");
+const dairyBtn = document.querySelectorAll(".dairy");
+const otherBtn = document.querySelectorAll(".other");
+const allbtn = document.querySelectorAll(".all");
 
-const renderProducts = async () => {
+
+let allProducts = [];
+
+const renderProducts = async (productsToRender) => {
   productsContainer.innerHTML = "";
-  const products = await fetchProducts();
 
-  products.forEach((product) => {
+  productsToRender.forEach((product) => {
     const productDiv = document.createElement("div");
     productDiv.classList.add("product");
     productDiv.addEventListener('click', ()=>{renderSingleProduct(product)})
@@ -233,38 +241,6 @@ const renderProducts = async () => {
 
     productsContainer.appendChild(productDiv);
   });
-};
-
-const addNewProduct = async () => {
-  const productName = document.getElementById("product-name").value.trim();
-  const productDesc = document.getElementById("product-description").value.trim();
-  const productCategory = document.getElementById("category").value;
-  const productQuantity = parseInt(document.getElementById("product-quantity").value);
-  const productPrice = parseFloat(document.getElementById("product-price").value);
-
-  if (!productName || !productDesc || !productCategory || isNaN(productQuantity) || isNaN(productPrice)) {
-    alert("Fyll i alla fält korrekt!");
-    return;
-  }
-
-  const newProduct = {
-    name: productName,
-    category: productCategory,
-    price: productPrice,
-    description: productDesc,
-    stock: productQuantity
-  }
-  await addProduct(newProduct);
-  renderProducts();
-  clearForm();
-};
-
-const clearForm = () => {
-  document.getElementById("product-name").value = "";
-  document.getElementById("product-description").value = "";
-  document.getElementById("category").value = "";
-  document.getElementById("product-quantity").value = "";
-  document.getElementById("product-price").value = "";
 };
 
 
@@ -333,9 +309,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-const productAddButton = document.getElementById("product-add-btn")
-if(productAddButton){
-  productAddButton.addEventListener("click", addNewProduct);
-}
+const fetchAndRenderProducts = async () => {
+  allProducts = await fetchProducts();
+  renderProducts(allProducts);
+};
 
-renderProducts();
+const setFilter = (category) => {
+  const filteredProducts =
+    category === "All"
+      ? allProducts
+      : allProducts.filter((product) => product.category === category);
+  console.log(category)
+  closePopup()
+  renderProducts(filteredProducts);
+};
+
+fruitBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Frukt")));
+meatBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Kött")));
+dairyBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Mejeri")));
+otherBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Övrigt")));
+allbtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("All")));
+
+
+fetchAndRenderProducts();
+
