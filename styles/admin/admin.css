@@ -687,11 +687,6 @@ main h2 {
   background-color: #F8F7F6;
   margin: 0px 0px 20px 0px;
 }
-@media (max-width: 1170px) {
-  .products-container {
-    min-width: 562px;
-  }
-}
 @media (min-width: 1018px) {
   .products-container {
     min-width: 751px;
