@@ -20,7 +20,7 @@ function openPopup(popupId, contentSelector) {
 }
 
 // Funktion för att stänga popups
-function closePopup() {
+export function closePopup() {
   const popups = document.querySelectorAll('.popup-overlay');
   popups.forEach(popup => {
       popup.style.display = "none";
