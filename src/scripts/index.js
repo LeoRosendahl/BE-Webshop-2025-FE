@@ -179,18 +179,25 @@ function clearCart() {
   updateCartIcon();
 }
 
+const fruitBtn = document.querySelector(".fruit");
+const meatBtn = document.querySelector(".meat");
+const dairyBtn = document.querySelector(".dairy");
+const otherBtn = document.querySelector(".other");
 
-const renderProducts = async () => {
+let allProducts = [];
+
+const renderProducts = async (productsToRender) => {
   productsContainer.innerHTML = "";
-  const products = await fetchProducts();
 
-  products.forEach((product) => {
+  productsToRender.forEach((product) => {
     const productDiv = document.createElement("div");
     productDiv.classList.add("product");
-    productDiv.addEventListener('click', ()=>{renderSingleProduct(product)})
+    productDiv.addEventListener("click", () => {
+      renderSingleProduct(product);
+    });
 
     const productImage = document.createElement("img");
-    productImage.src = product.imageUrl || "";
+    productImage.src = "";
     productImage.alt = product.name;
     productImage.classList.add("product-image");
 
@@ -209,14 +216,13 @@ const renderProducts = async () => {
     productCategory.classList.add("category");
     productCategory.textContent = product.category;
 
-    // Skapa köp-knapp
-    const buyButton = document.createElement("button");
-    buyButton.textContent = "Köp";
-    buyButton.classList.add("buy-button");
-    
-    buyButton.addEventListener("click", (event) => {
-      event.stopPropagation();
-      saveToCart(product);
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.classList.add("delete-button");
+
+    deleteButton.addEventListener("click", async () => {
+      await deleteProduct(product._id);
+      renderProducts();
     });
 
     const nameButtonContainer = document.createElement("div");
@@ -225,7 +231,7 @@ const renderProducts = async () => {
     nameCategoryContainer.appendChild(productName);
     nameCategoryContainer.appendChild(productCategory);
     nameButtonContainer.appendChild(nameCategoryContainer);
-    nameButtonContainer.appendChild(buyButton);
+    nameButtonContainer.appendChild(deleteButton);
 
     productDiv.appendChild(productImage);
     productDiv.appendChild(priceHeading);
@@ -237,12 +243,24 @@ const renderProducts = async () => {
 
 const addNewProduct = async () => {
   const productName = document.getElementById("product-name").value.trim();
-  const productDesc = document.getElementById("product-description").value.trim();
+  const productDesc = document
+    .getElementById("product-description")
+    .value.trim();
   const productCategory = document.getElementById("category").value;
-  const productQuantity = parseInt(document.getElementById("product-quantity").value);
-  const productPrice = parseFloat(document.getElementById("product-price").value);
+  const productQuantity = parseInt(
+    document.getElementById("product-quantity").value
+  );
+  const productPrice = parseFloat(
+    document.getElementById("product-price").value
+  );
 
-  if (!productName || !productDesc || !productCategory || isNaN(productQuantity) || isNaN(productPrice)) {
+  if (
+    !productName ||
+    !productDesc ||
+    !productCategory ||
+    isNaN(productQuantity) ||
+    isNaN(productPrice)
+  ) {
     alert("Fyll i alla fält korrekt!");
     return;
   }
@@ -252,8 +270,8 @@ const addNewProduct = async () => {
     category: productCategory,
     price: productPrice,
     description: productDesc,
-    stock: productQuantity
-  }
+    stock: productQuantity,
+  };
   await addProduct(newProduct);
   renderProducts();
   clearForm();
@@ -267,75 +285,48 @@ const clearForm = () => {
   document.getElementById("product-price").value = "";
 };
 
-
-let currentPopupProduct = null;
-
 const renderSingleProduct = (product) => {
-  currentPopupProduct = product;
-  
-  const productName = document.querySelector('.single-product-title')
-  const productNameTop = document.querySelector('.title')
-  const productPrice = document.querySelector('.single-product-price')
-  const productCategory = document.querySelector('.single-product-category')
-  const productDesc = document.querySelector('.single-product-description')
+  const productName = document.querySelector(".single-product-title");
+  const productNameTop = document.querySelector(".title");
+  const productPrice = document.querySelector(".single-product-price");
+  const productCategory = document.querySelector(".single-product-category");
+  const productDesc = document.querySelector(".single-product-description");
+  const deleteProductPopup = document.querySelector(".single-product-button");
 
-  productName.innerHTML = product.name
-  productNameTop.innerHTML = product.name
-  productPrice.innerHTML = `${product.price}:-`
-  productCategory.innerHTML = product.category
-  productDesc.innerHTML = product.description
-  
+  productName.innerHTML = product.name;
+  productNameTop.innerHTML = product.name;
+  productPrice.innerHTML = `${product.price}:-`;
+  productCategory.innerHTML = product.category;
+  productDesc.innerHTML = product.description;
 
-  const lowerContainer = document.querySelector('.lower-container');
-  
-  const existingButton = lowerContainer.querySelector('.cart-add-button');
-  if (existingButton) {
-    existingButton.remove();
-  }
-  
-  const newButton = document.createElement('button');
-  newButton.textContent = 'Lägg i Kundvagn';
-  newButton.classList.add('cart-add-button');
-  
-
-  newButton.addEventListener('click', () => {
-    saveToCart(product);
+  deleteProductPopup.addEventListener("click", async () => {
+    await deleteProduct(product._id);
+    renderProducts();
   });
-  
- 
-  lowerContainer.appendChild(newButton);
-}
+};
 
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  displayCart();
-  updateCartIcon();
-  
-  const addToCartButton = document.querySelector('.single-product-button');
-  if (addToCartButton) {
-    addToCartButton.addEventListener('click', () => {
-      if (currentPopupProduct) {
-        saveToCart(currentPopupProduct);
-      }
-    });
-  }
-  
-  
-  const cartToggleButton = document.querySelector('.cart-toggle');
-  if (cartToggleButton) {
-    cartToggleButton.addEventListener('click', () => {
-      const cartPopup = document.querySelector('.cart-popup');
-      if (cartPopup) {
-        cartPopup.classList.toggle('show');
-      }
-    });
-  }
-});
-
-const productAddButton = document.getElementById("product-add-btn")
-if(productAddButton){
+const productAddButton = document.getElementById("product-add-btn");
+if (productAddButton) {
   productAddButton.addEventListener("click", addNewProduct);
 }
 
-renderProducts();
+const fetchAndRenderProducts = async () => {
+  allProducts = await fetchProducts();
+  renderProducts(allProducts);
+};
+
+const setFilter = (category) => {
+  const filteredProducts =
+    category === "All"
+      ? allProducts
+      : allProducts.filter((product) => product.category === category);
+  console.log(category)
+  renderProducts(filteredProducts);
+};
+
+fruitBtn.addEventListener("click", () => setFilter("Frukt"));
+meatBtn.addEventListener("click", () => setFilter("Kött"));
+dairyBtn.addEventListener("click", () => setFilter("Mejeri"));
+otherBtn.addEventListener("click", () => setFilter("Övrigt"));
+
+fetchAndRenderProducts();

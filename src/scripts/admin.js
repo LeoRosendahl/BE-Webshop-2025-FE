@@ -2,6 +2,8 @@ import { addProduct, fetchProducts, deleteProduct } from "../utils/api.js"
 
 const productsContainer = document.querySelector(".products-container");
 
+
+
 const renderProducts = async () => {
   productsContainer.innerHTML = "";
   const products = await fetchProducts();
