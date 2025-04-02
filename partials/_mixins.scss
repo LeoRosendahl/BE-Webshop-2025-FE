@@ -60,7 +60,8 @@
   // Category knapp
   @mixin button-category {
     @include button-base;
-    width: 318px;
+    justify-content: flex-start;
+    width: 358px;
     height: 43px;
     padding: 4px 202px 4px 30px;
     gap: 40px;

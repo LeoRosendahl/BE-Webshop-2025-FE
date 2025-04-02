@@ -296,6 +296,11 @@ main {
     max-width: 373px;
     background-color: $background-primary;
     margin: 0px 0px 20px 0px;  
+
+    @media (max-width: 1170px) {
+        min-width: 562px
+    
+    }
         @media (min-width: 1018px) {
             min-width: 751px
         
@@ -560,3 +565,10 @@ main {
     border-top: 1px solid $basegreen;
     margin-top: 25px;
 }
+
+.categories {
+    @media (width < 768px) {
+        display: none;
+    }
+}
+

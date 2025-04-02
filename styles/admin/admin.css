@@ -375,7 +375,8 @@ main h2 {
   flex-shrink: 0;
   background-color: #3BB77E;
   color: #FFFFFF;
-  width: 318px;
+  justify-content: flex-start;
+  width: 358px;
   height: 43px;
   padding: 4px 202px 4px 30px;
   gap: 40px;
@@ -685,6 +686,11 @@ main h2 {
   max-width: 373px;
   background-color: #F8F7F6;
   margin: 0px 0px 20px 0px;
+}
+@media (max-width: 1170px) {
+  .products-container {
+    min-width: 562px;
+  }
 }
 @media (min-width: 1018px) {
   .products-container {
@@ -1033,4 +1039,10 @@ main h2 {
 .hr-line {
   border-top: 1px solid #3BB77E;
   margin-top: 25px;
+}
+
+@media (width < 768px) {
+  .categories {
+    display: none;
+  }
 }/*# sourceMappingURL=admin.css.map */
