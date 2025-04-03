@@ -202,7 +202,7 @@ h1, p {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .footer-links a {
@@ -270,8 +270,9 @@ h1, p {
     margin-right: auto;
   }
 }
-.copyright-text {
+#copyright-text {
   font-size: 0.75rem;
+  color: #FFFFFF;
 }
 
 body {
@@ -522,7 +523,8 @@ main h2 {
     width: 500px;
     max-width: 1000px;
     min-height: calc(10vh - 100px);
-    height: 500px;
+    height: -moz-fit-content;
+    height: fit-content;
     border-radius: 20px;
     padding: 30px 50px;
     gap: 50px;
@@ -1025,7 +1027,6 @@ main h2 {
   align-items: center;
   flex-direction: column;
   gap: 25px;
-  margin: 70px;
 }
 @media (min-width: 768px) {
   .login-container {
@@ -1268,4 +1269,80 @@ p:only-child {
   text-align: center;
   padding: 20px;
   color: #ADADAD;
+}
+
+.create-account-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 2px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  border: 1px solid transparent;
+  outline: none;
+  flex-shrink: 0;
+  background-color: #3BB77E;
+  color: #FFFFFF;
+  width: 321px;
+  height: 46px;
+  font-family: "REM", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.create-account-btn:hover {
+  background-color: transparent;
+  color: #3BB77E;
+  border-color: #3BB77E;
+}
+.create-account-btn:focus {
+  outline: none;
+}
+.create-account-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.back-to-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 2px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  border: 1px solid transparent;
+  outline: none;
+  flex-shrink: 0;
+  background-color: #3BB77E;
+  color: #FFFFFF;
+  width: 321px;
+  height: 46px;
+  font-family: "REM", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.back-to-login-btn:hover {
+  background-color: transparent;
+  color: #3BB77E;
+  border-color: #3BB77E;
+}
+.back-to-login-btn:focus {
+  outline: none;
+}
+.back-to-login-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#reg-text {
+  color: black;
 }/*# sourceMappingURL=style.css.map */

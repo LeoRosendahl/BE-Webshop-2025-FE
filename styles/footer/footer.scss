@@ -27,7 +27,7 @@ h1, p{
     justify-content: center;
     align-items: center;
     gap: 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
   
   .footer-links a {
@@ -101,6 +101,7 @@ h1, p{
     }
   }
 
-  .copyright-text{
+  #copyright-text{
     font-size: $font-size-p;
+    color: $white; 
   }
