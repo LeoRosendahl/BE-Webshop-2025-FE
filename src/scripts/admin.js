@@ -47,7 +47,10 @@ const renderProducts = async (productsToRender) => {
 
     deleteButton.addEventListener("click", async () => {
       await deleteProduct(product._id);
-      renderProducts();
+        
+      allProducts = allProducts.filter(p => p._id !== product._id);
+      renderProducts(allProducts);
+      closePopup();
     });
 
     const nameButtonContainer = document.createElement("div");
@@ -86,7 +89,8 @@ const addNewProduct = async () => {
     stock: productQuantity
 }
     await addProduct(newProduct);
-    renderProducts();
+    await fetchAndRenderProducts();   
+    closePopup()
     clearForm();
 };
 
@@ -114,8 +118,10 @@ const renderSingleProduct = (product) => {
 
   deleteProductPopup.addEventListener('click',  async () => {
     await deleteProduct(product._id);
-    renderProducts();
-})
+    allProducts = allProducts.filter(p => p._id !== product._id);
+    renderProducts(allProducts);
+    closePopup(); 
+  })
 
 }
 const productAddButton = document.getElementById("product-add-btn")
