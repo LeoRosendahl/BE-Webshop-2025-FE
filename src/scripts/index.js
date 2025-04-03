@@ -89,7 +89,7 @@ function displayCart() {
       <div class="cart-summary">
         <div class="cart-total">
           <span>Totalt:</span>
-          <span>${totalSum} kr</span>
+          <span>${(Math.round(totalSum * 100) / 100).toFixed(2)} kr</span>
         </div>
         <button class="checkout-btn">Gå till kassan</button>
         <button class="clear-cart-btn">Töm kundvagn</button>
