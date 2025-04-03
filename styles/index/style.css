@@ -291,7 +291,8 @@ main {
   main {
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    gap: 55px;
   }
 }
 main h2 {
@@ -357,6 +358,7 @@ main h2 {
 @media (min-width: 768px) {
   .popup-content.productform {
     display: flex !important;
+    border-right: 0.5px solid #ADADAD;
   }
 }
 
@@ -376,7 +378,7 @@ main h2 {
   background-color: #3BB77E;
   color: #FFFFFF;
   justify-content: flex-start;
-  width: 358px;
+  width: 300px;
   height: 43px;
   padding: 4px 202px 4px 30px;
   gap: 40px;
