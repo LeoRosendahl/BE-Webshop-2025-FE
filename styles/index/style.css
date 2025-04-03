@@ -406,7 +406,6 @@ main h2 {
   font-family: "Quicksand", sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
   max-width: 390px;
   gap: 20px;
@@ -677,6 +676,31 @@ main h2 {
   flex-direction: column;
   gap: 20px;
   padding-top: 20px;
+}
+.all-products .products-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  .all-products .products-heading {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.all-products .products-heading h2 {
+  text-align: center;
+}
+.all-products .products-heading .sort-select {
+  width: 100%;
+  max-width: 180px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #3BB77E;
+  padding: 5px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
 }
 
 .products-container {
