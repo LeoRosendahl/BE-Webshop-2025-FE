@@ -330,6 +330,41 @@ dairyBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Mejeri"))
 otherBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Övrigt")));
 allbtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("All")));
 
+//Sortering dropdown 
+const sortSelect = document.querySelector(".sort-select");
+
+// Eventlistner
+sortSelect.addEventListener("change", function() {
+  const sortOption = this.value;
+  sortProducts(sortOption);
+});
+
+// Funktion för att sortera produkter
+const sortProducts = (option) => {
+  let sortedProducts = [...allProducts]; 
+  
+  switch (option) {
+    case "price-asc":
+      sortedProducts.sort((a, b) => a.price - b.price);
+      break;
+    case "price-desc":
+      sortedProducts.sort((a, b) => b.price - a.price);
+      break;
+    case "name-asc":
+      sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "name-desc":
+      sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    default:
+      
+      break;
+  }
+  
+  
+  
+  renderProducts(sortedProducts);
+};
 
 fetchAndRenderProducts();
 
