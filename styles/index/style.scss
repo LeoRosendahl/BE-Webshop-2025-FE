@@ -20,7 +20,8 @@ main {
     @media (min-width: 768px) {
         flex-direction: row;
         align-items: flex-start;
-        justify-content: space-evenly;
+        justify-content: flex-start;
+        gap:55px;
     }
     h2 {
         color: $basegreen;
@@ -87,6 +88,7 @@ main {
 .popup-content.productform {
     @media (min-width: 768px) {
       display: flex !important; 
+      border-right: 0.5px solid $grey;
     }
   }
 
@@ -112,7 +114,7 @@ main {
     position: relative;
     
     @media (max-width: 767px) {
-        height: calc(100vh - 110px); 
+        height: calc(100vh - 100px); 
         max-height: calc(100vh - 50px); 
         border-radius: 20px 20px 0 0; 
         overflow-y: auto; 
@@ -587,10 +589,14 @@ main {
 .popup-content.cart {
     width: 100%;
     max-width: 400px;
-    max-height: 600px;
+    max-height: 800px;
+
+    @media (min-width: 768px) {
+        max-height: 600px;
+    }
     
     .cart-items {
-      max-height: 60vh;
+      max-height: 30vh;
       overflow-y: auto;
       margin-bottom: 15px;
       padding: 0px 30px;
