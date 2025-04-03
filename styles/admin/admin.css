@@ -202,7 +202,7 @@ h1, p {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .footer-links a {
@@ -270,8 +270,9 @@ h1, p {
     margin-right: auto;
   }
 }
-.copyright-text {
+#copyright-text {
   font-size: 0.75rem;
+  color: #FFFFFF;
 }
 
 body {
