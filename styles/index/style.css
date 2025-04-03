@@ -1041,7 +1041,7 @@ main h2 {
 .popup-content.cart {
   width: 100%;
   max-width: 400px;
-  max-height: 700px;
+  max-height: 600px;
 }
 @media (min-width: 768px) {
   .popup-content.cart {
@@ -1049,7 +1049,7 @@ main h2 {
   }
 }
 .popup-content.cart .cart-items {
-  max-height: 60vh;
+  max-height: 35vh;
   overflow-y: auto;
   margin-bottom: 15px;
   padding: 0px 30px;
