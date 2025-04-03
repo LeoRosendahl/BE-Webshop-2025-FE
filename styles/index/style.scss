@@ -20,7 +20,8 @@ main {
     @media (min-width: 768px) {
         flex-direction: row;
         align-items: flex-start;
-        justify-content: space-evenly;
+        justify-content: flex-start;
+        gap:55px;
     }
     h2 {
         color: $basegreen;
@@ -87,6 +88,7 @@ main {
 .popup-content.productform {
     @media (min-width: 768px) {
       display: flex !important; 
+      border-right: 0.5px solid $grey;
     }
   }
 
