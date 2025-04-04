@@ -51,6 +51,16 @@ document.querySelectorAll(".close-btn").forEach((button) => {
   button.addEventListener("click", function () {
     closePopup();
   });
+
+  // Eventlistener för register-knappen
+document.querySelector(".register-btn").addEventListener("click", function() {
+  // Stäng den nuvarande login-popupen och öppna registreringspopupen
+  openPopup("mainOverlay", ".popup-content.register");
+  });
+  
+  document.querySelector(".back-to-login-btn").addEventListener("click", function() {
+  openPopup("mainOverlay", ".popup-content.user");
+  });
 });
 // Stäng popup om användaren klickar utanför innehållsrutan
 window.onclick = function (event) {

@@ -194,6 +194,17 @@ main {
         gap: 50px;
     }
 }
+.popup-content:nth-child(5) {
+    @media (min-width: 768px) {
+        width: 500px;
+        max-width: 1000px ;
+        min-height: calc(10vh - 100px);
+        height: 500px;
+        border-radius: 20px;
+        padding: 30px 50px;
+        gap: 50px;
+    }
+}
 .close-btn {
     position: absolute;
     top: 10px;
