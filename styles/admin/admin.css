@@ -499,7 +499,7 @@ main h2 {
   }
 }
 .popup-content input {
-  width: 100%;
+  width: 90%;
   height: 40px;
   border-radius: 5px;
   border: 1px solid #3BB77E;
@@ -507,7 +507,7 @@ main h2 {
   box-sizing: border-box;
 }
 .popup-content select {
-  width: 100%;
+  width: 90%;
   height: 40px;
   border-radius: 5px;
   border: 1px solid #3BB77E;
