@@ -1,5 +1,5 @@
 import { addProduct, fetchProducts, deleteProduct } from "../utils/api.js"
-import { closePopup } from "../../script.js";
+import { closePopup, openPopup } from "../../script.js";
 
 const productsContainer = document.querySelector(".products-container");
 
@@ -195,5 +195,89 @@ allbtn.forEach((btn) => btn.addEventListener("click", () => setFilter("All")));
 
 
 fetchAndRenderProducts();
+
+const navSearchContainer = document.querySelector(".nav-search-container");
+const searchField = document.querySelector(".search-mobile");
+const searchProducts = document.querySelector('.search-products')
+
+let searchInput = "";
+
+const changeSearchInput = () => {
+  searchInput = searchField.value.trim(); // Remove leading/trailing spaces
+  renderSearchedProducts();
+};
+
+const renderSearchedProducts = () => {
+  // Clear previous results
+  searchProducts.innerHTML = ""; 
+
+  if (searchInput === "") {
+    return; // Exit if input is empty
+  }
+
+  let searchedProducts = allProducts.filter((product) =>
+    product.name.toLowerCase().includes(searchInput.toLowerCase())
+  );
+
+  if (searchedProducts.length === 0) {
+    searchProducts.innerHTML = "<p>Inga produkter matchade din sökning.</p>";
+    return;
+  }
+
+  searchedProducts.forEach((product) => {
+  
+
+    const productContainer = document.createElement("div");
+    productContainer.classList.add('search-product-container')
+
+    productContainer.addEventListener('click', ()=>{
+      renderSingleProduct(product);
+      openPopup("mainOverlay", ".popup-content.single-product");
+      searchProducts.innerHTML = ""; 
+      searchField.value = ""
+
+    })
+
+    // Create and set up the product image
+    const productImg = document.createElement("img");
+    productImg.className = "search-product-img";
+    productImg.src = product.imageUrl 
+    productImg.alt = product.name;
+
+    // Create the info container
+    const infoContainer = document.createElement("div");
+    infoContainer.className = "search-product-info-container";
+
+    // Create and set up the product name
+    const productName = document.createElement("h3");
+    productName.textContent = product.name;
+
+    // Create and set up the product category
+    const productCategory = document.createElement("p");
+    productCategory.textContent = product.category;
+
+    // Create and set up the price
+    const productPrice = document.createElement("h2");
+    productPrice.className = "search-price";
+    productPrice.textContent = `${product.price}:-`;
+
+    // Append everything
+    infoContainer.appendChild(productName);
+    infoContainer.appendChild(productCategory);
+    productContainer.appendChild(productImg);
+    productContainer.appendChild(infoContainer);
+    productContainer.appendChild(productPrice);
+    searchProducts.appendChild(productContainer);
+    navSearchContainer.appendChild(searchProducts);
+  });
+};
+
+
+
+searchField.addEventListener("input", changeSearchInput);
+
+fetchAndRenderProducts();
+
+
 
 
