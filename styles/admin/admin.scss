@@ -104,7 +104,6 @@ main {
     font-family: $font-family-primary;
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
     max-width: 390px;
     gap: 20px;
@@ -285,7 +284,6 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-top: 20px;
 
     .products-heading{
         display: flex;

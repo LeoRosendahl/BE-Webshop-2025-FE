@@ -476,7 +476,6 @@ main h2 {
   font-family: "Quicksand", sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
   max-width: 390px;
   gap: 20px;
@@ -745,7 +744,6 @@ main h2 {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-top: 20px;
 }
 .all-products .products-heading {
   display: flex;
