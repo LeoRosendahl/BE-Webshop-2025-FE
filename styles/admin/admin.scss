@@ -188,13 +188,24 @@ main {
         width: 500px;
         max-width: 1000px ;
         min-height: calc(10vh - 100px);
-        height: 500px;
+        height: fit-content;
         border-radius: 20px;
         padding: 30px 50px;
         gap: 50px;
     }
 }
 .popup-content:nth-child(5) {
+    @media (min-width: 768px) {
+        width: 500px;
+        max-width: 1000px ;
+        min-height: calc(10vh - 100px);
+        height: 500px;
+        border-radius: 20px;
+        padding: 30px 50px;
+        gap: 50px;
+    }
+}
+.popup-content:nth-child(6) {
     @media (min-width: 768px) {
         width: 500px;
         max-width: 1000px ;
@@ -544,11 +555,11 @@ main {
     }
 }
 
-.login-btn{
+.login-btn, .create-account-btn{
     @include button-login-register
 }
 
-.register-btn{
+.register-btn, .back-to-login-btn{
     @include button-login-register
 }
 
