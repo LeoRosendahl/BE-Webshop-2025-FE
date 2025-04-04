@@ -34,8 +34,7 @@ function saveToCart(product) {
   displayCart();
   updateCartIcon();
   
-  // Alert, kan senare göras om till en siffra vid sidan av kundvagnen
-  alert(`${product.name} har lagts till i kundvagnen`);
+
 }
 
 // Funktion för att visa kundvagnens innehåll
@@ -447,9 +446,19 @@ const renderSearchedProducts = () => {
   });
 };
 
+const updateCartIcon = () => {
+  const cartNumber = document.querySelector('.cart-item-number');
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let numberOfItems = 0;
+  cart.forEach(item => {
+    numberOfItems += item.quantity || 0;
+  });
+  cartNumber.innerHTML = numberOfItems;
+}
 
 
 searchField.addEventListener("input", changeSearchInput);
 
+updateCartIcon()
 fetchAndRenderProducts();
 
