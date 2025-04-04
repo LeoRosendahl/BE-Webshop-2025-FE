@@ -292,8 +292,7 @@ main {
   main {
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
-    gap: 55px;
+    gap: 35px;
   }
 }
 main h2 {
@@ -1069,6 +1068,7 @@ main h2 {
   width: 100%;
   max-width: 400px;
   max-height: 800px;
+  align-items: center;
 }
 @media (min-width: 768px) {
   .popup-content.cart {
