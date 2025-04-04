@@ -18,15 +18,6 @@ function openPopup(popupId, contentSelector) {
   // Visa popup overlay
   popup.style.display = "flex";
 }
-  // Eventlistener för register-knappen
-  document.querySelector(".register-btn").addEventListener("click", function() {
-    // Stäng den nuvarande login-popupen och öppna registreringspopupen
-    openPopup("mainOverlay", ".popup-content.register");
-    });
-    
-    document.querySelector(".back-to-login-btn").addEventListener("click", function() {
-    openPopup("mainOverlay", ".popup-content.user");
-    });
 
 // Funktion för att stänga popups
 export function closePopup() {
