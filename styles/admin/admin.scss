@@ -285,6 +285,38 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-top: 20px;
+
+    .products-heading{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+            align-items: center;
+            
+        }
+    
+
+        h2{
+            text-align: center;
+        }
+
+    .sort-select {
+        width: 100%;
+        max-width: 180px;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid $basegreen;
+        padding: 5px;
+        box-sizing: border-box; 
+        background-color: $white; 
+        
+    }
+}
+
 }
 
 .products-container {
@@ -296,7 +328,6 @@ main {
     max-width: 373px;
     background-color: $background-primary;
     margin: 0px 0px 20px 0px;  
-
         @media (min-width: 1018px) {
             min-width: 751px
         
@@ -307,6 +338,7 @@ main {
 
 }
 }
+
 
 
 .name-button-container {
@@ -510,6 +542,8 @@ main {
 .register-btn{
     @include button-login-register
 }
+
+
 
 .välkommen-container{
     display: flex;

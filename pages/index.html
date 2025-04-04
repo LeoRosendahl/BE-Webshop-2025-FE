@@ -67,7 +67,7 @@
         <div class="popup-content productform">
           <h2>Kategorier</h2>
           <div class="category-btns">
-            <button  class="category-btn all">Alla produkter</button>
+            <button  class="category-btn all">Alla</button>
             <button  class="category-btn fruit">Frukt</button>
             <button class="category-btn meat">Kött</button>
             <button  class="category-btn dairy">Mejeri</button>
@@ -82,7 +82,7 @@
           <span class="close-btn">&times;</span>
           <h2>Kategorier</h2>
           <div class="category-btns">
-            <button  class="category-btn all">Alla produkter</button>
+            <button  class="category-btn all">Alla</button>
             <button  class="category-btn fruit">Frukt</button>
             <button   class="category-btn meat">Kött</button>
             <button  class="category-btn dairy">Mejeri</button>
@@ -118,6 +118,31 @@
         </div>
       </div>
         </div>
+        <div class="popup-content register">
+          <span class="close-btn">&times;</span>
+          <div class="login-container">
+          <div class="välkommen-container">
+          <h1>Skapa konto</h1>
+          <div>
+          <p id="reg-text">Registrera dig för en bättre shoppingupplevelse</p>
+          </div>
+          </div>
+          <div class="inputfield-container">
+          <input type="text" required placeholder="Namn">
+          <input type="text" required placeholder="E-postadress">
+          <input type="password" required placeholder="Lösenord">
+          <input type="password" required placeholder="Bekräfta lösenord">
+          </div>
+          <div class="login-btn-container">
+          <button class="create-account-btn">Skapa konto</button>
+          <div class="nykund-container">
+          <hr class="hr-line">
+          <p>Har du redan ett konto?</p>
+          </div>
+          <button class="back-to-login-btn">Logga in</button>
+          </div> 
+          </div> 
+          </div>
 
         <div class="popup-content single-product">
           <div class="close-category-container">
@@ -145,7 +170,16 @@
 
       </div>
      <section class="all-products">
+      <div class="products-heading">
       <h2>Alla produkter</h2>
+      <select class="sort-select">
+        <option disabled selected value="">Sortera</option>
+        <option value="price-asc">Lägsta pris</option>
+        <option value="price-desc">Högsta pris</option>
+        <option value="name-asc">A-Ö</option>
+        <option value="name-desc">Ö-A</option>
+      </select>
+    </div>
       <section class="products-container">
         
       </section>
@@ -153,28 +187,27 @@
     </main>
   </div>
 
-    <footer class="site-footer">
-      <div class="footer-content">
-        <h1 class="footer-h1">Hakim livs<br>Din lokala mathandlare</h1>
-        <div class="footer-links">
-          <div class="expandable-section">
-            <div class="expand-trigger">
-              <span>Kontakt</span>
-              <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="expand-content">
-              <div class="contact-info">
-                <p><strong>E-post:</strong> info@hakimlivs.se</p>
-                <p><strong>Telefon:</strong> 070-123 45 67</p>
-                <p><strong>Adress:</strong> Storgatan 123, 123 45 Stockholm</p>
-                <p><strong>Öppettider:</strong> Mån-Fre: 08-20, Lör-Sön: 10-18</p>
-              </div>
-            </div>
-          </div>
-          <a href="/pages/admin.html">Tillbaka till toppen</a>
-          <p class="copyright-text">2024 Hakim Livs. All rights reserved.</p>
-        </div>
-      </div>
+  <footer class="site-footer">
+    <div class="footer-content">
+    <h1 class="footer-h1">Hakim livs<br>Din lokala mathandlare</h1>
+    <div class="footer-links">
+    
+    <div class="contact-info">
+    <h3>Kontakta oss</h3>
+    <p><strong>E-post:</strong> info@hakimlivs.se</p>
+    <p><strong>Telefon:</strong> 070-123 45 67</p>
+    <p><strong>Adress:</strong> Storgatan 123, 123 45 Stockholm</p>
+    <p><strong>Öppettider:</strong> Mån-Fre: 08-20, Lör-Sön: 10-18</p>
+    </div>
+    
+    <div class="link-container1">
+    <a href="/pages/admin.html">Tillbaka till toppen</a>
+    </div>
+    <div class="link-container2">
+    <p id="copyright-text">2024 Hakim Livs. All rights reserved.</p>
+    </div>
+    </div>
+    </div>
     </footer>
   </body>
   <script type="module" src="../script.js" defer></script>

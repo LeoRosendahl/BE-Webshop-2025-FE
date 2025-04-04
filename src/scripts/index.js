@@ -285,7 +285,7 @@ const renderSingleProduct = (product) => {
 document.addEventListener('DOMContentLoaded', () => {
 
   displayCart();
-  updateCartIcon();
+  
   
   const addToCartButton = document.querySelector('.single-product-button');
   if (addToCartButton) {
@@ -313,20 +313,62 @@ const fetchAndRenderProducts = async () => {
   renderProducts(allProducts);
 };
 
+//FILTER OCH SORTERING
+
+let currentCategory = "All";
+let currentSortOption = "";
+let filteredAndSortedProducts = [];
+
+const sortSelect = document.querySelector(".sort-select");
+
+
 const setFilter = (category) => {
-  const filteredProducts =
-    category === "All"
-      ? allProducts
-      : allProducts.filter((product) => product.category === category);
-  closePopup()
-  renderProducts(filteredProducts);
+  currentCategory = category;
+  updateProducts();
+  closePopup();
 };
 
-fruitBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Frukt")));
-meatBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Kött")));
-dairyBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Mejeri")));
-otherBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Övrigt")));
-allbtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("All")));
+sortSelect.addEventListener("change", function() {
+  currentSortOption = this.value;
+  updateProducts();
+});
+
+
+const updateProducts = () => {
+ //Filter
+  filteredAndSortedProducts = 
+    currentCategory === "All" 
+      ? [...allProducts] 
+      : allProducts.filter((product) => product.category === currentCategory);
+  
+ //Sortering
+  if (currentSortOption) {
+    switch (currentSortOption) {
+      case "price-asc":
+        filteredAndSortedProducts.sort((a, b) => a.price - b.price);
+        break;
+      case "price-desc":
+        filteredAndSortedProducts.sort((a, b) => b.price - a.price);
+        break;
+      case "name-asc":
+        filteredAndSortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "name-desc":
+        filteredAndSortedProducts.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+    }
+  }
+  
+  
+  renderProducts(filteredAndSortedProducts);
+};
+
+
+fruitBtn.forEach((btn) => btn.addEventListener("click", () => setFilter("Frukt")));
+meatBtn.forEach((btn) => btn.addEventListener("click", () => setFilter("Kött")));
+dairyBtn.forEach((btn) => btn.addEventListener("click", () => setFilter("Mejeri")));
+otherBtn.forEach((btn) => btn.addEventListener("click", () => setFilter("Övrigt")));
+allbtn.forEach((btn) => btn.addEventListener("click", () => setFilter("All")));
 
 
 const navSearchContainer = document.querySelector(".nav-search-container");

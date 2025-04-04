@@ -107,7 +107,7 @@
           <span class="close-btn">&times;</span>
           <h2>Kategorier</h2>
           <div class="category-btns">
-            <button  class="category-btn all">Alla produkter</button>
+            <button  class="category-btn all">Alla</button>
             <button  class="category-btn fruit">Frukt</button>
             <button class="category-btn meat">Kött</button>
             <button  class="category-btn dairy">Mejeri</button>
@@ -152,12 +152,21 @@
 
 
       </div>
-     <section class="all-products">
-      <h2>Inlagda produkter</h2>
-      <section class="products-container">
-        
+      <section class="all-products">
+        <div class="products-heading">
+        <h2>Inlagda Produkter</h2>
+        <select class="sort-select">
+          <option disabled selected value="">Sortera</option>
+          <option value="price-asc">Lägsta pris</option>
+          <option value="price-desc">Högsta pris</option>
+          <option value="name-asc">A-Ö</option>
+          <option value="name-desc">Ö-A</option>
+        </select>
+      </div>
+        <section class="products-container">
+          
+        </section>
       </section>
-    </section>
     </main>
   </div>
 
