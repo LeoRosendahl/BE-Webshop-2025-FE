@@ -491,13 +491,6 @@ main h2 {
     overflow-y: auto;
   }
 }
-@media (min-width: 768px) {
-  .popup-content {
-    width: 350px;
-    min-height: calc(100vh - 100px);
-    border-radius: 0px;
-  }
-}
 .popup-content input {
   width: 100%;
   max-width: 310px;
@@ -894,7 +887,6 @@ main h2 {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    gap: 40px;
   }
 }
 
@@ -962,7 +954,7 @@ main h2 {
 }
 @media (min-width: 768px) {
   .lower-container button {
-    margin-top: 80px;
+    margin-top: 130px;
   }
 }
 @media (min-width: 768px) {
