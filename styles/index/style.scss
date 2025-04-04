@@ -755,4 +755,23 @@ main {
       color: $grey;
     }
   
-    
+    .cart-item-number{
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background-color: $red;
+      display: flex;
+      justify-content: center; 
+      position: absolute; 
+      align-items: center;    
+      color: white;
+      font-size: 12px;
+      top: -5px;
+      right: -10px;
+      
+    }
+
+    .cart {
+      position: relative;
+      cursor: pointer;
+    }
