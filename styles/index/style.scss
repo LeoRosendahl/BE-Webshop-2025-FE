@@ -20,7 +20,7 @@ main {
     @media (min-width: 768px) {
         flex-direction: row;
         align-items: flex-start;
-        gap:35px;
+        justify-content: space-evenly;
     }
     h2 {
         color: $basegreen;
@@ -87,7 +87,6 @@ main {
 .popup-content.productform {
     @media (min-width: 768px) {
       display: flex !important; 
-      border-right: 0.5px solid $grey;
     }
   }
 
@@ -103,7 +102,7 @@ main {
 .popup-content {
     background-color: $background-primary;
     font-family: $font-family-primary;
-    display: flex ; 
+    display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 390px;
@@ -113,7 +112,7 @@ main {
     position: relative;
     
     @media (max-width: 767px) {
-        height: calc(100vh - 100px); 
+        height: calc(100vh - 110px); 
         max-height: calc(100vh - 50px); 
         border-radius: 20px 20px 0 0; 
         overflow-y: auto; 
@@ -190,7 +189,7 @@ main {
         width: 500px;
         max-width: 1000px ;
         min-height: calc(10vh - 100px);
-        height: fit-content;
+        height: 500px;
         border-radius: 20px;
         padding: 30px 50px;
         gap: 50px;
@@ -340,7 +339,7 @@ main {
 
 }
 }
- 
+
 
 .name-button-container {
     display: flex;
@@ -549,6 +548,7 @@ main {
     align-items: center;
     flex-direction: column;
     gap: 25px;
+    margin: 70px;
     @media (min-width: 768px) {
         margin-top: 0px
     }
@@ -587,15 +587,10 @@ main {
 .popup-content.cart {
     width: 100%;
     max-width: 400px;
-    max-height: 800px;
-    align-items: center;
-
-    @media (min-width: 768px) {
-        max-height: 600px;
-    }
+    max-height: 600px;
     
     .cart-items {
-      max-height: 30vh;
+      max-height: 60vh;
       overflow-y: auto;
       margin-bottom: 15px;
       padding: 0px 30px;
@@ -757,13 +752,4 @@ main {
       color: $grey;
     }
   
-    .create-account-btn{
-        @include button-login-register
-    }
-    .back-to-login-btn{
-        @include button-login-register
-    }
-
-#reg-text{
-    color: black;
-}
+    

@@ -286,7 +286,7 @@ const renderSingleProduct = (product) => {
 document.addEventListener('DOMContentLoaded', () => {
 
   displayCart();
-  updateCartIcon();
+  
   
   const addToCartButton = document.querySelector('.single-product-button');
   if (addToCartButton) {
@@ -314,57 +314,63 @@ const fetchAndRenderProducts = async () => {
   renderProducts(allProducts);
 };
 
-const setFilter = (category) => {
-  const filteredProducts =
-    category === "All"
-      ? allProducts
-      : allProducts.filter((product) => product.category === category);
-  console.log(category)
-  closePopup()
-  renderProducts(filteredProducts);
-};
+//FILTER OCH SORTERING
 
-fruitBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Frukt")));
-meatBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Kött")));
-dairyBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Mejeri")));
-otherBtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("Övrigt")));
-allbtn.forEach((btn)=>btn.addEventListener("click", () => setFilter("All")));
+let currentCategory = "All";
+let currentSortOption = "";
+let filteredAndSortedProducts = [];
 
-//Sortering dropdown 
 const sortSelect = document.querySelector(".sort-select");
 
-// Eventlistner
+
+const setFilter = (category) => {
+  currentCategory = category;
+  updateProducts();
+  closePopup();
+};
+
 sortSelect.addEventListener("change", function() {
-  const sortOption = this.value;
-  sortProducts(sortOption);
+  currentSortOption = this.value;
+  updateProducts();
 });
 
-// Funktion för att sortera produkter
-const sortProducts = (option) => {
-  let sortedProducts = [...allProducts]; 
+
+const updateProducts = () => {
+ //Filter
+  filteredAndSortedProducts = 
+    currentCategory === "All" 
+      ? [...allProducts] 
+      : allProducts.filter((product) => product.category === currentCategory);
   
-  switch (option) {
-    case "price-asc":
-      sortedProducts.sort((a, b) => a.price - b.price);
-      break;
-    case "price-desc":
-      sortedProducts.sort((a, b) => b.price - a.price);
-      break;
-    case "name-asc":
-      sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
-      break;
-    case "name-desc":
-      sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
-      break;
-    default:
-      
-      break;
+ //Sortering
+  if (currentSortOption) {
+    switch (currentSortOption) {
+      case "price-asc":
+        filteredAndSortedProducts.sort((a, b) => a.price - b.price);
+        break;
+      case "price-desc":
+        filteredAndSortedProducts.sort((a, b) => b.price - a.price);
+        break;
+      case "name-asc":
+        filteredAndSortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "name-desc":
+        filteredAndSortedProducts.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+    }
   }
   
   
-  
-  renderProducts(sortedProducts);
+  renderProducts(filteredAndSortedProducts);
 };
+
+
+fruitBtn.forEach((btn) => btn.addEventListener("click", () => setFilter("Frukt")));
+meatBtn.forEach((btn) => btn.addEventListener("click", () => setFilter("Kött")));
+dairyBtn.forEach((btn) => btn.addEventListener("click", () => setFilter("Mejeri")));
+otherBtn.forEach((btn) => btn.addEventListener("click", () => setFilter("Övrigt")));
+allbtn.forEach((btn) => btn.addEventListener("click", () => setFilter("All")));
+
 
 fetchAndRenderProducts();
 
