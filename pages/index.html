@@ -6,209 +6,224 @@
     <title>Hakim Livs - products</title>
     <link rel="stylesheet" href="../styles/index/style.css" />
     <script src="/src/scripts/index.js" type="module" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=REM:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=REM:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-      <header class="site-header">
-        <div class="nav-search-container">
-
-          <nav>
-            <div class="upper-nav">
-              <div class="logo-menu-container">
-                <i class="fa-solid fa-bars hamburger-trigger" id="hamburger-menu-icon"></i>
-                <div class="logo-container">
-                  <div class="logo-upper">Hakim</div>
-                  <div class="logo-lower">Livs</div>
-                </div>
-              </div>
-              <div class="lower-nav">
-                <div class="search-container-mobile">
-                  <div class="magnifying-glass">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                  </div>
-                  <input type="text" class="search-mobile" placeholder="Sök vara...">
-                  
-                </div>
-              </div>
-              <div class="profile-cart-container">
-                <div class="cart">
-                  <i class="fa-solid fa-cart-shopping cart-trigger"></i>
-                  <div class="cart-item-number">0</div>
-                </div>
-                <i class="fa-solid fa-user user-trigger"></i>
+    <header class="site-header">
+      <div class="nav-search-container">
+        <nav>
+          <div class="upper-nav">
+            <div class="logo-menu-container">
+              <i
+                class="fa-solid fa-bars hamburger-trigger"
+                id="hamburger-menu-icon"
+              ></i>
+              <div class="logo-container">
+                <div class="logo-upper">Hakim</div>
+                <div class="logo-lower">Livs</div>
               </div>
             </div>
-          </nav>
-          <div class="search-products">
+            <div class="lower-nav">
+              <div class="search-container-mobile">
+                <div class="magnifying-glass">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input
+                  type="text"
+                  class="search-mobile"
+                  placeholder="Sök vara..."
+                />
+              </div>
+            </div>
+            <div class="profile-cart-container">
+              <div class="cart">
+                <i class="fa-solid fa-cart-shopping cart-trigger"></i>
+                <div class="cart-item-number">0</div>
+              </div>
+              <i class="fa-solid fa-user user-trigger"></i>
+            </div>
           </div>
-        </div>
-        </header>
-        
+        </nav>
+        <div class="search-products"></div>
+      </div>
+    </header>
+
     <div class="site-wrapper">
-
-        <div class="header-container">
-          <div class="header-img">
-            <img class="headerimg" src="https://static.bonniernews.se/ba/YTcwG4i-aE2y2qwMTstafDef6ZY.jpeg?width=1400&format=pjpg&auto=webp" alt="Picture of fruits in a store">
-          </div>
-          <div class="header-text">
-            <h2>
-              Handla lokalt <br> hos Hakim Livs. <br>
-              Få maten till din dörr!
-            </h2>
-          </div>
-          <div class="header-stats">
-    
-          </div>
-        </div>  
-    <main>
-      <div id="popupOverlay" class="popup-overlay">
-        <div class="popup-content productform">
-          <h2>Kategorier</h2>
-          <div class="category-btns">
-            <button  class="category-btn all">Alla</button>
-            <button  class="category-btn fruit">Frukt</button>
-            <button class="category-btn meat">Kött</button>
-            <button  class="category-btn dairy">Mejeri</button>
-            <button  class="category-btn other">Övrigt</button>
-          </div>
+      <div class="header-container">
+        <div class="header-img">
+          <img
+            class="headerimg"
+            src="https://static.bonniernews.se/ba/YTcwG4i-aE2y2qwMTstafDef6ZY.jpeg?width=1400&format=pjpg&auto=webp"
+            alt="Picture of fruits in a store"
+          />
         </div>
+        <div class="header-text">
+          <h2>
+            Handla lokalt <br />
+            hos Hakim Livs. <br />
+            Få maten till din dörr!
+          </h2>
+        </div>
+        <div class="header-stats"></div>
       </div>
-      
-      <div id="mainOverlay" class="popup-overlay">
-        <!-- Hamburger menu content -->
-        <div class="popup-content hamburger-menu">
-          <span class="close-btn">&times;</span>
-          <h2>Kategorier</h2>
-          <div class="category-btns">
-            <button  class="category-btn all">Alla</button>
-            <button  class="category-btn fruit">Frukt</button>
-            <button   class="category-btn meat">Kött</button>
-            <button  class="category-btn dairy">Mejeri</button>
-            <button  class="category-btn other">Övrigt</button>
-          </div>
-        </div>
-        
-        <!-- Cart content -->
-        <div class="popup-content cart">
-          <span class="close-btn">&times;</span>
-          <h2>Kundvagn</h2>
-        </div>
-
-        <!-- User content -->
-        <div class="popup-content user">
-          <span class="close-btn">&times;</span>
-          <div class="login-container">
-          <div class="välkommen-container">
-          <h1>Välkommen!</h1>
-          <p>Logga in för att få mer utav din shopping</p>
-          </div>
-          <div class="inputfield-container">
-          <input type="text" required placeholder="E-postadress">
-          <input type="password" required placeholder="Lösenord">
-          </div>
-          <div class="login-btn-container">
-          <button class="login-btn">Logga in</button>
-          <div class="nykund-container">
-            <hr class="hr-line">
-          <p>Ny kund?</p>
-          </div>
-          <button class="register-btn">Skapa konto</button>
-        </div>
-      </div>
-        </div>
-        <div class="popup-content register">
-          <span class="close-btn">&times;</span>
-          <div class="login-container">
-          <div class="välkommen-container">
-          <h1>Skapa konto</h1>
-          <div>
-          <p id="reg-text">Registrera dig för en bättre shoppingupplevelse</p>
-          </div>
-          </div>
-          <div class="inputfield-container">
-          <input type="text" required placeholder="Namn">
-          <input type="text" required placeholder="E-postadress">
-          <input type="password" required placeholder="Lösenord">
-          <input type="password" required placeholder="Bekräfta lösenord">
-          </div>
-          <div class="login-btn-container">
-          <button class="create-account-btn">Skapa konto</button>
-          <div class="nykund-container">
-          <hr class="hr-line">
-          <p>Har du redan ett konto?</p>
-          </div>
-          <button class="back-to-login-btn">Logga in</button>
-          </div> 
-          </div> 
-          </div>
-
-        <div class="popup-content single-product">
-          <div class="close-category-container">
-            <div class="category-container">
-              <span class="single-product-category category">category</span>
-              <span class="single-product-category ">/</span>
-              <span class="single-product-category title">Product</span>
+      <main>
+        <div id="popupOverlay" class="popup-overlay">
+          <div class="popup-content productform">
+            <h2>Kategorier</h2>
+            <div class="category-btns">
+              <button class="category-btn all">Alla</button>
+              <button class="category-btn fruit">Frukt</button>
+              <button class="category-btn meat">Kött</button>
+              <button class="category-btn dairy">Mejeri</button>
+              <button class="category-btn other">Övrigt</button>
             </div>
+          </div>
+        </div>
+
+        <div id="mainOverlay" class="popup-overlay">
+          <!-- Hamburger menu content -->
+          <div class="popup-content hamburger-menu">
             <span class="close-btn">&times;</span>
-          </div>
-          <div class="single-product-container">
-            <img src="" alt="" class="single-product-image">
-            <div class="lower-container">
-              <h2 class="single-product-title">Product</h2>
-              <h1 class="single-product-price">32:-</h1>
+            <h2>Kategorier</h2>
+            <div class="category-btns">
+              <button class="category-btn all">Alla</button>
+              <button class="category-btn fruit">Frukt</button>
+              <button class="category-btn meat">Kött</button>
+              <button class="category-btn dairy">Mejeri</button>
+              <button class="category-btn other">Övrigt</button>
             </div>
           </div>
-          <div class="line"></div>
-          <div class="single-product-desc">
-            <h3>Produktbeskrivning</h3>
-            <p class="single-product-description">asdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsad</p>
+
+          <!-- Cart content -->
+          <div class="popup-content cart">
+            <span class="close-btn">&times;</span>
+            <h2>Kundvagn</h2>
+          </div>
+
+          <!-- User content -->
+          <div class="popup-content user">
+            <span class="close-btn">&times;</span>
+            <div class="login-container">
+              <div class="välkommen-container">
+                <h1>Välkommen!</h1>
+                <p>Logga in för att få mer utav din shopping</p>
+              </div>
+              <div class="inputfield-container">
+                <input type="text" required placeholder="E-postadress" />
+                <input type="password" required placeholder="Lösenord" />
+              </div>
+              <div class="login-btn-container">
+                <button class="login-btn">Logga in</button>
+                <div class="nykund-container">
+                  <hr class="hr-line" />
+                  <p>Ny kund?</p>
+                </div>
+                <button class="register-btn">Skapa konto</button>
+              </div>
+            </div>
+          </div>
+          <div class="popup-content register">
+            <span class="close-btn">&times;</span>
+            <div class="login-container">
+              <div class="välkommen-container">
+                <h1>Skapa konto</h1>
+                <div>
+                  <p id="reg-text">
+                    Registrera dig för en bättre shoppingupplevelse
+                  </p>
+                </div>
+              </div>
+              <div class="inputfield-container">
+                <input class="username" type="text" required placeholder="Användarnamn..." />
+                <input class="password" type="password" required placeholder="Lösenord..." />
+                <input
+                  class="confirm-password"
+                  type="password"
+                  required
+                  placeholder="Bekräfta lösenord..."
+                />
+              </div>
+              <div class="login-btn-container">
+                <button class="create-account-btn">Skapa konto</button>
+                <div class="nykund-container">
+                  <hr class="hr-line" />
+                  <p>Har du redan ett konto?</p>
+                </div>
+                <button class="back-to-login-btn">Logga in</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="popup-content single-product">
+            <div class="close-category-container">
+              <div class="category-container">
+                <span class="single-product-category category">category</span>
+                <span class="single-product-category">/</span>
+                <span class="single-product-category title">Product</span>
+              </div>
+              <span class="close-btn">&times;</span>
+            </div>
+            <div class="single-product-container">
+              <img src="" alt="" class="single-product-image" />
+              <div class="lower-container">
+                <h2 class="single-product-title">Product</h2>
+                <h1 class="single-product-price">32:-</h1>
+              </div>
+            </div>
+            <div class="line"></div>
+            <div class="single-product-desc">
+              <h3>Produktbeskrivning</h3>
+              <p class="single-product-description">
+                asdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsad
+              </p>
+            </div>
           </div>
         </div>
+        <section class="all-products">
+          <div class="products-heading">
+            <h2>Alla produkter</h2>
+            <select class="sort-select">
+              <option disabled selected value="">Sortera</option>
+              <option value="price-asc">Lägsta pris</option>
+              <option value="price-desc">Högsta pris</option>
+              <option value="name-asc">A-Ö</option>
+              <option value="name-desc">Ö-A</option>
+            </select>
+          </div>
+          <section class="products-container"></section>
+        </section>
+      </main>
+    </div>
 
+    <footer class="site-footer">
+      <div class="footer-content">
+        <h1 class="footer-h1">Hakim livs<br />Din lokala mathandlare</h1>
+        <div class="footer-links">
+          <div class="contact-info">
+            <h3>Kontakta oss</h3>
+            <p><strong>E-post:</strong> info@hakimlivs.se</p>
+            <p><strong>Telefon:</strong> 070-123 45 67</p>
+            <p><strong>Adress:</strong> Storgatan 123, 123 45 Stockholm</p>
+            <p><strong>Öppettider:</strong> Mån-Fre: 08-20, Lör-Sön: 10-18</p>
+          </div>
 
+          <div class="link-container1">
+            <a href="/pages/admin.html">Tillbaka till toppen</a>
+          </div>
+          <div class="link-container2">
+            <p id="copyright-text">2024 Hakim Livs. All rights reserved.</p>
+          </div>
+        </div>
       </div>
-     <section class="all-products">
-      <div class="products-heading">
-      <h2>Alla produkter</h2>
-      <select class="sort-select">
-        <option disabled selected value="">Sortera</option>
-        <option value="price-asc">Lägsta pris</option>
-        <option value="price-desc">Högsta pris</option>
-        <option value="name-asc">A-Ö</option>
-        <option value="name-desc">Ö-A</option>
-      </select>
-    </div>
-      <section class="products-container">
-        
-      </section>
-    </section>
-    </main>
-  </div>
-
-  <footer class="site-footer">
-    <div class="footer-content">
-    <h1 class="footer-h1">Hakim livs<br>Din lokala mathandlare</h1>
-    <div class="footer-links">
-    
-    <div class="contact-info">
-    <h3>Kontakta oss</h3>
-    <p><strong>E-post:</strong> info@hakimlivs.se</p>
-    <p><strong>Telefon:</strong> 070-123 45 67</p>
-    <p><strong>Adress:</strong> Storgatan 123, 123 45 Stockholm</p>
-    <p><strong>Öppettider:</strong> Mån-Fre: 08-20, Lör-Sön: 10-18</p>
-    </div>
-    
-    <div class="link-container1">
-    <a href="/pages/admin.html">Tillbaka till toppen</a>
-    </div>
-    <div class="link-container2">
-    <p id="copyright-text">2024 Hakim Livs. All rights reserved.</p>
-    </div>
-    </div>
-    </div>
     </footer>
   </body>
   <script type="module" src="../script.js" defer></script>

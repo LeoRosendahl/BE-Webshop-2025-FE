@@ -1,5 +1,7 @@
 import { addProduct, fetchProducts, deleteProduct } from "../utils/api.js"
 import {closePopup, openPopup} from '../../script.js'
+import { addCustomer } from "../utils/api.js";
+import { addNewCustomer } from "../utils/addCustomer.js";
 
 const productsContainer = document.querySelector(".products-container");
 
@@ -456,6 +458,11 @@ const updateCartIcon = () => {
   cartNumber.innerHTML = numberOfItems;
 }
 
+
+
+
+const addCustomerBtn = document.querySelector('.create-account-btn')
+addCustomerBtn.addEventListener('click', addNewCustomer)
 
 searchField.addEventListener("input", changeSearchInput);
 
