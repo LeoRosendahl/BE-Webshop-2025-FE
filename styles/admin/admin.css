@@ -589,7 +589,8 @@ main h2 {
     width: 500px;
     max-width: 1000px;
     min-height: calc(10vh - 100px);
-    height: 500px;
+    height: -moz-fit-content;
+    height: fit-content;
     border-radius: 20px;
     padding: 30px 50px;
     gap: 50px;
@@ -598,6 +599,18 @@ main h2 {
 
 @media (min-width: 768px) {
   .popup-content:nth-child(5) {
+    width: 500px;
+    max-width: 1000px;
+    min-height: calc(10vh - 100px);
+    height: 500px;
+    border-radius: 20px;
+    padding: 30px 50px;
+    gap: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .popup-content:nth-child(6) {
     width: 500px;
     max-width: 1000px;
     min-height: calc(10vh - 100px);
@@ -1014,7 +1027,7 @@ main h2 {
   }
 }
 
-.login-btn {
+.login-btn, .create-account-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1037,20 +1050,20 @@ main h2 {
   font-weight: 700;
   line-height: normal;
 }
-.login-btn:hover {
+.login-btn:hover, .create-account-btn:hover {
   background-color: transparent;
   color: #3BB77E;
   border-color: #3BB77E;
 }
-.login-btn:focus {
+.login-btn:focus, .create-account-btn:focus {
   outline: none;
 }
-.login-btn:disabled {
+.login-btn:disabled, .create-account-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.register-btn {
+.register-btn, .back-to-login-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1073,15 +1086,15 @@ main h2 {
   font-weight: 700;
   line-height: normal;
 }
-.register-btn:hover {
+.register-btn:hover, .back-to-login-btn:hover {
   background-color: transparent;
   color: #3BB77E;
   border-color: #3BB77E;
 }
-.register-btn:focus {
+.register-btn:focus, .back-to-login-btn:focus {
   outline: none;
 }
-.register-btn:disabled {
+.register-btn:disabled, .back-to-login-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }

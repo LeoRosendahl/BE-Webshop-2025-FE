@@ -186,6 +186,17 @@ main {
     }
 }
 
+.popup-content:nth-child(4) {
+    @media (min-width: 768px) {
+        width: 500px;
+        max-width: 1000px ;
+        min-height: calc(10vh - 100px);
+        height: fit-content;
+        border-radius: 20px;
+        padding: 30px 50px;
+        gap: 50px;
+    }
+}
 .popup-content:nth-child(5) {
     @media (min-width: 768px) {
         width: 500px;
@@ -526,14 +537,18 @@ main {
     }
 }
 
-.login-btn{
+.login-btn, .create-account-btn{
     @include button-login-register
 }
 
-.register-btn{
+.register-btn, .back-to-login-btn{
     @include button-login-register
 }
-
+#reg-text{
+    color: black;
+    padding: 0px;
+    
+}
 .välkommen-container{
     display: flex;
     justify-content: center;
@@ -550,7 +565,8 @@ main {
     align-items: center;
     flex-direction: column;
     gap: 25px;
-    margin: 70px;
+    padding-bottom: 20px;
+    
     @media (min-width: 768px) {
         margin-top: 0px
     }
