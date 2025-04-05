@@ -21,10 +21,16 @@ export const addNewCustomer = async () => {
             password: password
         }
     }
-    await addCustomer(newCustomer);
-  
-    document.querySelector('.username').value = '';
-    document.querySelector('.password').value = '';
-    document.querySelector('.confirm-password').value = '';
- 
+    try {
+        const result = await addCustomer(newCustomer);
+        if (result) {
+            // Clear form on success
+            document.querySelector('.username').value = '';
+            document.querySelector('.password').value = '';
+            document.querySelector('.confirm-password').value = '';
+        }
+    } catch (error) {
+        console.error("Error in addNewCustomer:", error);
+        alert('Ett fel uppstod när kunden skulle läggas till.');
+    }
   }
