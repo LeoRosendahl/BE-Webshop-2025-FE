@@ -40,7 +40,7 @@ export async function fetchProducts(endpoint = "api/products") {
 
 //function to add customer to database
   export async function addCustomer(customerData) {
-    const url = `${getBaseUrl()}api/register`; // Backend API endpoint
+    const url = `${getBaseUrl()}api/auth/register`; // Backend API endpoint
   
     try {
       const response = await fetch(url, {
