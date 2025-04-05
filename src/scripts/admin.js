@@ -274,6 +274,8 @@ const renderSearchedProducts = () => {
 
 
 
+
+
 searchField.addEventListener("input", changeSearchInput);
 
 fetchAndRenderProducts();

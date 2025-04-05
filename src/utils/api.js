@@ -38,6 +38,31 @@ export async function fetchProducts(endpoint = "api/products") {
     }
   }
 
+  export async function addCustomer(customerData) {
+    const url = `${getBaseUrl()}/register`; // Backend API endpoint
+  
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(customerData),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Failed to add new customer: ${response.statusText}`);
+      }
+  
+      return await response.json(); 
+    } catch (error) {
+      console.error("Error adding new customer:", error);
+      return null; 
+    }
+  }
+
+
+
   export async function deleteProduct(productId) {
     const url = `${getBaseUrl()}api/products/${productId}`; // Construct API endpoint
   
