@@ -1,7 +1,8 @@
-import { addProduct, fetchProducts, deleteProduct } from "../utils/api.js"
+import { addProduct, fetchProducts, deleteProduct, signIn } from "../utils/api.js"
 import {closePopup, openPopup} from '../../script.js'
 import { addCustomer } from "../utils/api.js";
 import { addNewCustomer } from "../utils/addCustomer.js";
+import { signInUser } from "../utils/signin.js";
 
 const productsContainer = document.querySelector(".products-container");
 
@@ -460,11 +461,18 @@ const updateCartIcon = () => {
 
 
 
+const signinButton = document.querySelector('.login-btn')
 
 const addCustomerBtn = document.querySelector('.create-account-btn')
 addCustomerBtn.addEventListener('click', addNewCustomer)
 
 searchField.addEventListener("input", changeSearchInput);
+signinButton.addEventListener('click', signInUser)
+
+
+
+
+
 
 updateCartIcon()
 fetchAndRenderProducts();
