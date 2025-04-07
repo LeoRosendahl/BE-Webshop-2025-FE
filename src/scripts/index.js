@@ -247,19 +247,20 @@ const renderProducts = async (productsToRender) => {
 
 
 const renderSingleProduct = (product) => {
-  
   const productName = document.querySelector('.single-product-title')
   const productNameTop = document.querySelector('.title')
   const productPrice = document.querySelector('.single-product-price')
   const productCategory = document.querySelector('.single-product-category')
   const productDesc = document.querySelector('.single-product-description')
+  const productImage = document.querySelector('.single-product-image')  
 
   productName.innerHTML = product.name
   productNameTop.innerHTML = product.name
   productPrice.innerHTML = `${product.price}:-`
   productCategory.innerHTML = product.category
   productDesc.innerHTML = product.description
-  
+  productImage.src = product.imageUrl || ""  
+  productImage.alt = product.name  
 
   const lowerContainer = document.querySelector('.lower-container');
   
@@ -272,14 +273,11 @@ const renderSingleProduct = (product) => {
   newButton.textContent = 'Lägg i Kundvagn';
   newButton.classList.add('cart-add-button');
   
-
   newButton.addEventListener('click', () => {
     saveToCart(product);
   });
   
- 
   lowerContainer.appendChild(newButton);
-
 }
 
 
