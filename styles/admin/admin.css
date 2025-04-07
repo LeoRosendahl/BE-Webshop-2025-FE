@@ -574,8 +574,7 @@ main h2 {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  width: 100%;
-  max-width: 310px;
+  width: 90%;
 }
 .popup-content #product-add-btn:hover {
   background-color: transparent;
