@@ -22,7 +22,7 @@ const renderProducts = async (productsToRender) => {
     productDiv.addEventListener('click', ()=>{renderSingleProduct(product)})
 
     const productImage = document.createElement("img");
-    productImage.src = "";
+    productImage.src = product.imageUrl;
     productImage.alt = product.name;
     productImage.classList.add("product-image");
 
@@ -75,18 +75,20 @@ const addNewProduct = async () => {
   const productCategory = document.getElementById("category").value;
   const productQuantity = parseInt(document.getElementById("product-quantity").value);
   const productPrice = parseFloat(document.getElementById("product-price").value);
+  const productImage = document.getElementById("product-img").value.trim();
 
-  if (!productName || !productDesc || !productCategory || isNaN(productQuantity) || isNaN(productPrice)) {
+  if (!productName || !productDesc || !productCategory || isNaN(productQuantity) || isNaN(productPrice) || !productImage) {
     alert("Fyll i alla fält korrekt!");
     return;
-  }
+}
 
   const newProduct = {
     name: productName,
     category: productCategory,
     price: productPrice,
     description: productDesc,
-    stock: productQuantity
+    stock: productQuantity,
+    imageUrl : productImage
 }
     await addProduct(newProduct);
     await fetchAndRenderProducts();   
@@ -100,6 +102,7 @@ const clearForm = () => {
   document.getElementById("category").value = "";
   document.getElementById("product-quantity").value = "";
   document.getElementById("product-price").value = "";
+  document.getElementById("product-img").value = "";
 };
 
 const renderSingleProduct = (product) => {
@@ -109,12 +112,15 @@ const renderSingleProduct = (product) => {
   const productCategory = document.querySelector('.single-product-category')
   const productDesc = document.querySelector('.single-product-description')
   const deleteProductPopup = document.querySelector('.single-product-button')
+  const productImage = document.querySelector('.single-product-image') 
 
   productName.innerHTML = product.name
   productNameTop.innerHTML = product.name
   productPrice.innerHTML = `${product.price}:-`
   productCategory.innerHTML = product.category
   productDesc.innerHTML = product.description
+  productImage.src = product.imageUrl 
+  productImage.alt = product.name  
 
   deleteProductPopup.addEventListener('click',  async () => {
     await deleteProduct(product._id);
@@ -122,7 +128,6 @@ const renderSingleProduct = (product) => {
     renderProducts(allProducts);
     closePopup(); 
   })
-
 }
 const productAddButton = document.getElementById("product-add-btn")
 if(productAddButton){
