@@ -142,6 +142,9 @@ const renderSingleProduct = (product) => {
   const newUpdateBtn = updateProductPopup.cloneNode(true);
   updateProductPopup.parentNode.replaceChild(newUpdateBtn, updateProductPopup);
   
+  // Se till att "Ändra"-knappen alltid är synlig när en ny produkt renderas
+  newUpdateBtn.style.display = '';
+  
   // Uppdatera referenser till de nya elementen
   const updatedDeleteBtn = document.querySelector('.single-product-button');
   const updatedUpdateBtn = document.querySelector('.update-product-button');
@@ -156,6 +159,9 @@ const renderSingleProduct = (product) => {
   
   // Lägg till eventlyssnare för update-knappen
   updatedUpdateBtn.addEventListener('click', () => {
+    // Dölj uppdateringsknappen när den klickas
+    updatedUpdateBtn.style.display = 'none';
+    
     // Skapa en spara-knapp om den inte redan finns
     if (!document.querySelector('.save-product-button')) {
       const saveButton = document.createElement('button');
@@ -183,11 +189,9 @@ const renderSingleProduct = (product) => {
           category: categorySelect.value,
           description: descTextarea.value.trim(),
           imageUrl: imageInput.value.trim(),
-          // Behåll stock-värdet från originalprodukt
           stock: product.stock
         };
-        
-        // Validera data
+  
         if (!updatedProduct.name || !updatedProduct.description || 
             isNaN(updatedProduct.price) || !updatedProduct.imageUrl) {
           alert("Fyll i alla fält korrekt!");
@@ -195,26 +199,20 @@ const renderSingleProduct = (product) => {
         }
         
         try {
-          // Anropa API för att uppdatera produkten
           await updateProduct(product._id, updatedProduct);
-          
-          // Ladda om alla produkter för att säkerställa att vi har senaste data
           await fetchAndRenderProducts();
+  
+          // Visa uppdateringsknappen igen
+          updatedUpdateBtn.style.display = '';
           
-          // Visa bekräftelsemeddelande
-          alert("Produkten har uppdaterats!");
+          // Stäng popup-fönstret
+          closePopup();
           
-          // Hämta den uppdaterade produkten från listan
-          const freshProduct = allProducts.find(p => p._id === product._id);
-          if (freshProduct) {
-            renderSingleProduct(freshProduct);
-          } else {
-            // Om produkten inte hittas, använd lokala data
-            renderSingleProduct({ ...product, ...updatedProduct, _id: product._id });
-          }
         } catch (error) {
           console.error("Fel vid uppdatering:", error);
           alert("Det gick inte att uppdatera produkten. Försök igen.");
+          // Visa uppdateringsknappen igen vid fel
+          updatedUpdateBtn.style.display = '';
         }
       });
     }
@@ -233,6 +231,10 @@ const renderSingleProduct = (product) => {
     priceInput.classList.add('edit-input');
     productPrice.innerHTML = '';
     productPrice.appendChild(priceInput);
+    
+    const priceLabel = document.createElement('span');
+    priceLabel.textContent = ':-';
+    productPrice.appendChild(priceLabel);
     
     // Gör kategorin redigerbar
     const categorySelect = document.createElement('select');
@@ -255,12 +257,6 @@ const renderSingleProduct = (product) => {
     productDesc.innerHTML = '';
     productDesc.appendChild(descTextarea);
     
-    // Ta bort eventuell befintlig bild-redigeringscontainer
-    const existingImgContainer = document.querySelector('.image-edit-container');
-    if (existingImgContainer) {
-      existingImgContainer.remove();
-    }
-    
     // Gör bild-URL redigerbar
     const imageContainer = document.createElement('div');
     imageContainer.classList.add('image-edit-container');
@@ -272,15 +268,18 @@ const renderSingleProduct = (product) => {
     
     imageContainer.appendChild(imageLabel);
     imageContainer.appendChild(imageInput);
+    
+    // Lägg till bild-redigeringscontainern efter bilden
     productImage.parentNode.insertBefore(imageContainer, productImage.nextSibling);
   });
   
-  // Lägg till en event listener på close-popup-knappen för att rensa redigeringsläget
   const closeBtn = document.querySelector('.close-btn');
   const newCloseBtn = closeBtn.cloneNode(true);
   closeBtn.parentNode.replaceChild(newCloseBtn, closeBtn);
   
   newCloseBtn.addEventListener('click', () => {
+    const updateBtn = document.querySelector('.update-product-button');
+    if (updateBtn) updateBtn.style.display = '';
     closePopup();
   });
 };

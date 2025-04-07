@@ -202,7 +202,6 @@ main {
         height: 500px;
         border-radius: 20px;
         padding: 30px 50px;
-        gap: 50px;
     }
 }
 .popup-content:nth-child(6) {
@@ -628,3 +627,111 @@ main {
     }
 }
 
+
+// FÖR REDIGERING AV PRODUKT
+
+// Gemensam styling för redigeringsinputs
+.edit-input {
+    background: transparent;
+    border: 1px solid transparent;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    transition: border 0.2s;
+    outline: none;
+    
+    &:hover, &:focus {
+      background-color: #ededed;
+    }
+  }
+  
+ 
+  .single-product-title .edit-input {
+    width: 300px;
+    font-size: 24px;
+    font-weight: 700;
+    border: 0.5px solid $basegreen;
+    padding: 2px;
+  }
+  
+  .single-product-price .edit-input {
+    font-family: 'REM', sans-serif;
+    font-size: 48px;
+    color: $red;
+    width: 180px;
+    border: 0.5px solid $basegreen;
+    padding: 2px;
+  }
+  
+  .category .edit-input {
+    border: 0.5px solid $basegreen;
+    font-size: 14px;
+    width: auto;
+    padding: 2px;
+  }
+  
+  .single-product-description .edit-input {
+    width: 500px;
+    min-height: 60px;
+    resize: vertical;
+    line-height: 1.5;
+    word-break: break-word;
+    border: 0.5px solid $basegreen;
+  }
+  
+  // Styling för bildredigering
+  .image-edit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    width: 100%;
+    
+    
+    @media (min-width: 768px) {
+      position: absolute;
+      bottom: 130px;
+      width: 200px; 
+    }
+    
+    label {
+      font-size: 14px;
+      color: $basegreen;
+    }
+    
+    input {
+      border: 0.5px solid $basegreen;
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 14px;
+      width: 100%;
+    }
+  }
+  
+
+  .single-product-image {
+    height: 260px;
+    width: 200px;
+    margin: 0 auto;
+    
+    @media (min-width: 768px) {
+      margin: 0;
+      position: relative;
+      margin-bottom: 50px; 
+    }
+  }
+  
+  // Styling för sparaknappen
+  .save-product-button {
+    @include button-base;
+    height: 40px;
+    font-family: 'REM';
+    font-weight: 600;
+    font-size: 16px;
+    background-color: $basegreen;
+    margin-top: 10px;
+  }
