@@ -281,6 +281,7 @@ main {
 }
 .product-image {
     height: 120px;
+    object-fit: contain;
 }
 
 .products-wrapper {
