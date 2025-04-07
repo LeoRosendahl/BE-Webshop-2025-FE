@@ -3,7 +3,6 @@ export function getBaseUrl() {
 }
 
 export async function fetchProducts(endpoint = "api/products") {
-  //! DONT USE THIS IN PRODUCTION
   const url = `${getBaseUrl()}${endpoint}`;
   const response = await fetch(url);
   if(response.ok){
@@ -13,6 +12,41 @@ export async function fetchProducts(endpoint = "api/products") {
   return [];    
 }
 
+export async function signIn(userData) {
+  const url = `${getBaseUrl()}api/auth/login`;
+
+  try {
+    const response = await fetch(url, { 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Login failed');
+    }
+
+    const data = await response.json();
+    const token = data.token;
+    const isAdmin = data.user.isAdmin;
+
+    console.log('Admin status:', isAdmin);
+
+    if (token) {
+      localStorage.setItem('token', token);
+      console.log('Token received and stored:', token);
+    } else {
+      console.warn('No token received');
+    }
+    return isAdmin;
+  } catch (error) {
+    alert('Fel användarnamn eller lösenord!')
+    console.error('Error during login:', error);
+  }
+
+}
 
 
   export async function addProduct(productData) {

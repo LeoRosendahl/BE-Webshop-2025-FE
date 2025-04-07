@@ -1373,4 +1373,8 @@ p:only-child {
 .cart {
   position: relative;
   cursor: pointer;
+}
+
+.fa-user {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
