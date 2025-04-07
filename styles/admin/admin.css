@@ -475,8 +475,11 @@ main h2 {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
-.addcategory-container .addCategory-btn {
+.addcategory-container #addCategory-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -498,8 +501,7 @@ main h2 {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  width: 100%;
-  max-width: 310px;
+  width: 90%;
 }
 
 .popup-content {

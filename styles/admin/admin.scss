@@ -103,8 +103,11 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 
-    .addCategory-btn{
+    #addCategory-btn{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -126,8 +129,8 @@ main {
         font-style: normal;
         font-weight: 700;
         line-height: normal;
-        width: 100%;
-        max-width: 310px;
+        width: 90%;
+        
     }
 
 }
