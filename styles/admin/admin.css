@@ -953,7 +953,14 @@ main h2 {
   margin: 0;
   color: black;
 }
-.lower-container button {
+
+.single-product-button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 80px;
+}
+.single-product-button-container button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -969,29 +976,24 @@ main h2 {
   background-color: #3BB77E;
   color: #FFFFFF;
   height: 40px;
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 15px;
+  font-family: "REM";
+  font-weight: 600;
+  font-size: 16px;
 }
-.lower-container button:hover {
+.single-product-button-container button:hover {
   background-color: transparent;
   color: #3BB77E;
   border-color: #3BB77E;
 }
-.lower-container button:focus {
+.single-product-button-container button:focus {
   outline: none;
 }
-.lower-container button:disabled {
+.single-product-button-container button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 @media (min-width: 768px) {
-  .lower-container button {
-    margin-top: 80px;
-  }
-}
-@media (min-width: 768px) {
-  .lower-container {
+  .single-product-button-container {
     width: 250px;
   }
 }

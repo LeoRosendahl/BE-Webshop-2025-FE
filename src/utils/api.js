@@ -86,3 +86,27 @@ export async function fetchProducts(endpoint = "api/products") {
       return false; // Return failure
     }
   }
+  
+  export async function updateProduct(productId, productData) {
+    const url = `${getBaseUrl()}api/products/${productId}`;
+    
+    try {
+      const response = await fetch(url, {
+        method: "PUT", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(productData),
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to update product: ${response.statusText}`);
+      }
+      
+      console.log("Product updated successfully!");
+      return await response.json(); 
+    } catch (error) {
+      console.error("Error updating product:", error);
+      return null; 
+    }
+  }

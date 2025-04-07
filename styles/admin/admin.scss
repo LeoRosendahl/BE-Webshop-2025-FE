@@ -512,15 +512,20 @@ main {
         color: black;
 
     }
+    
+}
+.single-product-button-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 80px;
     button{
         @include button-base;
         height: 40px;
-        font-size: 18px;
-        font-weight: 700;
-        margin-top: 15px;
-        @media (min-width: 768px) {
-            margin-top: 80px;
-        }
+        font-family: 'REM';
+        font-weight: 600;
+        font-size: 16px;
+     
     }
     @media (min-width: 768px) {
         width: 250px;
