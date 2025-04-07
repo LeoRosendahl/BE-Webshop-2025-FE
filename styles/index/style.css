@@ -739,8 +739,8 @@ main h2 {
 
 .product-image {
   height: 120px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .products-wrapper {
