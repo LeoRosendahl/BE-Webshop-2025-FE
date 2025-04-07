@@ -53,7 +53,7 @@ main {
       padding-top: 60px;
     }
     
-   
+  
   }
   
 
@@ -109,6 +109,7 @@ main {
     gap: 20px;
     border-radius: 20px;
     padding: 20px;
+    align-items: center;
     position: relative;
     border-right: 0.5px solid $grey;
     
@@ -790,5 +791,9 @@ main {
 
     .cart {
       position: relative;
+      cursor: pointer;
+    }
+
+    .fa-user {
       cursor: pointer;
     }

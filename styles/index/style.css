@@ -224,8 +224,8 @@ body {
   color: #F35244;
 }
 .search-product-container img {
-  height: 75px;
-  width: 75px;
+  height: 95px;
+  width: auto;
 }
 
 .search-product-info-container {
@@ -481,6 +481,7 @@ main h2 {
   gap: 20px;
   border-radius: 20px;
   padding: 20px;
+  align-items: center;
   position: relative;
   border-right: 0.5px solid #ADADAD;
 }
@@ -1372,5 +1373,9 @@ p:only-child {
 
 .cart {
   position: relative;
+  cursor: pointer;
+}
+
+.fa-user {
   cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
