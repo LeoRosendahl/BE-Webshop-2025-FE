@@ -110,6 +110,7 @@ main {
     border-radius: 20px;
     padding: 20px;
     position: relative;
+    align-items: center;
     
     @media (max-width: 767px) {
         height: calc(100vh - 110px); 

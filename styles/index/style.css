@@ -224,8 +224,8 @@ body {
   color: #F35244;
 }
 .search-product-container img {
-  height: 75px;
-  width: 75px;
+  height: 95px;
+  width: auto;
 }
 
 .search-product-info-container {
