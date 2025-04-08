@@ -1163,9 +1163,9 @@ main h2 {
 .popup-content.cart .cart-items {
   max-height: 60vh;
   overflow-y: auto;
+  padding: 0 30px;
   margin-bottom: 15px;
-  padding: 0px 30px;
-  width: 250px;
+  width: 100%;
 }
 .popup-content.cart .cart-item {
   display: flex;
@@ -1255,8 +1255,14 @@ main h2 {
 
 .cart-summary {
   margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 .cart-summary .cart-total {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   font-weight: 600;
