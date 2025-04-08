@@ -2,12 +2,10 @@ import { addProduct, fetchProducts, deleteProduct, updateProduct } from "../util
 import { closePopup, openPopup } from "../../script.js";
 import { isUserAdmin } from "../utils/isUserAdmin.js";
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   if (!isUserAdmin()) {
-//     console.warn('User is not admin, redirecting...');
-//     window.location.href = '/pages/index.html';
-//   }
-// });
+
+if (!isUserAdmin()) {
+  window.location.href = '/pages/index.html';
+}
 
 const productsContainer = document.querySelector(".products-container");
 
