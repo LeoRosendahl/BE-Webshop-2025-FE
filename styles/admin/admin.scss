@@ -50,7 +50,7 @@ main {
     
     @media (max-width: 767px) {
       align-items: flex-end;
-      padding-top: 60px;
+      
     }
     
    
@@ -718,6 +718,10 @@ main {
     line-height: 1.5;
     word-break: break-word;
     border: 0.5px solid $basegreen;
+
+    @media (max-width: 768px){
+        width: 295px;
+    }
   }
   
   // Styling för bildredigering
