@@ -32,7 +32,9 @@ export async function signIn(userData) {
     const token = data.token;
     const isAdmin = data.user.isAdmin;
 
+
     console.log('Admin status:', isAdmin);
+
 
     if (token) {
       localStorage.setItem('token', token);
@@ -40,7 +42,6 @@ export async function signIn(userData) {
     } else {
       console.warn('No token received');
     }
-    return isAdmin;
   } catch (error) {
     alert('Fel användarnamn eller lösenord!')
     console.error('Error during login:', error);

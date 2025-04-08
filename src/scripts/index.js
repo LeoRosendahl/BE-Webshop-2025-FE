@@ -112,7 +112,7 @@ function attachCartEventListeners() {
   // Öka antal
   document.querySelectorAll('.increase-quantity').forEach(button => {
     button.addEventListener('click', () => {
-      updateQuantity(button.dataset.id, 1);
+      updateQuantity(button.dataset.id, 1, button.dataset.stock);
     });
   });
   
@@ -147,9 +147,11 @@ function attachCartEventListeners() {
 }
 
 // Uppdatera antal av en produkt
-function updateQuantity(id, change) {
+function updateQuantity(id, change, stock) {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const itemIndex = cart.findIndex(item => item.id === id);
+
+  if(cart[itemIndex].quantity)
   
   if (itemIndex !== -1) {
     cart[itemIndex].quantity += change;
@@ -466,8 +468,6 @@ addCustomerBtn.addEventListener('click', addNewCustomer)
 
 searchField.addEventListener("input", changeSearchInput);
 signinButton.addEventListener('click', signInUser)
-
-
 
 
 
