@@ -921,8 +921,8 @@ main h2 {
 }
 
 .single-product-image {
-  height: 260px;
-  width: 200px;
+  max-height: 260px;
+  width: 250px;
   margin: 0 auto;
 }
 @media (min-width: 768px) {
