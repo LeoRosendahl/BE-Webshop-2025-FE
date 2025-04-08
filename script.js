@@ -25,6 +25,8 @@ export function closePopup() {
     popup.style.display = "none";
   });
 }
+
+const navIconCtn = document.querySelector('.profile-cart-container')
 // Eventlistener för produkt-knappen
 const addProductButton = document.getElementById("toggle-form-btn");
 if (addProductButton) {
@@ -32,34 +34,38 @@ if (addProductButton) {
     openPopup("popupOverlay", ".popup-content.productform");
   });
 }
-// Eventlistener för hamburger-ikonen
-document
+
+if(navIconCtn){
+
+  // Eventlistener för hamburger-ikonen
+  document
   .querySelector(".hamburger-trigger")
   .addEventListener("click", function () {
     openPopup("mainOverlay", ".popup-content.hamburger-menu");
   });
-//Eventlistner för kundvagns-ikonen
-document.querySelector(".cart-trigger").addEventListener("click", function () {
-  openPopup("mainOverlay", ".popup-content.cart");
-});
-//Eventlistner för user-ikonen
-document.querySelector(".user-trigger").addEventListener("click", function () {
-  openPopup("mainOverlay", ".popup-content.user");
-});
-// Eventlistener för stängknappar
-document.querySelectorAll(".close-btn").forEach((button) => {
-  button.addEventListener("click", function () {
-    closePopup();
+  //Eventlistner för kundvagns-ikonen
+  document.querySelector(".cart-trigger").addEventListener("click", function () {
+    openPopup("mainOverlay", ".popup-content.cart");
   });
-
-  // Eventlistener för register-knappen
-document.querySelector(".register-btn").addEventListener("click", function() {
-  // Stäng den nuvarande login-popupen och öppna registreringspopupen
-  openPopup("mainOverlay", ".popup-content.register");
+  //Eventlistner för user-ikonen
+  document.querySelector(".user-trigger").addEventListener("click", function () {
+    openPopup("mainOverlay", ".popup-content.user");
   });
-  
-  document.querySelector(".back-to-login-btn").addEventListener("click", function() {
-  openPopup("mainOverlay", ".popup-content.user");
+  // Eventlistener för stängknappar
+}
+  document.querySelectorAll(".close-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      closePopup();
+    });
+    
+    // Eventlistener för register-knappen
+    document.querySelector(".register-btn").addEventListener("click", function() {
+      // Stäng den nuvarande login-popupen och öppna registreringspopupen
+      openPopup("mainOverlay", ".popup-content.register");
+    });
+    
+    document.querySelector(".back-to-login-btn").addEventListener("click", function() {
+      openPopup("mainOverlay", ".popup-content.user");
   });
 });
 // Stäng popup om användaren klickar utanför innehållsrutan
