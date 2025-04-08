@@ -1265,10 +1265,6 @@ main h2 {
     width: 200px;
   }
 }
-.image-edit-container label {
-  font-size: 14px;
-  color: #3BB77E;
-}
 .image-edit-container input {
   border: 0.5px solid #3BB77E;
   border-radius: 5px;
