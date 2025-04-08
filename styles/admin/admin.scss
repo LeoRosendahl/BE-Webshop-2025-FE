@@ -236,7 +236,6 @@ main {
         width: 500px;
         max-width: 1000px ;
         min-height: calc(10vh - 100px);
-        height: 500px;
         border-radius: 20px;
         padding: 30px 50px;
     }
@@ -510,8 +509,7 @@ main {
     @media (min-width: 768px) {
         flex-direction: row;
         width: 100%;
-        justify-content: space-between;
-        gap: 40px;
+        gap: 20px;
     }
 }
 
@@ -552,9 +550,10 @@ main {
 }
 .single-product-button-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-end;
     gap: 10px;
-    margin-top: 80px;
+    margin-top: 40px;
     button{
         @include button-base;
         height: 40px;
@@ -688,7 +687,7 @@ main {
   
  
   .single-product-title .edit-input {
-    width: 300px;
+    width: 250px;
     font-size: 24px;
     font-weight: 700;
     border: 0.5px solid $basegreen;
@@ -735,7 +734,7 @@ main {
     
     @media (min-width: 768px) {
       position: absolute;
-      bottom: 130px;
+      bottom: 150px;
       width: 200px; 
     }
     
@@ -751,13 +750,20 @@ main {
   }
   .single-product-quantity .edit-input {
     width: 100px;
+    margin: 0;
+    border: 0.5px solid $basegreen;
+
+    p{
+        margin: 0;
+    }
 
   }
 
   .single-product-image {
-    height: 260px;
-    width: 200px;
+    height: 300px;
+    width: 250px;
     margin: 0 auto;
+    object-fit: fill;
     
     @media (min-width: 768px) {
       margin: 0;

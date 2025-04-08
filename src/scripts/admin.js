@@ -179,6 +179,7 @@ const renderSingleProduct = (product) => {
         const categorySelect = productCategory.querySelector('select');
         const descTextarea = productDesc.querySelector('textarea');
         const imageInput = document.querySelector('.image-edit-container input');
+        const quantityInput = productQuantity.querySelector('input');
         
         if (!nameInput || !priceInput || !categorySelect || !descTextarea || !imageInput) {
           console.error("Kan inte hitta input-element för att spara");
@@ -191,14 +192,15 @@ const renderSingleProduct = (product) => {
           category: categorySelect.value,
           description: descTextarea.value.trim(),
           imageUrl: imageInput.value.trim(),
-          stock: product.stock
+          stock: parseInt(quantityInput.value)
         };
   
         if (!updatedProduct.name || !updatedProduct.description || 
-            isNaN(updatedProduct.price) || !updatedProduct.imageUrl) {
-          alert("Fyll i alla fält korrekt!");
-          return;
-        }
+          isNaN(updatedProduct.price) || !updatedProduct.imageUrl || 
+          isNaN(updatedProduct.stock)) { 
+        alert("Fyll i alla fält korrekt!");
+        return;
+      }
         
         try {
           await updateProduct(product._id, updatedProduct);
