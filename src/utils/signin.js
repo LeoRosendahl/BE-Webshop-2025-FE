@@ -5,9 +5,6 @@ export const signInUser = async () => {
     const inputPassword = document.querySelector(".signin-password").value;
     const adminButton = document.querySelector('.admin-page-link')
 
-    
-
-    
     if(inputUsername === '' || inputPassword === ''){
         alert('Fyll i alla fält!')
         return

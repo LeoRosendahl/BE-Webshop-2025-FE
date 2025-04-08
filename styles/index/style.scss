@@ -209,6 +209,18 @@ main {
         gap: 50px;
     }
 }
+.popup-content:nth-child(6) {
+  
+  @media (min-width: 768px) {
+      width: 500px;
+      max-width: 1000px ;
+      min-height: calc(10vh - 100px);
+      height: 350px;
+      border-radius: 20px;
+      padding: 30px 50px;
+      gap: 50px;
+  }
+}
 .close-btn {
     position: absolute;
     top: 10px;
@@ -802,6 +814,61 @@ main {
 
     .fa-user {
       cursor: pointer;
+    }
+    .my-pages h1 {
+      color: $basegreen;
+    }
+    .fa-pen{
+      color: $basegreen;
+
+    }
+    
+    .my-pages-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      gap: 100px;
+    }
+
+    .user-info-container{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+      width: 70%;
+      margin: 0 auto;
+      justify-content: space-between;
+    }
+
+    .log-out-btn {
+      @include button-base;
+      width: 40%;
+      font-size: 18px;
+      font-weight: 700;
+      height: 40px;
+    }
+    .save-profile {
+      @include button-base;
+      width: 40%;
+      font-size: 18px;
+      font-weight: 700;
+      height: 40px;
+    }
+
+    .save-profile:disabled {
+      filter: grayscale(1);
+      pointer-events: none;
+    }
+    
+
+    .button-pages-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
     }
 
     // .admin-page-link {

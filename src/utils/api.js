@@ -29,11 +29,7 @@ export async function signIn(userData) {
     }
 
     const data = await response.json();
-    const token = data.token;
-    const isAdmin = data.user.isAdmin;
-
-
-    console.log('Admin status:', isAdmin);
+    const token = data.accessToken;
 
 
     if (token) {

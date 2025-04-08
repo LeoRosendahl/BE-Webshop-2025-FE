@@ -52,6 +52,9 @@ if(navIconCtn){
     openPopup("mainOverlay", ".popup-content.user");
   });
   // Eventlistener för stängknappar
+  document.querySelector('.my-pages-icon').addEventListener('click', ()=>{
+    openPopup('mainOverlay', '.popup-content.my-pages')
+  })
 }
   document.querySelectorAll(".close-btn").forEach((button) => {
     button.addEventListener("click", function () {

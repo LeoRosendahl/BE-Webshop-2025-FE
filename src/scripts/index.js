@@ -5,6 +5,13 @@ import { addNewCustomer } from "../utils/addCustomer.js";
 import { signInUser } from "../utils/signin.js";
 
 const productsContainer = document.querySelector(".products-container");
+const userToken = localStorage.getItem('token')
+
+if(userToken){
+  const decoded = jwt_decode(userToken);
+  const isAdmin = decoded?.isAdmin;
+  console.log('Admin status:', isAdmin);
+}
 
 // Funktion för att spara produkt i localStorage
 function saveToCart(product) {
@@ -26,6 +33,7 @@ function saveToCart(product) {
       category: product.category,
       description: product.description,
       imageUrl: product.imageUrl || "",
+      stock: product.stock,
       quantity: 1
     });
   }
@@ -147,20 +155,24 @@ function attachCartEventListeners() {
 }
 
 // Uppdatera antal av en produkt
-function updateQuantity(id, change, stock) {
+function updateQuantity(id, change, ) {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const itemIndex = cart.findIndex(item => item.id === id);
+  const itemStock = cart[itemIndex].stock
 
-  if(cart[itemIndex].quantity)
-  
   if (itemIndex !== -1) {
-    cart[itemIndex].quantity += change;
-    
-    // Ta bort produkten om antalet är 0 eller mindre
-    if (cart[itemIndex].quantity <= 0) {
+    const currentQuantity = cart[itemIndex].quantity || 0;
+    const newQuantity = currentQuantity + change;
+
+    if (newQuantity <= 0) {
       cart.splice(itemIndex, 1);
+    } else if (newQuantity > itemStock) {
+      alert("Du kan inte lägga till fler än vad som finns i lager.");
+      return;
+    } else {
+      cart[itemIndex].quantity = newQuantity;
     }
-    
+
     localStorage.setItem('cart', JSON.stringify(cart));
     displayCart();
     updateCartIcon();
