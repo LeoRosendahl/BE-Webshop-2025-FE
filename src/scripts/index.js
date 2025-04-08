@@ -269,13 +269,15 @@ const renderSingleProduct = (product) => {
   const productPrice = document.querySelector('.single-product-price')
   const productCategory = document.querySelector('.single-product-category')
   const productDesc = document.querySelector('.single-product-description')
-  const productImage = document.querySelector('.single-product-image')  
+  const productImage = document.querySelector('.single-product-image')
+  const productQuantity = document.querySelector('.single-product-quantity')  
 
   productName.innerHTML = product.name
   productNameTop.innerHTML = product.name
   productPrice.innerHTML = `${product.price}:-`
   productCategory.innerHTML = product.category
   productDesc.innerHTML = product.description
+  productQuantity.innerHTML = `Lagersaldo: ${product.stock}`;
   productImage.src = product.imageUrl || ""  
   productImage.alt = product.name  
 

@@ -114,6 +114,7 @@ const renderSingleProduct = (product) => {
   const deleteProductPopup = document.querySelector('.single-product-button');
   const updateProductPopup = document.querySelector('.update-product-button');
   const productImage = document.querySelector('.single-product-image');
+  const productQuantity = document.querySelector('.single-product-quantity');
   
   // Rensa bort eventuella redigeringsläget-element
   const existingImageContainer = document.querySelector('.image-edit-container');
@@ -132,6 +133,7 @@ const renderSingleProduct = (product) => {
   productPrice.innerHTML = `${product.price}:-`;
   productCategory.innerHTML = product.category;
   productDesc.innerHTML = product.description;
+  productQuantity.innerHTML = `Lagersaldo: ${product.stock} st`;
   productImage.src = product.imageUrl;
   productImage.alt = product.name;
   
@@ -235,6 +237,17 @@ const renderSingleProduct = (product) => {
     const priceLabel = document.createElement('span');
     priceLabel.textContent = ':-';
     productPrice.appendChild(priceLabel);
+
+    // Gör lagersaldot redigerbart
+    const quantityInput = document.createElement('input');
+    quantityInput.type = 'number';
+    quantityInput.value = product.stock;
+    quantityInput.classList.add('edit-input');
+    productQuantity.innerHTML = '';
+    productQuantity.appendChild(quantityInput);
+    const quantityLabel = document.createElement('span');
+    quantityLabel.textContent = 'st';
+    productQuantity.appendChild(quantityLabel);
     
     // Gör kategorin redigerbar
     const categorySelect = document.createElement('select');

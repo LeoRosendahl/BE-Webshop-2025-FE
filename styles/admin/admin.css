@@ -1273,6 +1273,10 @@ main h2 {
   width: 100%;
 }
 
+.single-product-quantity .edit-input {
+  width: 100px;
+}
+
 .single-product-image {
   height: 260px;
   width: 200px;
