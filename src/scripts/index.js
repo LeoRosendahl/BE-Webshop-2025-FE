@@ -2,18 +2,10 @@ import { addProduct, fetchProducts, deleteProduct, signIn } from "../utils/api.j
 import {closePopup, openPopup} from '../../script.js'
 import { addCustomer } from "../utils/api.js";
 import { addNewCustomer } from "../utils/addCustomer.js";
+import { isUserAdmin } from "../utils/isUserAdmin.js";
 import { signInUser } from "../utils/signin.js";
 
 const productsContainer = document.querySelector(".products-container");
-const userToken = localStorage.getItem('token')
-const isUserAdmin = () => {
-  if(userToken){
-    const decoded = jwt_decode(userToken);
-    const isAdmin = decoded?.isAdmin;
-    return isAdmin
-  }
-}
-console.log(isUserAdmin())
 
 // Funktion för att spara produkt i localStorage
 function saveToCart(product) {
@@ -475,9 +467,17 @@ const updateCartIcon = () => {
   cartNumber.innerHTML = numberOfItems;
 }
 
-
+const handleLogOut = () => {
+  localStorage.removeItem('token')
+  closePopup()
+}
 
 const signinButton = document.querySelector('.login-btn')
+const logoutButton = document.querySelector('.log-out-btn')
+if(logoutButton){
+  logoutButton.addEventListener('click', handleLogOut)
+}
+
 
 const addCustomerBtn = document.querySelector('.create-account-btn')
 addCustomerBtn.addEventListener('click', addNewCustomer)
@@ -485,9 +485,14 @@ addCustomerBtn.addEventListener('click', addNewCustomer)
 searchField.addEventListener("input", changeSearchInput);
 signinButton.addEventListener('click', signInUser)
 
+export const renderAdminLink = () => {
+  const adminButton = document.querySelector('.admin-page-link')
+  adminButton.style.display = isUserAdmin() ? 'flex' : 'none'
+}
 
 
 
+renderAdminLink()
 updateCartIcon()
 fetchAndRenderProducts();
 

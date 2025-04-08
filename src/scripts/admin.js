@@ -1,5 +1,13 @@
 import { addProduct, fetchProducts, deleteProduct, updateProduct } from "../utils/api.js"
 import { closePopup, openPopup } from "../../script.js";
+import { isUserAdmin } from "../utils/isUserAdmin.js";
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   if (!isUserAdmin()) {
+//     console.warn('User is not admin, redirecting...');
+//     window.location.href = '/pages/index.html';
+//   }
+// });
 
 const productsContainer = document.querySelector(".products-container");
 
@@ -433,6 +441,13 @@ const renderSearchedProducts = () => {
     navSearchContainer.appendChild(searchProducts);
   });
 };
+
+const handleLogOut = () => {
+  localStorage.removeItem('token')
+  window.location.href = '/pages/index.html';
+}
+const logoutBtn = document.querySelector('.admin-logout')
+logoutBtn.addEventListener('click', handleLogOut)
 
 searchField.addEventListener("input", changeSearchInput);
 
