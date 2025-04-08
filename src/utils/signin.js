@@ -1,9 +1,10 @@
 import { signIn } from "../utils/api.js";
-
+import { closePopup } from "../../script.js";
+import { isUserAdmin } from '../utils/isUserAdmin.js'
+import { renderAdminLink } from "../scripts/index.js";
 export const signInUser = async () => {
     const inputUsername = document.querySelector(".signin-username").value;
     const inputPassword = document.querySelector(".signin-password").value;
-    const adminButton = document.querySelector('.admin-page-link')
 
     if(inputUsername === '' || inputPassword === ''){
         alert('Fyll i alla fält!')
@@ -16,6 +17,8 @@ export const signInUser = async () => {
         document.querySelector(".signin-username").value = ''
         document.querySelector(".signin-password").value = '';
         await signIn(userData)
+        renderAdminLink()
+        closePopup()
     }
   };
 

@@ -34,7 +34,6 @@ export async function signIn(userData) {
 
     if (token) {
       localStorage.setItem('token', token);
-      console.log('Token received and stored:', token);
     } else {
       console.warn('No token received');
     }

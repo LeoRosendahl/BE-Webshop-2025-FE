@@ -1503,4 +1503,8 @@ p:only-child {
   display: flex;
   justify-content: center;
   gap: 15px;
+}
+
+.admin-page-link {
+  display: none;
 }/*# sourceMappingURL=style.css.map */
