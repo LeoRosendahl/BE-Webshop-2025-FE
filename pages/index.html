@@ -6,6 +6,7 @@
     <title>Hakim Livs - products</title>
     <link rel="stylesheet" href="../styles/index/style.css" />
     <script src="/src/scripts/index.js" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,8 +46,8 @@
               </div>
             </div>
             <div class="profile-cart-container">
-              
-              <a href="/pages/admin.html" class="admin-page-link">
+              <i style="color: #3BB77E;" class="fa-solid fa-address-card my-pages-icon"></i>
+              <a  href="/pages/admin.html" class="admin-page-link">
                 <i style="color: #3BB77E;" class="fa-solid fa-screwdriver-wrench"></i>
               </a>
               <div class="cart">
@@ -191,6 +192,26 @@
               </p>
             </div>
           </div>
+
+          <div class="popup-content my-pages">
+            <h1>Mina sidor</h1>
+            <div class="my-pages-container">
+              <div class="user-info-container">
+                <div class="user-info">
+                  <h3>Username</h3>
+                  <i class="fa-solid fa-pen"></i>
+                </div>
+              </div>
+              <div class="button-pages-container">
+                <button class="log-out-btn">Logga ut</button>
+                <button disabled class="save-profile">Spara</button>
+              </div>
+            </div>
+          </div>
+
+
+
+
         </div>
         <section class="all-products">
           <div class="products-heading">
