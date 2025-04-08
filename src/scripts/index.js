@@ -6,12 +6,14 @@ import { signInUser } from "../utils/signin.js";
 
 const productsContainer = document.querySelector(".products-container");
 const userToken = localStorage.getItem('token')
-
-if(userToken){
-  const decoded = jwt_decode(userToken);
-  const isAdmin = decoded?.isAdmin;
-  console.log('Admin status:', isAdmin);
+const isUserAdmin = () => {
+  if(userToken){
+    const decoded = jwt_decode(userToken);
+    const isAdmin = decoded?.isAdmin;
+    return isAdmin
+  }
 }
+console.log(isUserAdmin())
 
 // Funktion för att spara produkt i localStorage
 function saveToCart(product) {
