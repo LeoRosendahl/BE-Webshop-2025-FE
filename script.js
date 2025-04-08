@@ -1,3 +1,5 @@
+import { checkIfUser } from "./src/utils/checkIfSignedIn.js";
+
 // Funktion för att öppna popups
 export function openPopup(popupId, contentSelector) {
   const popup = document.getElementById(popupId);
@@ -49,12 +51,10 @@ if(navIconCtn){
   });
   //Eventlistner för user-ikonen
   document.querySelector(".user-trigger").addEventListener("click", function () {
-    openPopup("mainOverlay", ".popup-content.user");
+    openPopup("mainOverlay", checkIfUser() ? '.popup-content.my-pages' : '.popup-content.user');
   });
   // Eventlistener för stängknappar
-  document.querySelector('.my-pages-icon').addEventListener('click', ()=>{
-    openPopup('mainOverlay', '.popup-content.my-pages')
-  })
+
 }
   document.querySelectorAll(".close-btn").forEach((button) => {
     button.addEventListener("click", function () {

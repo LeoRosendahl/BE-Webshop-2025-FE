@@ -465,9 +465,17 @@ const updateCartIcon = () => {
   cartNumber.innerHTML = numberOfItems;
 }
 
-
+const handleLogOut = () => {
+  localStorage.removeItem('token')
+  closePopup()
+}
 
 const signinButton = document.querySelector('.login-btn')
+const logoutButton = document.querySelector('.log-out-btn')
+if(logoutButton){
+  logoutButton.addEventListener('click', handleLogOut)
+}
+
 
 const addCustomerBtn = document.querySelector('.create-account-btn')
 addCustomerBtn.addEventListener('click', addNewCustomer)
@@ -479,6 +487,8 @@ export const renderAdminLink = () => {
   const adminButton = document.querySelector('.admin-page-link')
   adminButton.style.display = isUserAdmin() ? 'flex' : 'none'
 }
+
+
 
 renderAdminLink()
 updateCartIcon()
