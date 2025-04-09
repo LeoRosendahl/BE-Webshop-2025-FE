@@ -43,7 +43,7 @@ const renderProducts = async (productsToRender) => {
 
     const productCategory = document.createElement("p");
     productCategory.classList.add("category");
-    productCategory.textContent = product.category;
+    productCategory.textContent = product.category.name;
 
    
     const updateButton = document.createElement("button");
@@ -137,7 +137,7 @@ const renderSingleProduct = (product) => {
   productName.innerHTML = product.name;
   productNameTop.innerHTML = product.name;
   productPrice.innerHTML = `${product.price}:-`;
-  productCategory.innerHTML = product.category;
+  productCategory.innerHTML = product.category.name;
   productDesc.innerHTML = product.description;
   productQuantity.innerHTML = `Lagersaldo: ${product.stock} st`;
   productImage.src = product.imageUrl;
@@ -265,7 +265,7 @@ const renderSingleProduct = (product) => {
       const option = document.createElement('option');
       option.value = cat;
       option.textContent = cat;
-      if (cat === product.category) option.selected = true;
+      if (cat === product.category.name) option.selected = true;
       categorySelect.appendChild(option);
     });
     productCategory.innerHTML = '';
@@ -338,7 +338,7 @@ const updateProducts = () => {
   filteredAndSortedProducts = 
     currentCategory === "All" 
       ? [...allProducts] 
-      : allProducts.filter((product) => product.category === currentCategory);
+      : allProducts.filter((product) => product.category.name === currentCategory);
   
  //Sortering
   if (currentSortOption) {
@@ -424,7 +424,7 @@ const renderSearchedProducts = () => {
 
     // Create and set up the product category
     const productCategory = document.createElement("p");
-    productCategory.textContent = product.category;
+    productCategory.textContent = product.category.name;
 
     // Create and set up the price
     const productPrice = document.createElement("h2");
