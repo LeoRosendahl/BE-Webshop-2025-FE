@@ -515,7 +515,8 @@ export const renderAdminLink = () => {
 export const renderUsername = () => {
   const usernameh3 = document.querySelector('.username-pages')
   const userToken = localStorage.getItem('token')
-  
+  if (!userToken || userToken === 'undefined' || userToken === 'null') return;
+
   if(usernameh3){
     const decoded = jwt_decode(userToken);
     const username = decoded.username

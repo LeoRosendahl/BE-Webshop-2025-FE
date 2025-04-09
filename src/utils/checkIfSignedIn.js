@@ -1,7 +1,10 @@
 
 export const checkIfUser = () => {
   const token = localStorage.getItem('token');
-  if (!token) return false;
+
+  if (!token || token === 'undefined' || token === 'null' || token.trim() === '') {
+    return false;
+  }
 
   try {
     const decoded = jwt_decode(token);
@@ -17,6 +20,4 @@ export const checkIfUser = () => {
     console.error('Invalid token format', e);
     return false;
   }
-
-  
 };
