@@ -69,7 +69,15 @@ if(navIconCtn){
     
     document.querySelector(".back-to-login-btn").addEventListener("click", function() {
       openPopup("mainOverlay", ".popup-content.user");
+
   });
+
+  // Eventlistener för orderhistory-knappen
+  document.querySelector(".order-history-btn").addEventListener("click", function() {
+    openPopup("mainOverlay", ".popup-content.order-history");
+  });
+
+  
 });
 // Stäng popup om användaren klickar utanför innehållsrutan
 window.onclick = function (event) {

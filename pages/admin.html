@@ -81,6 +81,7 @@
             <option value="Mejeri">Mejeri</option>
             <option value="Övrigt">Övrigt</option>
           </select>
+        
       
           <input type="number" id="product-quantity" placeholder="Antal">
           <input type="number" id="product-price" placeholder="Pris i Kr">
@@ -89,8 +90,9 @@
             <input type="text" placeholder="Kategori">
             <button  id="addCategory-btn">Lägg till kategori</button>
           </div>
-          
-
+          <div class="order-history-container">
+            <button  class="order-history-btn">Orderhistorik</button>
+          </div>
           <div class="categories">
             <h2>Kategorier</h2>
             <div class="category-btns">
@@ -200,6 +202,21 @@
           </div>
         </div>
 
+        <div class="popup-content order-history">
+          <span class="close-btn">&times;</span>
+          <h2>Orderhistorik</h2>
+          <div class="order-history-container">
+            <div class="order-history-item">
+              <p class="order-history-date">2024-01-01</p>
+              <p class="order-history-total">Total: 500:-</p>
+            </div>
+            <div class="order-history-item">
+              <p class="order-history-date">2024-01-02</p>
+              <p class="order-history-total">Total: 300:-</p>
+            </div>
+          </div>
+
+        </div>
 
       </div>
       <section class="all-products">

@@ -782,3 +782,8 @@ main {
     background-color: $basegreen;
     margin-top: 10px;
   }
+
+
+  .order-history-btn{
+    @include button-buy-big;
+}
