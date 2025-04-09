@@ -24,7 +24,7 @@ function saveToCart(product) {
       id: product._id,
       name: product.name,
       price: product.price,
-      category: product.category,
+      category: product.category.name,
       description: product.description,
       imageUrl: product.imageUrl || "",
       stock: product.stock,
@@ -246,7 +246,7 @@ const renderProducts = async (productsToRender) => {
 
     const productCategory = document.createElement("p");
     productCategory.classList.add("category");
-    productCategory.textContent = product.category;
+    productCategory.textContent = product.category.name;
 
     // Skapa köp-knapp
     const buyButton = document.createElement("button");
@@ -288,7 +288,7 @@ const renderSingleProduct = (product) => {
   productName.innerHTML = product.name
   productNameTop.innerHTML = product.name
   productPrice.innerHTML = `${product.price}:-`
-  productCategory.innerHTML = product.category
+  productCategory.innerHTML = product.category.name
   productDesc.innerHTML = product.description
   productQuantity.innerHTML = `Lagersaldo: ${product.stock}`;
   productImage.src = product.imageUrl || ""  
@@ -370,7 +370,7 @@ const updateProducts = () => {
   filteredAndSortedProducts = 
     currentCategory === "All" 
       ? [...allProducts] 
-      : allProducts.filter((product) => product.category === currentCategory);
+      : allProducts.filter((product) => product.category.name === currentCategory);
   
  //Sortering
   if (currentSortOption) {
@@ -460,7 +460,7 @@ const renderSearchedProducts = () => {
 
     // Create and set up the product category
     const productCategory = document.createElement("p");
-    productCategory.textContent = product.category;
+    productCategory.textContent = product.category.name;
 
     // Create and set up the price
     const productPrice = document.createElement("h2");
