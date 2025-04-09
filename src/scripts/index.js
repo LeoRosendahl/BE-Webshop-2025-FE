@@ -7,6 +7,7 @@ import { signInUser } from "../utils/signin.js";
 import { checkIfUser } from "../utils/checkIfSignedIn.js";
 const productsContainer = document.querySelector(".products-container");
 
+
 // Funktion för att spara produkt i localStorage
 function saveToCart(product) {
   // Hämta nuvarande kundvagn eller skapa en tom array
@@ -557,4 +558,6 @@ renderUsername()
 renderAdminLink()
 updateCartIcon()
 fetchAndRenderProducts();
+
+
 
