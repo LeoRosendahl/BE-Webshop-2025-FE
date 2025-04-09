@@ -152,6 +152,9 @@ function attachCartEventListeners() {
     // Lägg till klick-hanterare
     checkoutBtn.addEventListener('click', () => {
       if (!checkIfUser()) {
+        
+        sessionStorage.setItem('redirectToCheckout', 'true');
+
         const loginPopup = document.querySelector('.popup-content.user');
         if (loginPopup) {
           openPopup("mainOverlay", ".popup-content.user");

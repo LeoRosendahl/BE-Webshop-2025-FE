@@ -17,4 +17,6 @@ export const checkIfUser = () => {
     console.error('Invalid token format', e);
     return false;
   }
+
+  
 };
