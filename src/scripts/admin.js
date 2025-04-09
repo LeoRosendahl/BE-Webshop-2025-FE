@@ -452,3 +452,71 @@ logoutBtn.addEventListener('click', handleLogOut)
 searchField.addEventListener("input", changeSearchInput);
 
 fetchAndRenderProducts();
+
+
+
+const categoryInput = document.querySelector('.addcategory-container input');
+const addCategoryBtn = document.querySelector('.addCategory-btn');
+
+// Get reference to the category dropdown selector
+const categorySelect = document.getElementById('category');
+
+// Get reference to the category buttons container
+const categoryBtnsContainers = document.querySelectorAll('.category-btns');
+
+// Function to add a new category
+const addNewCategory = () => {
+  // Get the category name from input
+  const categoryName = categoryInput.value.trim();
+  
+  // Validate input - make sure it's not empty
+  if (!categoryName) {
+    alert('Ange ett kategorinamn!');
+    return;
+  }
+  
+  // Check if category already exists in dropdown
+  const existingOptions = Array.from(categorySelect.options).map(option => option.value);
+  if (existingOptions.includes(categoryName)) {
+    alert('Kategorin finns redan!');
+    return;
+  }
+  
+  // Add to dropdown selector
+  const newOption = document.createElement('option');
+  newOption.value = categoryName;
+  newOption.textContent = categoryName;
+  categorySelect.appendChild(newOption);
+  
+  // Add new category button to all category button containers
+  categoryBtnsContainers.forEach(container => {
+    const newCategoryBtn = document.createElement('button');
+    newCategoryBtn.classList.add('category-btn', categoryName.toLowerCase());
+    newCategoryBtn.textContent = categoryName;
+    
+    // Add event listener to the new button
+    newCategoryBtn.addEventListener('click', () => setFilter(categoryName));
+    
+    container.appendChild(newCategoryBtn);
+  });
+  
+  // Clear the input field
+  categoryInput.value = '';
+  
+  // Optional: Show confirmation message
+  alert(`Kategorin "${categoryName}" har lagts till!`);
+};
+
+// Add event listener to the add category button
+if (addCategoryBtn) {
+  addCategoryBtn.addEventListener('click', addNewCategory);
+}
+
+// Also add event listener for Enter key in the input field
+if (categoryInput) {
+  categoryInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      addNewCategory();
+    }
+  });
+}

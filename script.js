@@ -70,7 +70,7 @@ if(navIconCtn){
       openPopup("mainOverlay", ".popup-content.user");
       
       
-      document.querySelector(".order-history-btn").addEventListener("click", function() {
+      document.querySelector(".history-link").addEventListener("click", function() {
         // Öppna orderhistorik-popupen
         openPopup("mainOverlay", ".popup-content.orderhistory");
         // Anropa funktionen som hämtar och visar orderhistoriken
@@ -107,7 +107,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
-const orderHistoryBtn = document.querySelector(".order-history-btn");
+const orderHistoryBtn = document.querySelector(".history-link");
 if (orderHistoryBtn) {
   orderHistoryBtn.addEventListener("click", function() {
     // Öppna orderhistorik-popupen
@@ -115,5 +115,8 @@ if (orderHistoryBtn) {
     // Anropa funktionen som hämtar och visar orderhistoriken
   });
 }
+
+
+
 
 

@@ -478,7 +478,7 @@ main h2 {
   align-items: center;
   justify-content: center;
 }
-.addcategory-container #addCategory-btn {
+.addcategory-container .addCategory-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1375,4 +1375,12 @@ main h2 {
 .order-history-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.icon-container {
+  display: flex;
+}
+
+.history-link {
+  padding-right: 30px;
 }/*# sourceMappingURL=admin.css.map */

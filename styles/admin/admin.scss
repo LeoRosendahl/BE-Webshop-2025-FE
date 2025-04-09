@@ -107,7 +107,7 @@ main {
     align-items: center;
     justify-content: center;
 
-    #addCategory-btn{
+    .addCategory-btn{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -796,4 +796,10 @@ main {
   .order-history-btn{
     @include button-buy-big;
     width: 90%;
+  }
+.icon-container{
+    display: flex;
+}
+  .history-link{
+    padding-right: 30px;
   }
