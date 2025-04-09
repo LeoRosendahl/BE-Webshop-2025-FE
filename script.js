@@ -36,15 +36,14 @@ if (addProductButton) {
     openPopup("popupOverlay", ".popup-content.productform");
   });
 }
+// Eventlistener för hamburger-ikonen
+document
+.querySelector(".hamburger-trigger")
+.addEventListener("click", function () {
+  openPopup("mainOverlay", ".popup-content.hamburger-menu");
+});
 
 if(navIconCtn){
-
-  // Eventlistener för hamburger-ikonen
-  document
-  .querySelector(".hamburger-trigger")
-  .addEventListener("click", function () {
-    openPopup("mainOverlay", ".popup-content.hamburger-menu");
-  });
   //Eventlistner för kundvagns-ikonen
   document.querySelector(".cart-trigger").addEventListener("click", function () {
     openPopup("mainOverlay", ".popup-content.cart");
