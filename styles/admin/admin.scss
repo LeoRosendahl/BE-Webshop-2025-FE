@@ -782,3 +782,18 @@ main {
     background-color: $basegreen;
     margin-top: 10px;
   }
+
+  .orderhistory-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+  .order-history-btn{
+    @include button-buy-big;
+    width: 90%;
+  }
