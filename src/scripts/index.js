@@ -4,7 +4,7 @@ import { addCustomer } from "../utils/api.js";
 import { addNewCustomer } from "../utils/addCustomer.js";
 import { isUserAdmin } from "../utils/isUserAdmin.js";
 import { signInUser } from "../utils/signin.js";
-
+import { checkIfUser } from "../utils/checkIfSignedIn.js";
 const productsContainer = document.querySelector(".products-container");
 
 // Funktion för att spara produkt i localStorage
@@ -141,9 +141,30 @@ function attachCartEventListeners() {
 // Ska senare länkas till checkout/kassan
   const checkoutBtn = document.querySelector('.checkout-btn');
   if (checkoutBtn) {
+    // Kontrollera användarstatus och uppdatera knapp-texten
+    if (!checkIfUser()) {
+      checkoutBtn.textContent = 'Logga in för att betala';}
+      else {
+        checkoutBtn.textContent = 'Gå till kassan';
+      }
+    
+    
+    // Lägg till klick-hanterare
     checkoutBtn.addEventListener('click', () => {
-      
-      alert('Går till kassan...');
+      if (!checkIfUser()) {
+        
+        sessionStorage.setItem('redirectToCheckout', 'true');
+
+        const loginPopup = document.querySelector('.popup-content.user');
+        if (loginPopup) {
+          openPopup("mainOverlay", ".popup-content.user");
+        } else {
+        console.error('Kunde inte hitta inloggningspopupen (.popup-content.user)');
+      }
+      } else {
+        // Om användaren är inloggad, fortsätt till kassan
+        alert('Går till kassan...');
+      }
     });
   }
 }
