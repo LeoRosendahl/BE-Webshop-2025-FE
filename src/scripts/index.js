@@ -143,7 +143,7 @@ function attachCartEventListeners() {
   if (checkoutBtn) {
     // Kontrollera användarstatus och uppdatera knapp-texten
     if (!checkIfUser()) {
-      checkoutBtn.textContent = 'Logga in';}
+      checkoutBtn.textContent = 'Logga in för att betala';}
       else {
         checkoutBtn.textContent = 'Gå till kassan';
       }
