@@ -163,7 +163,7 @@ function attachCartEventListeners() {
       }
       } else {
         // Om användaren är inloggad, fortsätt till kassan
-        alert('Går till kassan...');
+        window.location.href = "/pages/checkout.html";
       }
     });
   }

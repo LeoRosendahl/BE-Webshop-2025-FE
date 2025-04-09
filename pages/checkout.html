@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hakim Livs - products</title>
+    <link rel="stylesheet" href="../styles/checkout/checkout.css" />
+    <script src="/src/scripts/checkout.js" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=REM:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-search-container">
+        <nav>
+          <div class="upper-nav">
+            <div class="logo-menu-container">
+              <i
+                class="fa-solid fa-bars hamburger-trigger"
+                id="hamburger-menu-icon"
+              ></i>
+              <div class="logo-container">
+                <div class="logo-upper">Hakim</div>
+                <div class="logo-lower">Livs</div>
+              </div>
+            </div>
+            <div class="lower-nav">
+              <div class="search-container-mobile">
+                <div class="magnifying-glass">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input
+                  type="text"
+                  class="search-mobile"
+                  placeholder="Sök vara..."
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+            <div class="profile-cart-container">
+              <a  href="/pages/admin.html" class="admin-page-link">
+                <i style="color: #3BB77E;" class="fa-solid fa-screwdriver-wrench"></i>
+              </a>
+              <div class="cart">
+                <i class="fa-solid fa-cart-shopping cart-trigger"></i>
+                <div class="cart-item-number">0</div>
+              </div>
+              <i class="fa-solid fa-user user-trigger"></i>
+            </div>
+          </div>
+        </nav>
+        <div class="search-products"></div>
+      </div>
+    </header>
+    <main>
+
+    <div class="site-wrapper">
+
+    </div>
+      
+        
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <h1 class="footer-h1">Hakim livs<br />Din lokala mathandlare</h1>
+        <div class="footer-links">
+          <div class="contact-info">
+            <h3>Kontakta oss</h3>
+            <p><strong>E-post:</strong> info@hakimlivs.se</p>
+            <p><strong>Telefon:</strong> 070-123 45 67</p>
+            <p><strong>Adress:</strong> Storgatan 123, 123 45 Stockholm</p>
+            <p><strong>Öppettider:</strong> Mån-Fre: 08-20, Lör-Sön: 10-18</p>
+          </div>
+
+          <div class="link-container1">
+            <a href="/pages/admin.html">Tillbaka till toppen</a>
+          </div>
+          <div class="link-container2">
+            <p id="copyright-text">2024 Hakim Livs. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script type="module" src="../script.js" defer></script>
+</html>
