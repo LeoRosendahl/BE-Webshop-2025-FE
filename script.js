@@ -69,7 +69,20 @@ if(navIconCtn){
     
     document.querySelector(".back-to-login-btn").addEventListener("click", function() {
       openPopup("mainOverlay", ".popup-content.user");
+      
+      
+      document.querySelector(".order-history-btn").addEventListener("click", function() {
+        // Öppna orderhistorik-popupen
+        openPopup("mainOverlay", ".popup-content.orderhistory");
+        // Anropa funktionen som hämtar och visar orderhistoriken
+
+      });
+      
   });
+
+  
+  
+
 });
 // Stäng popup om användaren klickar utanför innehållsrutan
 window.onclick = function (event) {
@@ -94,5 +107,14 @@ document.addEventListener("click", (event) => {
     openPopup("mainOverlay", ".popup-content.single-product");
   }
 });
+
+const orderHistoryBtn = document.querySelector(".order-history-btn");
+if (orderHistoryBtn) {
+  orderHistoryBtn.addEventListener("click", function() {
+    // Öppna orderhistorik-popupen
+    openPopup("mainOverlay", ".popup-content.orderhistory");
+    // Anropa funktionen som hämtar och visar orderhistoriken
+  });
+}
 
 
