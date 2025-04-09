@@ -490,6 +490,7 @@ const updateCartIcon = () => {
 
 const handleLogOut = () => {
   localStorage.removeItem('token')
+  renderAdminLink()
   closePopup()
 }
 
@@ -511,8 +512,47 @@ export const renderAdminLink = () => {
   adminButton.style.display = isUserAdmin() ? 'flex' : 'none'
 }
 
+export const renderUsername = () => {
+  const usernameh3 = document.querySelector('.username-pages')
+  const userToken = localStorage.getItem('token')
+  
+  if(usernameh3){
+    const decoded = jwt_decode(userToken);
+    const username = decoded.username
+    usernameh3.innerHTML =  username
+  }
 
+}
 
+const editButton = document.querySelector('.fa-pen')
+const editUsername = () => {
+  const container = document.querySelector('.user-info');
+  const existingH3 = container.querySelector('.username-pages');
+  const existingInput = container.querySelector('.username-input');
+  const saveBtn = document.querySelector('.save-profile')
+  const userToken = localStorage.getItem('token')
+  const decoded = jwt_decode(userToken);
+  const username = decoded.username
+  if (existingH3) {
+    // Switch to edit mode
+    const input = document.createElement('input');
+    input.classList.add('username-input');
+    input.value = existingH3.textContent;
+    existingH3.replaceWith(input);
+    saveBtn.disabled = false
+  } else if (existingInput) {
+    // Switch back to view mode
+    const h3 = document.createElement('h3');
+    h3.classList.add('username-pages');
+    h3.textContent = username;
+    saveBtn.disabled = true
+
+    existingInput.replaceWith(h3);
+  }
+}
+editButton.addEventListener('click', editUsername)
+
+renderUsername()
 renderAdminLink()
 updateCartIcon()
 fetchAndRenderProducts();
