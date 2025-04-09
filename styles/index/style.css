@@ -362,6 +362,7 @@ main {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-evenly;
+    padding: 60px 0;
   }
 }
 main h2 {
