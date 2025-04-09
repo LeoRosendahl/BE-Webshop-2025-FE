@@ -362,6 +362,7 @@ main {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-evenly;
+    padding: 60px 0;
   }
 }
 main h2 {
@@ -605,7 +606,6 @@ main h2 {
     width: 500px;
     max-width: 1000px;
     min-height: calc(10vh - 100px);
-    height: 500px;
     border-radius: 20px;
     padding: 30px 50px;
     gap: 50px;
