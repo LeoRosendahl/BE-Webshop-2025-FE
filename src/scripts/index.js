@@ -1,4 +1,4 @@
-import { addProduct, fetchProducts, deleteProduct, signIn, getUserProfile, updateUserInfo } from "../utils/api.js"
+import { addProduct, fetchProducts, deleteProduct, signIn, getUserProfile, updateUserInfo, fetchCategories } from "../utils/api.js"
 import {closePopup, openPopup} from '../../script.js'
 import { addCustomer } from "../utils/api.js";
 import { addNewCustomer } from "../utils/addCustomer.js";
@@ -512,6 +512,37 @@ export const renderAdminLink = () => {
   adminButton.style.display = isUserAdmin() ? 'flex' : 'none'
 }
 
+const categoryBtnsContainers = document.querySelectorAll('.category-btns');
+
+
+const renderCategories = async() => {
+  const categoryList = await fetchCategories()
+  const AllcategoryButton = document.createElement('button')
+  categoryBtnsContainers.forEach(categoryBtnsContainer => {
+    
+  categoryBtnsContainer.innerHTML = ''
+  AllcategoryButton.classList.add('category-btn')
+  AllcategoryButton.classList.add('Alla')
+  AllcategoryButton.textContent = 'Alla'
+  AllcategoryButton.addEventListener('click', ()=>setFilter('All'))
+  categoryBtnsContainer.appendChild(AllcategoryButton)
+
+  categoryList.forEach(category => {
+    const categoryButton = document.createElement('button')
+    categoryButton.classList.add('category-btn')
+    categoryButton.textContent = category.name
+    categoryBtnsContainer.appendChild(categoryButton)
+    categoryButton.addEventListener('click', ()=>setFilter(category.name))
+  });
+  categoryList.forEach(category => {
+    const categoryOption = document.createElement('option')
+    categoryOption.textContent = category.name
+    categoryOption.value = category.name
+    categorySelect.appendChild(categoryOption)
+  });
+});
+
+}
 
 
 
@@ -626,6 +657,7 @@ saveBtn.addEventListener('click', async() => {
 
 
 document.addEventListener('DOMContentLoaded', renderProfile);
+renderCategories()
 renderAdminLink()
 updateCartIcon()
 fetchAndRenderProducts();
