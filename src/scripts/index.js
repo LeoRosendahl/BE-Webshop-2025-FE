@@ -526,35 +526,60 @@ export const renderUsername = () => {
 
 }
 
-const editButton = document.querySelector('.fa-pen')
-const editUsername = () => {
-  const container = document.querySelector('.user-info');
-  const existingH3 = container.querySelector('.username-pages');
-  const existingInput = container.querySelector('.username-input');
-  const saveBtn = document.querySelector('.save-profile')
-  const userToken = localStorage.getItem('token')
-  const decoded = jwt_decode(userToken);
-  const username = decoded.username
-  if (existingH3) {
-    // Switch to edit mode
-    const input = document.createElement('input');
-    input.classList.add('username-input');
-    input.value = existingH3.textContent;
-    existingH3.replaceWith(input);
-    saveBtn.disabled = false
-  } else if (existingInput) {
-    // Switch back to view mode
-    const h3 = document.createElement('h3');
-    h3.classList.add('username-pages');
-    h3.textContent = username;
-    saveBtn.disabled = true
+const editButtons = document.querySelectorAll('.fa-pen');
+const saveBtn = document.querySelector('.save-profile');
 
-    existingInput.replaceWith(h3);
-  }
-}
-editButton.addEventListener('click', editUsername)
+// Handle toggle for each field
+editButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const container = button.closest('.user-info');
+    const input = container.querySelector('input');
+    const h3 = container.querySelector('h3');
 
-renderUsername()
+    if (h3) {
+      // Switch to input mode
+      const newInput = document.createElement('input');
+      newInput.classList.add('username-input');
+      newInput.value = h3.textContent;
+      h3.replaceWith(newInput);
+      saveBtn.disabled = false;
+    } else if (input) {
+      // Switch back to text mode
+      const newH3 = document.createElement('h3');
+      newH3.classList.add('username-pages');
+      newH3.textContent = input.value;
+      input.replaceWith(newH3);
+
+      // Check if any inputs still exist — only disable save if all done
+      const stillEditing = document.querySelectorAll('.user-info input').length > 0;
+      saveBtn.disabled = !stillEditing;
+    }
+  });
+});
+
+// Save everything when "Spara" is clicked
+saveBtn.addEventListener('click', () => {
+  const inputs = document.querySelectorAll('.user-info input');
+  const dataToSave = {};
+
+  inputs.forEach(input => {
+    const container = input.closest('.user-info');
+    const field = container.dataset.field;
+    dataToSave[field] = input.value;
+
+    // Replace with <h3>
+    const newH3 = document.createElement('h3');
+    newH3.classList.add('username-pages');
+    newH3.textContent = input.value;
+    input.replaceWith(newH3);
+  });
+
+  saveBtn.disabled = true;
+
+
+});
+
+
 renderAdminLink()
 updateCartIcon()
 fetchAndRenderProducts();
