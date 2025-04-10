@@ -1,4 +1,4 @@
-import { addProduct, fetchProducts, deleteProduct, signIn } from "../utils/api.js"
+import { addProduct, fetchProducts, deleteProduct, signIn, getUserProfile, updateUserInfo } from "../utils/api.js"
 import {closePopup, openPopup} from '../../script.js'
 import { addCustomer } from "../utils/api.js";
 import { addNewCustomer } from "../utils/addCustomer.js";
@@ -513,17 +513,40 @@ export const renderAdminLink = () => {
   adminButton.style.display = isUserAdmin() ? 'flex' : 'none'
 }
 
-export const renderUsername = () => {
-  const usernameh3 = document.querySelector('.username-pages')
-  const userToken = localStorage.getItem('token')
-  if (!userToken || userToken === 'undefined' || userToken === 'null') return;
 
-  if(usernameh3){
-    const decoded = jwt_decode(userToken);
-    const username = decoded.username
-    usernameh3.innerHTML =  username
+
+
+export const renderProfile = async() => {
+  const token = localStorage.getItem('token')
+  const username = document.querySelector('.info-pages.username')
+  const firstName = document.querySelector('.info-pages.firstName')
+  const lastName = document.querySelector('.info-pages.lastName')
+  const email = document.querySelector('.info-pages.email')
+  const streetAddress = document.querySelector('.info-pages.streetAddress')
+  const postalCode = document.querySelector('.info-pages.postalCode')
+
+  if(!token) return;
+  const profileData = await getUserProfile();
+
+  const userInfo = profileData.user
+  if(username){
+    username.textContent = userInfo.username
+    if(userInfo.firstName){
+      firstName.textContent = userInfo.firstName
+    }
+    if(userInfo.lastName){
+      lastName.textContent = userInfo.lastName
+    }
+    if(userInfo.email){
+      email.textContent = userInfo.email
+    }
+    if(userInfo.streetAddress){
+      streetAddress.textContent = userInfo.streetAddress
+    }
+    if(userInfo.postalCode){
+      postalCode.textContent = userInfo.postalCode
+    }
   }
-
 }
 
 const editButtons = document.querySelectorAll('.fa-pen');
@@ -546,7 +569,7 @@ editButtons.forEach(button => {
     } else if (input) {
       // Switch back to text mode
       const newH3 = document.createElement('h3');
-      newH3.classList.add('username-pages');
+      newH3.classList.add('info-pages');
       newH3.textContent = input.value;
       input.replaceWith(newH3);
 
@@ -558,7 +581,7 @@ editButtons.forEach(button => {
 });
 
 // Save everything when "Spara" is clicked
-saveBtn.addEventListener('click', () => {
+saveBtn.addEventListener('click', async() => {
   const inputs = document.querySelectorAll('.user-info input');
   const dataToSave = {};
 
@@ -575,11 +598,14 @@ saveBtn.addEventListener('click', () => {
   });
 
   saveBtn.disabled = true;
-
-
+  await updateUserInfo(dataToSave)
 });
 
 
+
+
+
+document.addEventListener('DOMContentLoaded', renderProfile);
 renderAdminLink()
 updateCartIcon()
 fetchAndRenderProducts();

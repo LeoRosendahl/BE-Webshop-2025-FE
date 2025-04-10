@@ -2,7 +2,7 @@ import { signIn } from "../utils/api.js";
 import { closePopup } from "../../script.js";
 import { isUserAdmin } from '../utils/isUserAdmin.js'
 import { renderAdminLink } from "../scripts/index.js";
-import { renderUsername } from "../scripts/index.js";
+import { renderProfile } from "../scripts/index.js";
 
 
 export const signInUser = async () => {
@@ -22,7 +22,7 @@ export const signInUser = async () => {
         document.querySelector(".signin-password").value = '';
         
         await signIn(userData)
-        renderUsername()
+        await renderProfile()
         renderAdminLink()
         closePopup()
         
