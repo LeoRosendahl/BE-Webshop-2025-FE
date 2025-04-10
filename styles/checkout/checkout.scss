@@ -284,7 +284,7 @@ main {
   }
   
   .checkout-button {
-    margin: 30px 0 30px 0;
+    margin: 0px 0 30px 0;
     @include button-buy-big;
   }
   .checkout-info:nth-child(2) {
@@ -301,6 +301,12 @@ main {
     padding: 0px 46px;
     height: 370px;
     margin-bottom: 20px;
+  }
+  .cart-summary .cart-total {
+    font-size: 24px;
+    margin-top: 10px;
+    border:none;
+    gap:5px;
   }
 
  
