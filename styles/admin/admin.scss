@@ -803,3 +803,102 @@ main {
   .history-link{
     padding-right: 30px;
   }
+
+
+  .popup-content.orderhistory {
+    max-height: 80vh; /* Set maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  /* Order history container */
+  .order-history {
+    padding: 10px;
+  }
+  
+  /* Invoice-style order cards */
+  .order-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    position: relative;
+  }
+  
+  /* Order header with order number and date */
+  .order-header {
+    border-bottom: 2px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+  
+  .order-header h3 {
+    color: #333;
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .order-date {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  
+  .customer-info {
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    
+    margin-top: 20px;
+  }
+  
+  .customer-info p {
+    margin: 5px 0;
+    color: #444;
+  }
+  
+  /* Order items section */
+  .order-items {
+    margin-bottom: 15px;
+  }
+  
+  .order-items h4 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .order-items ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .order-items li {
+    border-bottom: 1px solid #eee;
+    padding: 3px 0;
+    color: #555;
+  }
+  
+  .order-items li:last-child {
+    border-bottom: none;
+  }
+  
+  /* Order total section */
+  .order-total {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: 12px;
+    text-align: right;
+  }
+  
+  .order-total p {
+    margin: 0;
+    color: #333;
+    font-size: 16px;
+  }

@@ -453,6 +453,90 @@ searchField.addEventListener("input", changeSearchInput);
 
 fetchAndRenderProducts();
 
+// Function to display order history
+// Function to display order history
+function displayOrderHistory() {
+  const orderHistoryContainer = document.querySelector('.order-history');
+  if (!orderHistoryContainer) return;
+  
+  // Get all orders from localStorage
+  const orders = JSON.parse(localStorage.getItem('orders')) || [];
+  
+  if (orders.length === 0) {
+    orderHistoryContainer.innerHTML = '<p>Inga beställningar har gjorts ännu.</p>';
+    return;
+  }
+  
+  // Sort orders by date (newest first)
+  orders.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
+  
+  let orderHistoryHTML = '<div class="orders-list">';
+  
+  orders.forEach((order) => {
+    // Generate a random 5-digit order number if it doesn't already exist
+    if (!order.orderNumber) {
+      order.orderNumber = Math.floor(10000 + Math.random() * 90000);
+    }
+    
+    const orderDate = new Date(order.orderDate).toLocaleString('sv-SE');
+    
+    orderHistoryHTML += `
+      <div class="order-card">
+        <div class="order-header">
+          <h3>Order #${order.orderNumber}</h3>
+          <span class="order-date">${orderDate}</span>
+        </div>
+        <div class="customer-info">
+          <p><strong>Kund:</strong> ${order.customerInfo.name} ${order.customerInfo.surname}</p>
+          <p><strong>E-post:</strong> ${order.customerInfo.email}</p>
+          <p><strong>Adress:</strong> ${order.customerInfo.address}, ${order.customerInfo.postalCode}</p>
+        </div>
+        <div class="order-items">
+          <h4>Produkter:</h4>
+          <ul>
+    `;
+    
+    order.items.forEach(item => {
+      orderHistoryHTML += `
+        <li>
+          ${item.name} - ${item.quantity} st × ${item.price} kr = ${(item.quantity * item.price).toFixed(2)} kr
+        </li>
+      `;
+    });
+    
+    orderHistoryHTML += `
+          </ul>
+        </div>
+        <div class="order-total">
+          <p><strong>Totalsumma:</strong> ${order.totalAmount} kr</p>
+        </div>
+      </div>
+    `;
+  });
+  
+  orderHistoryHTML += '</div>';
+  orderHistoryContainer.innerHTML = orderHistoryHTML;
+  
+  // Save back to localStorage to persist the order numbers
+  localStorage.setItem('orders', JSON.stringify(orders));
+}
+
+// Now, let's add a click event listener for the history icon to show the order history popup
+
+const historyIcon = document.querySelector('.history-link i');
+if (historyIcon) {
+  historyIcon.addEventListener('click', () => {
+    // Show the order history popup
+    openPopup("mainOverlay", ".popup-content.orderhistory");
+    // Load the order history data
+    displayOrderHistory();
+  });
+}
+
+// Also add an event listener to the close button for the order history popup
+document.querySelectorAll('.popup-content.orderhistory .close-btn').forEach(btn => {
+  btn.addEventListener('click', closePopup);
+});
 
 
 const categoryInput = document.querySelector('.addcategory-container input');
