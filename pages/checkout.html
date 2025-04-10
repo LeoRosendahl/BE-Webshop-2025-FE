@@ -47,11 +47,8 @@
               </div>
             </div>
             <div class="profile-cart-container">
-              <a  href="/pages/admin.html" class="admin-page-link">
-                <i style="color: #3BB77E;" class="fa-solid fa-screwdriver-wrench"></i>
-              </a>
               <div class="cart">
-                <i class="fa-solid fa-cart-shopping cart-trigger"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
                 <div class="cart-item-number">0</div>
               </div>
               <i class="fa-solid fa-user user-trigger"></i>
@@ -62,9 +59,43 @@
       </div>
     </header>
     <main>
-      <h1 class="checkout-h1">Kassa</h1>
-      <div class="get-cart-items">
-      </div>
+      <main>
+        <h1>Kassa</h1>
+        <div class="checkout-row">
+          <div class="checkout-container">
+            <div class="checkout-info">
+              <h2>Betalningsinformation</h2>
+              <form id="checkout-form">
+                <div class="input-group">
+                  <input type="text" id="name" placeholder="Förnamn" required />
+                </div>
+                <div class="input-group">
+                  <input type="text" id="surname" placeholder="Efternamn" required />
+                </div>
+                <div class="input-group">
+                  <input type="email" id="email" placeholder="E-post" required />
+                </div>
+                <div class="adress-group">
+                  <div class="input-group">
+                    <input type="text" id="address" placeholder="Adress" required />
+                  </div>
+                  <div class="input-group">
+                    <input type="text" id="postal-code" placeholder="Postnummer" required />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <div class="checkout-info">
+            <h2>Dina Varor</h2>
+            <div class="get-cart-items">
+            </div>
+          </div>
+        </div>
+        
+        <button type="submit" class="checkout-button">Slutför köp</button>
+      </main>
     </main>
     <footer class="site-footer">
       <div class="footer-content">

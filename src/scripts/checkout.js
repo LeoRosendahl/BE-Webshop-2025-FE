@@ -78,3 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     cartNumber.innerHTML = numberOfItems;
   }
+
+  // Checkout-funktion
+  document.querySelector('.checkout-button').addEventListener('click', function() {
+    document.getElementById('checkout-form').submit();
+  });
