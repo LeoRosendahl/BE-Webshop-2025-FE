@@ -515,16 +515,16 @@ const categoryBtnsContainers = document.querySelectorAll(".category-btns");
 
 const renderCategories = async () => {
   const categoryList = await fetchCategories();
-  const AllcategoryButton = document.createElement("button");
   categoryBtnsContainers.forEach(categoryBtnsContainer => {
     
-  categoryBtnsContainer.innerHTML = "";
-  categorySelect.innerHTML = ""
-  AllcategoryButton.classList.add("category-btn");
-  AllcategoryButton.classList.add("Alla");
-  AllcategoryButton.textContent = "Alla";
-  AllcategoryButton.addEventListener("click", () => setFilter("All"));
-  categoryBtnsContainer.appendChild(AllcategoryButton);
+    const AllcategoryButton = document.createElement("button");
+    categoryBtnsContainer.innerHTML = "";
+    categorySelect.innerHTML = ""
+    AllcategoryButton.classList.add("category-btn");
+    AllcategoryButton.classList.add("Alla");
+    AllcategoryButton.textContent = "Alla";
+    AllcategoryButton.addEventListener("click", () => setFilter("All"));
+    categoryBtnsContainer.appendChild(AllcategoryButton);
 
   categoryList.forEach((category) => {
     const btnContainer = document.createElement("div");
