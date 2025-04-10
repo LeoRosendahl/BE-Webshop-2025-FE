@@ -21,17 +21,31 @@ export const signInUser = async () => {
         document.querySelector(".signin-username").value = ''
         document.querySelector(".signin-password").value = '';
         
-        await signIn(userData)
-        await renderProfile()
-        renderAdminLink()
-        closePopup()
-        
-        if (sessionStorage.getItem('redirectToCheckout') === 'true') {
-            sessionStorage.removeItem('redirectToCheckout');
+      
+        try {
+            const success = await signIn(userData);
             
-            setTimeout(() => {
-                alert('Går till kassan...');
-            }, 200);
+            // Om inloggningen misslyckades, avbryt här
+            if (!success) {
+                return; 
+            }
+            // Om vi kom hit lyckades inloggningen
+            renderUsername();
+            renderAdminLink();
+            closePopup();
+            window.location.reload();
+            
+            if (sessionStorage.getItem('redirectToCheckout') === 'true') {
+                sessionStorage.removeItem('redirectToCheckout');
+                
+                setTimeout(() => {
+                    window.location.href = "/pages/checkout.html";
+                }, 200);
+            }
+        } catch (error) {
+            // Hantera oväntade fel
+            console.error('Inloggningsfel:', error);
+            
         }
     }
 };
