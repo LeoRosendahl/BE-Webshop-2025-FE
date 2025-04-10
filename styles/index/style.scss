@@ -819,7 +819,11 @@ main {
     }
     .fa-pen{
       color: $basegreen;
-
+      cursor: pointer;
+      transition: all 200ms;
+    }
+    .fa-pen:hover {
+      color: $grey;
     }
     
     .my-pages-container{
@@ -873,3 +877,5 @@ main {
     .admin-page-link {
       display: none;
     }
+
+   

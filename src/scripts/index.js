@@ -1,4 +1,4 @@
-import { addProduct, fetchProducts, deleteProduct, signIn } from "../utils/api.js"
+import { addProduct, fetchProducts, deleteProduct, signIn, getUserProfile, updateUserInfo } from "../utils/api.js"
 import {closePopup, openPopup} from '../../script.js'
 import { addCustomer } from "../utils/api.js";
 import { addNewCustomer } from "../utils/addCustomer.js";
@@ -512,48 +512,121 @@ export const renderAdminLink = () => {
   adminButton.style.display = isUserAdmin() ? 'flex' : 'none'
 }
 
-export const renderUsername = () => {
-  const usernameh3 = document.querySelector('.username-pages')
-  const userToken = localStorage.getItem('token')
-  if (!userToken || userToken === 'undefined' || userToken === 'null') return;
 
-  if(usernameh3){
-    const decoded = jwt_decode(userToken);
-    const username = decoded.username
-    usernameh3.innerHTML =  username
-  }
 
-}
 
-const editButton = document.querySelector('.fa-pen')
-const editUsername = () => {
-  const container = document.querySelector('.user-info');
-  const existingH3 = container.querySelector('.username-pages');
-  const existingInput = container.querySelector('.username-input');
-  const saveBtn = document.querySelector('.save-profile')
-  const userToken = localStorage.getItem('token')
-  const decoded = jwt_decode(userToken);
-  const username = decoded.username
-  if (existingH3) {
-    // Switch to edit mode
-    const input = document.createElement('input');
-    input.classList.add('username-input');
-    input.value = existingH3.textContent;
-    existingH3.replaceWith(input);
-    saveBtn.disabled = false
-  } else if (existingInput) {
-    // Switch back to view mode
-    const h3 = document.createElement('h3');
-    h3.classList.add('username-pages');
-    h3.textContent = username;
-    saveBtn.disabled = true
+export const renderProfile = async() => {
+  const token = localStorage.getItem('token')
+  const username = document.querySelector('.info-pages.username')
+  const firstName = document.querySelector('.info-pages.firstName')
+  const lastName = document.querySelector('.info-pages.lastName')
+  const email = document.querySelector('.info-pages.email')
+  const streetAddress = document.querySelector('.info-pages.streetAddress')
+  const postalCode = document.querySelector('.info-pages.postalCode')
 
-    existingInput.replaceWith(h3);
+  if(!token) return;
+  const profileData = await getUserProfile();
+
+  const userInfo = profileData.user
+  if(username){
+    username.textContent = userInfo.username
+    if(userInfo.firstName){
+      firstName.textContent = userInfo.firstName
+    }
+    if(userInfo.lastName){
+      lastName.textContent = userInfo.lastName
+    }
+    if(userInfo.email){
+      email.textContent = userInfo.email
+    }
+    if(userInfo.streetAddress){
+      streetAddress.textContent = userInfo.streetAddress
+    }
+    if(userInfo.postalCode){
+      postalCode.textContent = userInfo.postalCode
+    }
   }
 }
-editButton.addEventListener('click', editUsername)
 
-renderUsername()
+const editButtons = document.querySelectorAll('.fa-pen');
+const saveBtn = document.querySelector('.save-profile');
+
+// Handle toggle for each field
+editButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const container = button.closest('.user-info');
+    const input = container.querySelector('input');
+    const h3 = container.querySelector('h3');
+    
+    // Check if it's in edit mode (input exists)
+    if (h3) {
+      // Switch to input mode
+      const originalText = h3.textContent; // Store original text content
+
+      // Create input element and set the original text as its value
+      const newInput = document.createElement('input');
+      newInput.classList.add('username-input');
+      newInput.value = originalText; // Use the original text as value
+      h3.replaceWith(newInput);
+
+      saveBtn.disabled = false;
+
+      // Highlight the text in the input field
+      newInput.select();
+
+      // When toggling back to text mode, use the original text
+      newInput.addEventListener('blur', () => {
+        const newH3 = document.createElement('h3');
+        newH3.classList.add('info-pages');
+        newH3.textContent = originalText;  // Revert back to the original value
+        newInput.replaceWith(newH3);
+
+        // Check if any inputs still exist — only disable save if all done
+        const stillEditing = document.querySelectorAll('.user-info input').length > 0;
+        saveBtn.disabled = !stillEditing;
+      });
+    } else if (input) {
+      // If there was an input, revert back to text mode with the current input value
+      const newH3 = document.createElement('h3');
+      newH3.classList.add('info-pages');
+      newH3.textContent = input.value; // Revert to the current value of the input
+      input.replaceWith(newH3);
+
+      // Check if any inputs still exist — only disable save if all done
+      const stillEditing = document.querySelectorAll('.user-info input').length > 0;
+      saveBtn.disabled = !stillEditing;
+    }
+  });
+});
+
+
+
+// Save everything when "Spara" is clicked
+saveBtn.addEventListener('click', async() => {
+  const inputs = document.querySelectorAll('.user-info input');
+  const dataToSave = {};
+
+  inputs.forEach(input => {
+    const container = input.closest('.user-info');
+    const field = container.dataset.field;
+    dataToSave[field] = input.value;
+
+    // Replace with <h3>
+    const newH3 = document.createElement('h3');
+    newH3.classList.add('username-pages');
+    newH3.textContent = input.value;
+    input.replaceWith(newH3);
+  });
+
+  saveBtn.disabled = true;
+  await updateUserInfo(dataToSave)
+});
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', renderProfile);
 renderAdminLink()
 updateCartIcon()
 fetchAndRenderProducts();

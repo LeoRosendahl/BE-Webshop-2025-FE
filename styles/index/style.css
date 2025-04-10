@@ -1403,6 +1403,12 @@ p:only-child {
 
 .fa-pen {
   color: #3BB77E;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.fa-pen:hover {
+  color: #ADADAD;
 }
 
 .my-pages-container {
