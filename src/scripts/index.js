@@ -491,6 +491,7 @@ const handleLogOut = () => {
   localStorage.removeItem('token')
   renderAdminLink()
   closePopup()
+  window.location.reload();
 }
 
 const signinButton = document.querySelector('.login-btn')
