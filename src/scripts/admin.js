@@ -519,6 +519,7 @@ const renderCategories = async () => {
   categoryBtnsContainers.forEach(categoryBtnsContainer => {
     
   categoryBtnsContainer.innerHTML = "";
+  categorySelect.innerHTML = ""
   AllcategoryButton.classList.add("category-btn");
   AllcategoryButton.classList.add("Alla");
   AllcategoryButton.textContent = "Alla";
