@@ -513,36 +513,38 @@ export const renderAdminLink = () => {
 }
 
 const categoryBtnsContainers = document.querySelectorAll('.category-btns');
-
-
-const renderCategories = async() => {
+const renderCategories = async () => {
   const categoryList = await fetchCategories()
-  const AllcategoryButton = document.createElement('button')
-  categoryBtnsContainers.forEach(categoryBtnsContainer => {
-    
-  categoryBtnsContainer.innerHTML = ''
-  AllcategoryButton.classList.add('category-btn')
-  AllcategoryButton.classList.add('Alla')
-  AllcategoryButton.textContent = 'Alla'
-  AllcategoryButton.addEventListener('click', ()=>setFilter('All'))
-  categoryBtnsContainer.appendChild(AllcategoryButton)
 
-  categoryList.forEach(category => {
-    const categoryButton = document.createElement('button')
-    categoryButton.classList.add('category-btn')
-    categoryButton.textContent = category.name
-    categoryBtnsContainer.appendChild(categoryButton)
-    categoryButton.addEventListener('click', ()=>setFilter(category.name))
+  categoryBtnsContainers.forEach(categoryBtnsContainer => {
+    categoryBtnsContainer.innerHTML = ''
+
+    // Move button creation here
+    const allCategoryButton = document.createElement('button')
+    allCategoryButton.classList.add('category-btn')
+    allCategoryButton.classList.add('Alla')
+    allCategoryButton.textContent = 'Alla'
+    allCategoryButton.addEventListener('click', () => setFilter('All'))
+    categoryBtnsContainer.appendChild(allCategoryButton)
+
+    categoryList.forEach(category => {
+      const categoryButton = document.createElement('button')
+      categoryButton.classList.add('category-btn')
+      categoryButton.textContent = category.name
+      categoryButton.addEventListener('click', () => setFilter(category.name))
+      categoryBtnsContainer.appendChild(categoryButton)
+    });
   });
+
+  // Populate the dropdown only once
   categoryList.forEach(category => {
     const categoryOption = document.createElement('option')
     categoryOption.textContent = category.name
     categoryOption.value = category.name
     categorySelect.appendChild(categoryOption)
   });
-});
-
 }
+
 
 
 
