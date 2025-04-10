@@ -194,3 +194,72 @@ export async function signIn(userData) {
       throw error;
     }
   };
+
+  export async function fetchCategories() {
+    const url = `${getBaseUrl()}api/categories`;
+  
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to fetch profile');
+      }
+  
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+      throw error;
+    }
+  }
+
+  export async function addCategory(categoryName) {
+    const url = `${getBaseUrl()}api/categories`; // Backend API endpoint
+    const token = localStorage.getItem('token');
+  
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`
+
+        },
+        body: JSON.stringify({ name: categoryName }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Failed to add new category: ${response.statusText}`);
+      }
+  
+      return await response.json(); 
+    } catch (error) {
+      console.error("Error adding new category:", error);
+      return null; 
+    }
+  }
+
+  export async function deleteCategory(categoryId) {
+    const url = `${getBaseUrl()}api/categories/${categoryId}`; // Construct API endpoint
+  
+    try {
+      const response = await fetch(url, {
+        method: "DELETE",
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Failed to delete category: ${response.statusText}`);
+      }
+  
+      console.log("category deleted successfully!");
+      return true; // Return success
+    } catch (error) {
+      console.error("Error deleting category:", error);
+      return false; // Return failure
+    }
+  }

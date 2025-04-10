@@ -91,11 +91,12 @@ main {
   }
 
 .category-btns {
-   
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
     button {
       @include button-category;
-      margin-top: 20px;
-      margin-bottom: 20px;
+      width: 250px;
     }
     
 }
@@ -800,6 +801,16 @@ main {
 .icon-container{
     display: flex;
 }
-  .history-link{
+.history-link{
     padding-right: 30px;
-  }
+}
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.fa-xmark {
+    color: $red;
+}
