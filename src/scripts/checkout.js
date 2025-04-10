@@ -1,0 +1,80 @@
+document.addEventListener('DOMContentLoaded', () => {
+    displayCartItems();
+    updateCartIcon();
+  });
+  
+  function displayCartItems() {
+    const cartContainer = document.querySelector(".get-cart-items");
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (!cartContainer) return;
+    
+    if (cart.length === 0) {
+      cartContainer.innerHTML = `
+        <div class="popup-content cart">
+          <h2>Varukorg</h2>
+          <p>Din kundvagn är tom</p>
+        </div>
+      `;
+      return;
+    }
+    
+   
+    let cartHTML = `
+      <div class="popup-content cart">
+        <div class="cart-items">
+    `;
+    
+    let totalSum = 0;
+    
+    cart.forEach(item => {
+      const itemTotal = item.price * item.quantity;
+      totalSum += itemTotal;
+      
+      cartHTML += `
+        <div class="cart-item">
+          ${item.imageUrl ? `<img src="${item.imageUrl}" alt="${item.name}" class="cart-item-image">` : '<div class="cart-item-image-placeholder"></div>'}
+          <div class="cart-item-info">
+            <h4>${item.name}</h4>
+            <p class="category">${item.category}</p>
+          </div>
+          <div class="wrapper">
+            <div class="cart-item-price-actions">
+              <div class="price">${item.price} kr</div>
+            </div>
+            <div class="quantity-controls">
+              <span>${item.quantity}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    
+    cartHTML += `
+        </div>
+        <div class="cart-summary">
+          <div class="cart-total">
+            <span>Totalt:</span>
+            <span>${(Math.round(totalSum * 100) / 100).toFixed(2)} kr</span>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    cartContainer.innerHTML = cartHTML;
+  }
+  
+  // Uppdatera kundvagnsikonen
+  function updateCartIcon() {
+    const cartNumber = document.querySelector('.cart-item-number');
+    if (!cartNumber) return;
+    
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let numberOfItems = 0;
+    
+    cart.forEach(item => {
+      numberOfItems += item.quantity || 0;
+    });
+    
+    cartNumber.innerHTML = numberOfItems;
+  }
