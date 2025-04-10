@@ -585,28 +585,42 @@ editButtons.forEach(button => {
 
 
 
-// Save everything when "Spara" is clicked
 saveBtn.addEventListener('click', async() => {
   const inputs = document.querySelectorAll('.user-info input');
+  let hasEmptyFields = false;
+  
+  // Check if any inputs are empty
+  inputs.forEach(input => {
+    if (!input.value.trim()) {
+      hasEmptyFields = true;
+    }
+  });
+  
+  // If empty fields exist, show alert and stop execution
+  if (hasEmptyFields) {
+    alert('Vänligen fyll i alla fält innan du sparar!.');
+    return;
+  }
+  
+  // Continue with saving if all fields have values
   const dataToSave = {};
-
+  
   inputs.forEach(input => {
     const container = input.closest('.user-info');
     const field = container.dataset.field;
     dataToSave[field] = input.value;
-
+    
     // Replace with <h3>
     const newH3 = document.createElement('h3');
     newH3.classList.add('username-pages');
     newH3.textContent = input.value;
     input.replaceWith(newH3);
   });
-
+  
   saveBtn.disabled = true;
   
-  await updateUserInfo(dataToSave)
+  await updateUserInfo(dataToSave);
 });
-
 
 
 

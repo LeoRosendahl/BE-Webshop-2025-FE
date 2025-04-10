@@ -1,7 +1,36 @@
+import { getUserProfile } from "../utils/api.js"
+
 document.addEventListener('DOMContentLoaded', () => {
     displayCartItems();
     updateCartIcon();
   });
+
+  const fillInputsWithInfo = async () => {
+    const userData = await getUserProfile();
+    const userInfo = userData.user;
+    
+    const firstNameInput = document.getElementById('name');
+    const lastNameInput = document.getElementById('surname');
+    const emailInput = document.getElementById('email');
+    const addressInput = document.getElementById('address'); 
+    const postalCodeInput = document.getElementById('postal-code');
+    
+    if (userInfo.firstName) {
+      firstNameInput.value = userInfo.firstName;
+    }
+    if (userInfo.lastName) {
+      lastNameInput.value = userInfo.lastName;
+    }
+    if (userInfo.email) {
+      emailInput.value = userInfo.email;
+    }
+    if (userInfo.streetAddress) {
+      addressInput.value = userInfo.streetAddress;
+    }
+    if (userInfo.postalCode) {
+      postalCodeInput.value = userInfo.postalCode;
+    }
+  };
   
   function displayCartItems() {
     const cartContainer = document.querySelector(".get-cart-items");
@@ -83,3 +112,5 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.checkout-button').addEventListener('click', function() {
     document.getElementById('checkout-form').submit();
   });
+
+  fillInputsWithInfo()
