@@ -12,6 +12,7 @@ export const checkIfUser = () => {
     // Optional: Check if token is expired
     if (decoded.exp && Date.now() >= decoded.exp * 1000) {
       console.warn('Token expired');
+      localStorage.removeItem('token')
       return false;
     }
 
