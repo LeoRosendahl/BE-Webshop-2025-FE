@@ -111,6 +111,10 @@ main {
     }
     .wrapper {
       margin-left: 100px;
+
+      // @media (max-width: 450px) {
+      //   margin-left: 30px;
+      // }
      }
     
     // Pris och knappar till höger
@@ -244,7 +248,7 @@ main {
     margin-top: 20px;
     
     .input-group input {
-      width: 300px;
+      width: 250px;
       margin-bottom: 15px;
       padding: 10px;
       border-radius: 4px;
@@ -266,7 +270,7 @@ main {
    gap: 30px;
     
 
-    @media (max-width: 1030px) {
+    @media (max-width: 798px) {
       flex-direction: column;
       gap:0px;
     }
@@ -285,18 +289,19 @@ main {
   }
   .checkout-info:nth-child(2) {
     border: 0.5px solid $basegreen;
-    padding: 5px 40px;
     border-radius: 20px;
     max-height: 400px; 
     overflow-y: auto; 
-    width: 400px;
+    padding:0px 20px ;
+    height: 388px;
 }
   .checkout-info:nth-child(1) {
     border:0.5px solid $basegreen;
-    padding: 5px 40px 20px 40px;
     border-radius: 20px;
+    padding: 0px 46px;
+    height: 370px;
     margin-bottom: 20px;
-    width: 400px;
   }
+
  
   
