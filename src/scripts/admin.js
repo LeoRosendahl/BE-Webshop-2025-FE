@@ -539,6 +539,7 @@ const renderCategories = async () => {
     closeIcon.addEventListener('click', async()=> {
       await deleteCategory(category._id);
       renderCategories();
+      fetchAndRenderProducts();
     })
 
     btnContainer.appendChild(catButton);
