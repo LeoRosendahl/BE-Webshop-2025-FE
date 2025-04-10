@@ -30,7 +30,6 @@ export const signInUser = async () => {
                 return; 
             }
             // Om vi kom hit lyckades inloggningen
-            renderUsername();
             renderAdminLink();
             closePopup();
             window.location.reload();
