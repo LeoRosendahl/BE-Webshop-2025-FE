@@ -32,6 +32,7 @@ export const signInUser = async () => {
             renderUsername();
             renderAdminLink();
             closePopup();
+            window.location.reload();
             
             if (sessionStorage.getItem('redirectToCheckout') === 'true') {
                 sessionStorage.removeItem('redirectToCheckout');

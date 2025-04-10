@@ -25,25 +25,26 @@ export async function signIn(userData) {
     });
 
     if (!response.ok) {
-      throw new Error('Login failed');
+      alert('Fel användarnamn eller lösenord!')
+      return false; // Returnera false vid fel
     }
 
     const data = await response.json();
     const token = data.accessToken;
 
-
     if (token) {
       localStorage.setItem('token', token);
+      return true; // Returnera true vid framgång
     } else {
       console.warn('No token received');
+      return false; // Returnera false om inget token
     }
   } catch (error) {
     alert('Fel användarnamn eller lösenord!')
     console.error('Error during login:', error);
+    return false; // Returnera false vid error
   }
-
 }
-
 
   export async function addProduct(productData) {
     const url = `${getBaseUrl()}api/products`; // Backend API endpoint
