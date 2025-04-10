@@ -139,36 +139,34 @@ function attachCartEventListeners() {
     clearCartBtn.addEventListener('click', clearCart);
   }
   
-// Ska senare länkas till checkout/kassan
+  // Gå till kassan
+
   const checkoutBtn = document.querySelector('.checkout-btn');
-  if (checkoutBtn) {
-    // Kontrollera användarstatus och uppdatera knapp-texten
-    if (!checkIfUser()) {
-      checkoutBtn.textContent = 'Logga in för att betala';}
-      else {
-        checkoutBtn.textContent = 'Gå till kassan';
-      }
-    
-    
-    // Lägg till klick-hanterare
+if (checkoutBtn) {
+  if (!checkIfUser()) {
+    checkoutBtn.textContent = 'Logga in för att betala';}
+    else {
+      checkoutBtn.textContent = 'Gå till kassan';
+    }
+    //Eventlyssnare för att gå till kassan
     checkoutBtn.addEventListener('click', () => {
       if (!checkIfUser()) {
-        
         sessionStorage.setItem('redirectToCheckout', 'true');
-
         const loginPopup = document.querySelector('.popup-content.user');
         if (loginPopup) {
           openPopup("mainOverlay", ".popup-content.user");
         } else {
-        console.error('Kunde inte hitta inloggningspopupen (.popup-content.user)');
-      }
+          console.error('Kunde inte hitta inloggningspopupen (.popup-content.user)');
+        }
       } else {
         // Om användaren är inloggad, fortsätt till kassan
         window.location.href = "/pages/checkout.html";
       }
     });
-  }
 }
+
+  }
+
 
 // Uppdatera antal av en produkt
 function updateQuantity(id, change, ) {
