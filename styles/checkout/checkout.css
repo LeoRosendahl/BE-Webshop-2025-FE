@@ -408,7 +408,7 @@ main h2 {
   margin-bottom: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eee;
-  gap: 30px;
+  gap: 10px;
 }
 .popup-content.cart .cart-item .cart-item-image {
   width: 70px;
@@ -435,6 +435,9 @@ main h2 {
   font-size: 14px;
   color: #ADADAD;
   margin: 0;
+}
+.popup-content.cart .cart-item .wrapper {
+  margin-left: 100px;
 }
 .popup-content.cart .cart-item .cart-item-price-actions {
   display: flex;
@@ -603,7 +606,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
   max-width: 600px;
   margin-top: 20px;
 }
@@ -623,12 +625,11 @@ main {
 .checkout-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  max-width: 1200px;
-  gap: 250px;
+  gap: 30px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1030px) {
   .checkout-row {
     flex-direction: column;
     gap: 0px;
@@ -636,7 +637,9 @@ main {
 }
 
 .checkout-container, .checkout-info {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .checkout-button {
@@ -674,4 +677,21 @@ main {
 .checkout-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.checkout-info:nth-child(2) {
+  border: 0.5px solid #3BB77E;
+  padding: 5px 40px;
+  border-radius: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  width: 400px;
+}
+
+.checkout-info:nth-child(1) {
+  border: 0.5px solid #3BB77E;
+  padding: 5px 40px 20px 40px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  width: 400px;
 }/*# sourceMappingURL=checkout.css.map */

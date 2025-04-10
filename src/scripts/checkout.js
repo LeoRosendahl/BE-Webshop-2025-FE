@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="price">${item.price} kr</div>
             </div>
             <div class="quantity-controls">
-              <span>${item.quantity}</span>
+              <span>${item.quantity} st</span>
             </div>
           </div>
         </div>
