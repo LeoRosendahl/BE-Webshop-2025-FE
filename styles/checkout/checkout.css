@@ -610,7 +610,7 @@ main {
   margin-top: 20px;
 }
 #checkout-form .input-group input {
-  width: 300px;
+  width: 250px;
   margin-bottom: 15px;
   padding: 10px;
   border-radius: 4px;
@@ -629,7 +629,7 @@ main {
   width: 100%;
   gap: 30px;
 }
-@media (max-width: 1030px) {
+@media (max-width: 798px) {
   .checkout-row {
     flex-direction: column;
     gap: 0px;
@@ -681,17 +681,17 @@ main {
 
 .checkout-info:nth-child(2) {
   border: 0.5px solid #3BB77E;
-  padding: 5px 40px;
   border-radius: 20px;
   max-height: 400px;
   overflow-y: auto;
-  width: 400px;
+  padding: 0px 20px;
+  height: 388px;
 }
 
 .checkout-info:nth-child(1) {
   border: 0.5px solid #3BB77E;
-  padding: 5px 40px 20px 40px;
   border-radius: 20px;
+  padding: 0px 46px;
+  height: 370px;
   margin-bottom: 20px;
-  width: 400px;
 }/*# sourceMappingURL=checkout.css.map */
