@@ -557,39 +557,22 @@ editButtons.forEach(button => {
     const container = button.closest('.user-info');
     const input = container.querySelector('input');
     const h3 = container.querySelector('h3');
-    
-    // Check if it's in edit mode (input exists)
+
     if (h3) {
       // Switch to input mode
-      const originalText = h3.textContent; // Store original text content
-
-      // Create input element and set the original text as its value
       const newInput = document.createElement('input');
       newInput.classList.add('username-input');
-      newInput.value = originalText; // Use the original text as value
+      newInput.value = h3.textContent;
       h3.replaceWith(newInput);
-
       saveBtn.disabled = false;
 
       // Highlight the text in the input field
       newInput.select();
-
-      // When toggling back to text mode, use the original text
-      newInput.addEventListener('blur', () => {
-        const newH3 = document.createElement('h3');
-        newH3.classList.add('info-pages');
-        newH3.textContent = originalText;  // Revert back to the original value
-        newInput.replaceWith(newH3);
-
-        // Check if any inputs still exist — only disable save if all done
-        const stillEditing = document.querySelectorAll('.user-info input').length > 0;
-        saveBtn.disabled = !stillEditing;
-      });
     } else if (input) {
-      // If there was an input, revert back to text mode with the current input value
+      // Switch back to text mode
       const newH3 = document.createElement('h3');
       newH3.classList.add('info-pages');
-      newH3.textContent = input.value; // Revert to the current value of the input
+      newH3.textContent = input.value;
       input.replaceWith(newH3);
 
       // Check if any inputs still exist — only disable save if all done
@@ -598,6 +581,7 @@ editButtons.forEach(button => {
     }
   });
 });
+
 
 
 
@@ -619,6 +603,7 @@ saveBtn.addEventListener('click', async() => {
   });
 
   saveBtn.disabled = true;
+  
   await updateUserInfo(dataToSave)
 });
 
