@@ -245,7 +245,7 @@ const renderProducts = async (productsToRender) => {
 
     const productCategory = document.createElement("p");
     productCategory.classList.add("category");
-    productCategory.textContent = product.category.name;
+    productCategory.textContent = product.category?.name || 'Okänd kategori'
 
     // Skapa köp-knapp
     const buyButton = document.createElement("button");
@@ -289,7 +289,7 @@ const renderSingleProduct = (product) => {
   productPrice.innerHTML = `${product.price}:-`
   productCategory.innerHTML = product.category.name
   productDesc.innerHTML = product.description
-  productQuantity.innerHTML = `Lagersaldo: ${product.stock}`;
+  productQuantity.innerHTML = `Lagersaldo: ${product.stock} st`;
   productImage.src = product.imageUrl || ""  
   productImage.alt = product.name  
 
@@ -366,10 +366,10 @@ sortSelect.addEventListener("change", function() {
 
 const updateProducts = () => {
  //Filter
-  filteredAndSortedProducts = 
-    currentCategory === "All" 
-      ? [...allProducts] 
-      : allProducts.filter((product) => product.category.name === currentCategory);
+ filteredAndSortedProducts = 
+ currentCategory === "All" 
+   ? [...allProducts] 
+   : allProducts.filter((product) => product.category?.name === currentCategory)
   
  //Sortering
   if (currentSortOption) {
@@ -459,7 +459,7 @@ const renderSearchedProducts = () => {
 
     // Create and set up the product category
     const productCategory = document.createElement("p");
-    productCategory.textContent = product.category.name;
+    productCategory.textContent = product.category?.name || 'Okänd kategori';
 
     // Create and set up the price
     const productPrice = document.createElement("h2");
@@ -530,19 +530,13 @@ const renderCategories = async () => {
     categoryList.forEach(category => {
       const categoryButton = document.createElement('button')
       categoryButton.classList.add('category-btn')
-      categoryButton.textContent = category.name
-      categoryButton.addEventListener('click', () => setFilter(category.name))
+      categoryButton.textContent = category?.name || 'Okänd kategori'
+      categoryButton.addEventListener('click', () => setFilter(category.name || 'Okänd kategori'))
       categoryBtnsContainer.appendChild(categoryButton)
     });
   });
 
-  // Populate the dropdown only once
-  categoryList.forEach(category => {
-    const categoryOption = document.createElement('option')
-    categoryOption.textContent = category.name
-    categoryOption.value = category.name
-    categorySelect.appendChild(categoryOption)
-  });
+
 }
 
 
@@ -557,7 +551,9 @@ export const renderProfile = async() => {
   const streetAddress = document.querySelector('.info-pages.streetAddress')
   const postalCode = document.querySelector('.info-pages.postalCode')
 
-  if(!token) return;
+  if (!token || token === 'undefined' || token === 'null' || token.trim() === '') {
+    return;
+  }
   const profileData = await getUserProfile();
 
   const userInfo = profileData.user

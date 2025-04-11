@@ -115,13 +115,6 @@ function displayCartItems() {
 
 
 
-  cartContainer.innerHTML = cartHTML;
-  
-
-  if (summaryContainer) {
-    summaryContainer.innerHTML = summaryHTML;
-  } 
-
 
 // Uppdatera kundvagnsikonen
 function updateCartIcon() {

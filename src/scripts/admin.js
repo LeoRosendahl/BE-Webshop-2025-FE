@@ -131,7 +131,7 @@ const clearForm = () => {
   document.getElementById("product-img").value = "";
 };
 
-const renderSingleProduct = (product) => {
+const renderSingleProduct = async(product) => {
   // Hämta DOM-element
   const productName = document.querySelector(".single-product-title");
   const productNameTop = document.querySelector(".title");
@@ -142,6 +142,10 @@ const renderSingleProduct = (product) => {
   const updateProductPopup = document.querySelector(".update-product-button");
   const productImage = document.querySelector(".single-product-image");
   const productQuantity = document.querySelector(".single-product-quantity");
+
+
+  const categoryData = await fetchCategories()
+  const categories = categoryData.map((category)=>category.name)
 
   // Rensa bort eventuella redigeringsläget-element
   const existingImageContainer = document.querySelector(
@@ -189,9 +193,11 @@ const renderSingleProduct = (product) => {
   });
 
   // Lägg till eventlyssnare för update-knappen
-  updatedUpdateBtn.addEventListener("click", () => {
+  updatedUpdateBtn.addEventListener("click", async() => {
     // Dölj uppdateringsknappen när den klickas
     updatedUpdateBtn.style.display = "none";
+
+
 
     // Skapa en spara-knapp om den inte redan finns
     if (!document.querySelector(".save-product-button")) {
@@ -297,14 +303,15 @@ const renderSingleProduct = (product) => {
     // Gör kategorin redigerbar
     const categorySelect = document.createElement("select");
     categorySelect.classList.add("edit-input");
-    const categories = ["Frukt", "Kött", "Mejeri", "Övrigt"];
+    
     categories.forEach((cat) => {
       const option = document.createElement("option");
       option.value = cat;
       option.textContent = cat;
-      if (cat === product.category.name) option.selected = true;
+      if (cat === product.category?.name || "Okänd kategori") option.selected = true;
       categorySelect.appendChild(option);
     });
+
     productCategory.innerHTML = "";
     productCategory.appendChild(categorySelect);
 
@@ -376,12 +383,10 @@ sortSelect.addEventListener("change", function () {
 
 const updateProducts = () => {
   //Filter
-  filteredAndSortedProducts =
-    currentCategory === "All"
-      ? [...allProducts]
-      : allProducts.filter(
-          (product) => product.category?.name === currentCategory
-        );
+  filteredAndSortedProducts = 
+  currentCategory === "All" 
+    ? [...allProducts] 
+    : allProducts.filter((product) => product.category?.name === currentCategory)
 
   //Sortering
   if (currentSortOption) {
@@ -641,6 +646,15 @@ const renderCategories = async () => {
     categorySelect.appendChild(categoryOption);
   });
 });
+const catSelect  = document.querySelector('.edit-input')
+if(catSelect){
+  categoryList.forEach((category)=>{
+    const catOption = document.createElement('option')
+    catOption.textContent = category.name
+    catOption.value = category.name
+    catSelect.appendChild(catOption)
+  })
+}
 
 };
 
