@@ -2,7 +2,13 @@
 
 ## Översikt
 *En kort beskrivning av frontend-delen av projektet, dess huvudsyfte och huvudfunktionalitet. Beskriv också hur den kopplas till API:et.*
+Som frontend-utvecklare har vår roll i detta projekt varit att skapa det användargränssnitt som både Hakims kunder och Hakim själv kommer att interagera med. 
+Vi har alltså haft i fokus att utveckla en användarvänlig samt responsiv webbshop för Hakims livsmedelsbutik.
 
+
+
+Parallellt bygga ett generellt CMS-system som kan återanvändas för framtida webbshoppar
+Arbeta tätt tillsammans med backend-teamet för att integrera frontend med backend-funktionalitet
 ## Teknologier
 
 - HTML5 - Struktur och innehåll
@@ -108,10 +114,10 @@ Viktigt att notera:
 - Implementera bättre felhantering för API-anrop
 
 ## Kända problem
-- I checkout fungerar inte Varukorg eller Mina sidor
-- 
-- 
-- 
+- I checkout fungerar inte Varukorg eller Mina sidor.
+- Orderhistorik sparas i localStorage. Backendarna måste göra så att det går att spara informationen från deras håll.
+- Isac är utbränd han behöver 3 veckor golf semester.
+- Orderhistoriken visas endast för admin. Kunden kan inte få ett kvitto eller se sin orderbekräftelse ännu.
 - 
 ## API-integration
 
