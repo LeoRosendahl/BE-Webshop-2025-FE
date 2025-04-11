@@ -1389,7 +1389,6 @@ main h2 {
   padding-right: 30px;
 }
 
-
 .popup-content.orderhistory {
   max-height: 80vh; /* Set maximum height */
   overflow-y: auto; /* Enable vertical scrolling */
@@ -1484,6 +1483,7 @@ main h2 {
   margin: 0;
   color: #333;
   font-size: 16px;
+}
 
 .btn-container {
   display: flex;
