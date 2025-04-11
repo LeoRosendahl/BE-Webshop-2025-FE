@@ -11,7 +11,57 @@
 
 
 ## Kodstruktur och arkitektur
-*En beskrivning av hur frontend-koden är organiserad.*
+BE-WEBSHOP-2025-FE/
+│
+├── documentation/                    
+│   └── popup-documentation.md
+│   └── API-documentation.md
+├── pages/                   
+│   ├── admin.html            
+│   └── checkout.html            
+│   └── index.html
+│   └── login.html        
+│── partials/
+│   └── _mixins.scss
+│   └── _variables.scss
+│── src/
+│   │── scripts/
+│       └── admin.js
+│       └── checkout.js
+│       └── index.js
+│   │── utils/
+│       └── addCustomer.js
+│       └── api.js
+│       └── checkIfSignedIn.js
+│       └── isUserAdmin.js
+│       └── signin.js
+│── styles/
+│   │── admin/
+│       └── admin.css
+│       └── admin.css.map
+│       └── admin.scss
+│   │── checkout/
+│       └── checkout.css
+│       └── checkout.css.map
+│       └── checkout.scss
+│   │── footer/
+│       └── footer.css
+│       └── footer.css.map
+│       └── footer.scss
+│   │── index/
+│       └── index.css
+│       └── index.css.map
+│       └── index.scss
+│   │── login/
+│       └── login.css
+│       └── login.css.map
+│       └── login.scss
+│   │── navbar/
+│       └── navbar.css
+│       └── navbar.css.map
+│       └── navbar.scss
+
+
 
 
 ## Setup och installation
