@@ -10,66 +10,43 @@
 - JavaScript (ES6+) - Interaktivitet och API-integration
 
 # Projektstruktur
-
-``` BE-WEBSHOP-2025-FE/
+``` 
+BE-WEBSHOP-2025-FE/
 │
-├── documentation/                    
-│   ├── popup-documentation.md
-│   └── API-documentation.md
+├── documentation/                    # Projektdokumentation
+│   ├── popup-documentation.md        # Beskrivning av popup-funktionalitet
+│   └── API-documentation.md          # API-referens och användning
 │
-├── pages/                   
-│   ├── admin.html            
-│   ├── checkout.html            
-│   ├── index.html
-│   └── login.html        
+├── pages/                            # HTML-sidor
+│   ├── admin.html                    # Administratörsgränssnitt
+│   ├── checkout.html                 # Kassasida för beställning
+│   ├── index.html                    # Huvudsida/Produktlistning
+│   └── login.html                    # Inloggningssida
 │
-├── partials/
-│   ├── _mixins.scss
-│   └── _variables.scss
+├── partials/                         # SCSS-hjälpfiler
+│   ├── _mixins.scss                  # Återanvändbara SCSS-mixins
+│   └── _variables.scss               # Globala variabler för färger, storlekar etc.
 │
-├── src/
-│   ├── scripts/
-│   │   ├── admin.js
-│   │   ├── checkout.js
-│   │   └── index.js
+├── src/                              # Källkod
+│   ├── scripts/                      # Sidspecifika JavaScript
+│   │   ├── admin.js                  # Adminsidefunktionalitet
+│   │   ├── checkout.js               # Kassafunktionalitet
+│   │   └── index.js                  # Huvudsidefunktionalitet
 │   │
-│   └── utils/
-│       ├── addCustomer.js
-│       ├── api.js
-│       ├── checkIfSignedIn.js
-│       ├── isUserAdmin.js
-│       └── signin.js
+│   └── utils/                        # Hjälpfunktioner
+│       ├── addCustomer.js            # Kundregistrering
+│       ├── api.js                    # Funktioner för API-kommunikation
+│       ├── checkIfSignedIn.js        # Kontroll av inloggningsstatus
+│       ├── isUserAdmin.js            # Verifiering av administratörsbehörighet
+│       └── signin.js                 # Inloggningsfunktionalitet
 │
-└── styles/
-    ├── admin/
-    │   ├── admin.css
-    │   ├── admin.css.map
-    │   └── admin.scss
-    │
-    ├── checkout/
-    │   ├── checkout.css
-    │   ├── checkout.css.map
-    │   └── checkout.scss
-    │
-    ├── footer/
-    │   ├── footer.css
-    │   ├── footer.css.map
-    │   └── footer.scss
-    │
-    ├── index/
-    │   ├── index.css
-    │   ├── index.css.map
-    │   └── index.scss
-    │
-    ├── login/
-    │   ├── login.css
-    │   ├── login.css.map
-    │   └── login.scss
-    │
-    └── navbar/
-        ├── navbar.css
-        ├── navbar.css.map
-        └── navbar.scss
+└── styles/                           # CSS och SCSS-filer
+├── admin/                        # Adminsidans stilar (CSS, CSS.map, SCSS)
+├── checkout/                     # Kassasidans stilar
+├── footer/                       # Sidfotens stilar
+├── index/                        # Huvudsidans stilar
+├── login/                        # Inloggningssidans stilar
+└── navbar/                       # Navigationsmenyns stilar
 ```
 
 ## Setup och installation
