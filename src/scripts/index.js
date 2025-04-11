@@ -1,4 +1,4 @@
-import { addProduct, fetchProducts, deleteProduct, signIn, getUserProfile, updateUserInfo } from "../utils/api.js"
+import { addProduct, fetchProducts, deleteProduct, signIn, getUserProfile, updateUserInfo, fetchCategories } from "../utils/api.js"
 import {closePopup, openPopup} from '../../script.js'
 import { addCustomer } from "../utils/api.js";
 import { addNewCustomer } from "../utils/addCustomer.js";
@@ -512,6 +512,39 @@ export const renderAdminLink = () => {
   adminButton.style.display = isUserAdmin() ? 'flex' : 'none'
 }
 
+const categoryBtnsContainers = document.querySelectorAll('.category-btns');
+const renderCategories = async () => {
+  const categoryList = await fetchCategories()
+
+  categoryBtnsContainers.forEach(categoryBtnsContainer => {
+    categoryBtnsContainer.innerHTML = ''
+
+    // Move button creation here
+    const allCategoryButton = document.createElement('button')
+    allCategoryButton.classList.add('category-btn')
+    allCategoryButton.classList.add('Alla')
+    allCategoryButton.textContent = 'Alla'
+    allCategoryButton.addEventListener('click', () => setFilter('All'))
+    categoryBtnsContainer.appendChild(allCategoryButton)
+
+    categoryList.forEach(category => {
+      const categoryButton = document.createElement('button')
+      categoryButton.classList.add('category-btn')
+      categoryButton.textContent = category.name
+      categoryButton.addEventListener('click', () => setFilter(category.name))
+      categoryBtnsContainer.appendChild(categoryButton)
+    });
+  });
+
+  // Populate the dropdown only once
+  categoryList.forEach(category => {
+    const categoryOption = document.createElement('option')
+    categoryOption.textContent = category.name
+    categoryOption.value = category.name
+    categorySelect.appendChild(categoryOption)
+  });
+}
+
 
 
 
@@ -585,33 +618,48 @@ editButtons.forEach(button => {
 
 
 
-// Save everything when "Spara" is clicked
 saveBtn.addEventListener('click', async() => {
   const inputs = document.querySelectorAll('.user-info input');
+  let hasEmptyFields = false;
+  
+  // Check if any inputs are empty
+  inputs.forEach(input => {
+    if (!input.value.trim()) {
+      hasEmptyFields = true;
+    }
+  });
+  
+  // If empty fields exist, show alert and stop execution
+  if (hasEmptyFields) {
+    alert('Vänligen fyll i alla fält innan du sparar!.');
+    return;
+  }
+  
+  // Continue with saving if all fields have values
   const dataToSave = {};
-
+  
   inputs.forEach(input => {
     const container = input.closest('.user-info');
     const field = container.dataset.field;
     dataToSave[field] = input.value;
-
+    
     // Replace with <h3>
     const newH3 = document.createElement('h3');
     newH3.classList.add('username-pages');
     newH3.textContent = input.value;
     input.replaceWith(newH3);
   });
-
+  
   saveBtn.disabled = true;
   
-  await updateUserInfo(dataToSave)
+  await updateUserInfo(dataToSave);
 });
 
 
 
 
-
 document.addEventListener('DOMContentLoaded', renderProfile);
+renderCategories()
 renderAdminLink()
 updateCartIcon()
 fetchAndRenderProducts();

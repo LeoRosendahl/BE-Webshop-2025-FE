@@ -75,7 +75,7 @@ main {
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #eee;
-    gap:30px;
+    gap:10px;
     
     // Bild till vänster
     .cart-item-image {
@@ -107,7 +107,15 @@ main {
         color: $grey;
         margin: 0;
       }
+      
     }
+    .wrapper {
+      margin-left: 100px;
+
+      // @media (max-width: 450px) {
+      //   margin-left: 30px;
+      // }
+     }
     
     // Pris och knappar till höger
     .cart-item-price-actions {
@@ -229,18 +237,18 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
   }
   
   #checkout-form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
     max-width: 600px; 
     margin-top: 20px;
     
     .input-group input {
-      width: 300px;
+      width: 250px;
       margin-bottom: 15px;
       padding: 10px;
       border-radius: 4px;
@@ -257,24 +265,49 @@ main {
   .checkout-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    max-width: 1200px; 
-    gap:250px;
+   gap: 30px;
+    
 
-    @media (max-width: 768px) {
+    @media (max-width: 798px) {
       flex-direction: column;
       gap:0px;
     }
   }
   
   .checkout-container, .checkout-info {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
   }
   
   .checkout-button {
-    margin: 30px 0 30px 0;
+    margin: 0px 0 30px 0;
     @include button-buy-big;
   }
+  .checkout-info:nth-child(2) {
+    border: 0.5px solid $basegreen;
+    border-radius: 20px;
+    max-height: 400px; 
+    overflow-y: auto; 
+    padding:0px 20px ;
+    height: 388px;
+}
+  .checkout-info:nth-child(1) {
+    border:0.5px solid $basegreen;
+    border-radius: 20px;
+    padding: 0px 46px;
+    height: 370px;
+    margin-bottom: 20px;
+  }
+  .cart-summary .cart-total {
+    font-size: 24px;
+    margin-top: 10px;
+    border:none;
+    gap:5px;
+  }
+
+ 
   

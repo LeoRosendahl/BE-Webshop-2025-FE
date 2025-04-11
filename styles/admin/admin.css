@@ -429,6 +429,11 @@ main h2 {
   }
 }
 
+.category-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 .category-btns button {
   display: flex;
   align-items: center;
@@ -447,15 +452,14 @@ main h2 {
   justify-content: flex-start;
   width: 300px;
   height: 43px;
-  padding: 4px 202px 4px 30px;
+  padding: 4px 20px 4px 30px;
   gap: 40px;
   font-family: "REM", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width: 250px;
 }
 .category-btns button:hover {
   background-color: transparent;
@@ -1385,6 +1389,7 @@ main h2 {
   padding-right: 30px;
 }
 
+
 .popup-content.orderhistory {
   max-height: 80vh; /* Set maximum height */
   overflow-y: auto; /* Enable vertical scrolling */
@@ -1479,4 +1484,15 @@ main h2 {
   margin: 0;
   color: #333;
   font-size: 16px;
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.fa-xmark {
+  color: #F35244;
+  cursor: pointer;
 }/*# sourceMappingURL=admin.css.map */

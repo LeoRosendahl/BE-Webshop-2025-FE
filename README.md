@@ -4,24 +4,50 @@
 *En kort beskrivning av frontend-delen av projektet, dess huvudsyfte och huvudfunktionalitet. Beskriv också hur den kopplas till API:et.*
 
 ## Teknologier
-*Lista över de viktigaste teknologier och verktyg som används i frontend-delen.*
 
 - HTML5 - Struktur och innehåll
 - [SCSS/Sass](https://sass-lang.com/) - CSS-preprocessor för förbättrad styling
 - JavaScript (ES6+) - Interaktivitet och API-integration
-- *Lägg till eventuella JavaScript-bibliotek som används i projektet...*
 
-## Kodstruktur och arkitektur
-*En beskrivning av hur frontend-koden är organiserad.*
-
-
-### Viktiga filer
-EXEMPEL
-- `index.html` - Huvudsidan med grundläggande HTML-struktur
-- `js/main.js` - Huvudsaklig JavaScript-fil som initierar applikationen
-- `js/api.js` - Innehåller alla funktioner för API-kommunikation
-- `scss/main.scss` - Huvudsaklig stilfil som importerar övriga stilar
-- *Lägg till andra viktiga filer som är specifika för ert projekt...*
+# Projektstruktur
+``` 
+BE-WEBSHOP-2025-FE/
+│
+├── documentation/                    # Projektdokumentation
+│   ├── popup-documentation.md        # Beskrivning av popup-funktionalitet
+│   └── API-documentation.md          # API-referens och användning
+│
+├── pages/                            # HTML-sidor
+│   ├── admin.html                    # Administratörsgränssnitt
+│   ├── checkout.html                 # Kassasida för beställning
+│   ├── index.html                    # Huvudsida/Produktlistning
+│   └── login.html                    # Inloggningssida
+│
+├── partials/                         # SCSS-hjälpfiler
+│   ├── _mixins.scss                  # Återanvändbara SCSS-mixins
+│   └── _variables.scss               # Globala variabler för färger, storlekar etc.
+│
+├── src/                              # Källkod
+│   ├── scripts/                      # Sidspecifika JavaScript
+│   │   ├── admin.js                  # Adminsidefunktionalitet
+│   │   ├── checkout.js               # Kassafunktionalitet
+│   │   └── index.js                  # Huvudsidefunktionalitet
+│   │
+│   └── utils/                        # Hjälpfunktioner
+│       ├── addCustomer.js            # Kundregistrering
+│       ├── api.js                    # Funktioner för API-kommunikation
+│       ├── checkIfSignedIn.js        # Kontroll av inloggningsstatus
+│       ├── isUserAdmin.js            # Verifiering av administratörsbehörighet
+│       └── signin.js                 # Inloggningsfunktionalitet
+│
+└── styles/                           # CSS och SCSS-filer
+├── admin/                        # Adminsidans stilar (CSS, CSS.map, SCSS)
+├── checkout/                     # Kassasidans stilar
+├── footer/                       # Sidfotens stilar
+├── index/                        # Huvudsidans stilar
+├── login/                        # Inloggningssidans stilar
+└── navbar/                       # Navigationsmenyns stilar
+```
 
 ## Setup och installation
 
@@ -54,40 +80,70 @@ För att kompilera SCSS-filerna till CSS kan du använda något av följande alt
 ### Köra projektet lokalt
 Öppna helt enkelt `index.html` i din webbläsare, eller använd en lokal server som Live Server (VS Code-tillägg) för att undvika CORS-problem vid API-anrop.
 
-## Kodbibliotek & teknologier
-*Detaljerad beskrivning av de JavaScript-bibliotek som eventuellt används i projektet.*
-
 ### API-kommunikation
 - Fetch API - Inbyggd browser-API för att göra HTTP-anrop
-- *Alternativt: [Axios](https://axios-http.com/) om det används*
-
-## Hjälpfunktioner
 
 ### API-anrop
-*Beskriv återanvändbara funktioner för API-anrop.*
-EXEMPEL
-- `js/api.js` - Innehåller basfunktioner för API-anrop
-  - `fetchData(endpoint)` - Hämtar data från specifik endpoint
-  - `postData(endpoint, data)` - Skickar data till specifik endpoint
-  - `API_BASE_URL` - Konstant för API:ets basadress
+API-funktioner finns samlade i `api.js` för att enkelt hantera kommunikation med backend.
 
+- `getBaseUrl()` - Returnerar bas-URL för API-anrop (https://webshop-2025-be-g8.vercel.app/)
+- `fetchProducts(endpoint)` - Hämtar produktdata från angiven endpoint (standard är "api/products")
+- `addProduct(productData)` - Lägger till en ny produkt i databasen
+- `deleteProduct(productId)` - Tar bort en produkt baserat på ID
+- `updateProduct(productId, productData)` - Uppdaterar en befintlig produkt
+- `signIn(userData)` - Autentiserar användare och lagrar token i localStorage
+- `addCustomer(customerData)` - Registrerar en ny kund
+- `getUserProfile()` - Hämtar inloggad användares profilinformation
+- `updateUserInfo(userData)` - Uppdaterar användarens profilinformation
+
+Viktigt att notera:
+- Autentisering sker via tokens som lagras i localStorage
+- Kundvagn sparas också i localStorage för att bibehållas mellan sessioner
 
 ## Förbättringspunkter
-*Lista över områden där koden skulle kunna förbättras i framtiden.*
+- Skapa en mer logisk kodstruktur med mindre upprepning
+- Slå ihop liknande funktioner till återanvändbara komponenter
+- Förbättra mappstrukturen för enklare underhåll
+- Konsolidera CSS-filer för att minska duplicering av stilar
+- Implementera bättre felhantering för API-anrop
 
 ## Kända problem
-EXEMPEL
-*Lista över kända buggar eller begränsningar i frontend-implementationen.*
-
-
+- I checkout fungerar inte Varukorg eller Mina sidor
+- 
+- 
+- 
+- 
 ## API-integration
-*Information om hur frontend integrerar med API:et.*
 
-- Basendpoint: `https://api.example.com/v1`
-- Autentisering: *Beskriv hur autentisering hanteras, t.ex. API-nycklar eller token*
-- Rate limiting: *Om API:et har begränsningar*
-- Felhantering: *Hur applikationen hanterar API-fel*
+- **Basendpoint**: `https://webshop-2025-be-g8.vercel.app/`
+
+- **Autentisering**: 
+  - Använder JWT-tokens som lagras i localStorage med nyckeln 'token'
+  - Token sparas automatiskt vid inloggning och skickas med i Authorization-header för skyddade endpoints
+  - För att logga ut tas token bort från localStorage
+
+- **Produkthantering**:
+  - GET `/api/products` - Hämta alla produkter
+  - POST `/api/products` - Lägg till ny produkt
+  - PUT `/api/products/{id}` - Uppdatera produkt
+  - DELETE `/api/products/{id}` - Ta bort produkt
+
+- **Användarhantering**:
+  - POST `/api/auth/login` - Logga in användare
+  - POST `/api/auth/register` - Registrera ny användare
+  - GET `/api/minasidor` - Hämta användarens profil (kräver token)
+  - PUT `/api/minasidor` - Uppdatera användarens profil (kräver token)
+
+- **Kundvagnshantering**:
+  - Kundvagn lagras lokalt i localStorage med nyckeln 'cart'
+  - Innehåller produktinformation med antal
+  - Finns kvar mellan sessioner
+
+- **Felhantering**: 
+  - API-funktioner hanterar fel genom att returnera null eller false vid misslyckande
+  - Vissa funktioner använder try/catch för att fånga och logga fel
+  - Inloggningsfel visas för användaren via alert
 
 ---
 
-*Dokumentationen skapad av [Grupp 8 FEND] - [Datum]*
+*Dokumentationen skapad av [Grupp 8 FEND24]*

@@ -1,3 +1,5 @@
+import { getUserProfile } from "../utils/api.js"
+
 document.addEventListener('DOMContentLoaded', () => {
   displayCartItems();
   updateCartIcon();
@@ -9,6 +11,41 @@ function displayCartItems() {
   const cartContainer = document.querySelector(".get-cart-items");
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   
+
+});
+
+const fillInputsWithInfo = async () => {
+  const userData = await getUserProfile();
+  const userInfo = userData.user;
+  
+  const firstNameInput = document.getElementById('name');
+  const lastNameInput = document.getElementById('surname');
+  const emailInput = document.getElementById('email');
+  const addressInput = document.getElementById('address'); 
+  const postalCodeInput = document.getElementById('postal-code');
+  
+  if (userInfo.firstName) {
+    firstNameInput.value = userInfo.firstName;
+  }
+  if (userInfo.lastName) {
+    lastNameInput.value = userInfo.lastName;
+  }
+  if (userInfo.email) {
+    emailInput.value = userInfo.email;
+  }
+  if (userInfo.streetAddress) {
+    addressInput.value = userInfo.streetAddress;
+  }
+  if (userInfo.postalCode) {
+    postalCodeInput.value = userInfo.postalCode;
+  }
+};
+
+function displayCartItems() {
+  const cartContainer = document.querySelector(".get-cart-items");
+  const summaryContainer = document.querySelector(".summary-container");
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
   if (!cartContainer) return;
   
   if (cart.length === 0) {
@@ -18,6 +55,12 @@ function displayCartItems() {
         <p>Din kundvagn är tom</p>
       </div>
     `;
+
+    
+    if (summaryContainer) {
+      summaryContainer.innerHTML = ''; // Töm summary-containern om varukorgen är tom
+    }
+
     return;
   }
   
@@ -44,7 +87,9 @@ function displayCartItems() {
             <div class="price">${item.price} kr</div>
           </div>
           <div class="quantity-controls">
-            <span>${item.quantity}</span>
+
+            <span>${item.quantity} st</span>
+
           </div>
         </div>
       </div>
@@ -53,20 +98,40 @@ function displayCartItems() {
   
   cartHTML += `
       </div>
-      <div class="cart-summary">
-        <div class="cart-total">
-          <span>Totalt:</span>
-          <span>${(Math.round(totalSum * 100) / 100).toFixed(2)} kr</span>
-        </div>
+
+    </div>
+  `;
+  
+ 
+  let summaryHTML = `
+    <div class="cart-summary">
+      <div class="cart-total">
+        <span>Totalt:</span>
+        <span>${(Math.round(totalSum * 100) / 100).toFixed(2)} kr</span>
+
       </div>
     </div>
   `;
   
+
   cartContainer.innerHTML = cartHTML;
 }
 
 function updateCartIcon() {
   // Your existing updateCartIcon function remains unchanged
+
+
+  cartContainer.innerHTML = cartHTML;
+  
+
+  if (summaryContainer) {
+    summaryContainer.innerHTML = summaryHTML;
+  } 
+}
+
+// Uppdatera kundvagnsikonen
+function updateCartIcon() {
+
   const cartNumber = document.querySelector('.cart-item-number');
   if (!cartNumber) return;
   
@@ -79,6 +144,7 @@ function updateCartIcon() {
   
   cartNumber.innerHTML = numberOfItems;
 }
+
 
 function setupCheckoutButton() {
   const checkoutButton = document.querySelector('.checkout-button');
@@ -151,3 +217,11 @@ function setupCheckoutButton() {
     updateCartIcon();
   });
 }
+
+// Checkout-funktion
+document.querySelector('.checkout-button').addEventListener('click', function() {
+  document.getElementById('checkout-form').submit();
+});
+
+fillInputsWithInfo();
+
