@@ -210,7 +210,31 @@ localStorage.setItem('token', token);
 const token = localStorage.getItem('token');
 
 // Check if user is logged in
-const isLoggedIn = !!localStorage.getItem('token');
+
+export const checkIfUser = () => {
+  const token = localStorage.getItem('token');
+
+  if (!token || token === 'undefined' || token === 'null' || token.trim() === '') {
+    return false;
+  }
+
+  try {
+    const decoded = jwt_decode(token);
+
+    // Optional: Check if token is expired
+    if (decoded.exp && Date.now() >= decoded.exp * 1000) {
+      console.warn('Token expired');
+      localStorage.removeItem('token')
+      return false;
+    }
+
+    return true;
+  } catch (e) {
+    console.error('Invalid token format', e);
+    return false;
+  }
+};
+
 
 // Log user out
 localStorage.removeItem('token');
