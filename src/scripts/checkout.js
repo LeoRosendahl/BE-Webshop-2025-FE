@@ -6,13 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCheckoutButton();
 });
 
-function displayCartItems() {
-  // Your existing displayCartItems function remains unchanged
-  const cartContainer = document.querySelector(".get-cart-items");
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
 
-});
 
 const fillInputsWithInfo = async () => {
   const userData = await getUserProfile();
@@ -40,6 +34,7 @@ const fillInputsWithInfo = async () => {
     postalCodeInput.value = userInfo.postalCode;
   }
 };
+
 
 function displayCartItems() {
   const cartContainer = document.querySelector(".get-cart-items");
@@ -117,8 +112,7 @@ function displayCartItems() {
   cartContainer.innerHTML = cartHTML;
 }
 
-function updateCartIcon() {
-  // Your existing updateCartIcon function remains unchanged
+
 
 
   cartContainer.innerHTML = cartHTML;
@@ -127,7 +121,7 @@ function updateCartIcon() {
   if (summaryContainer) {
     summaryContainer.innerHTML = summaryHTML;
   } 
-}
+
 
 // Uppdatera kundvagnsikonen
 function updateCartIcon() {
