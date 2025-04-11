@@ -1,7 +1,6 @@
 # Frontend-dokumentation
 
 ## Översikt
-*En kort beskrivning av frontend-delen av projektet, dess huvudsyfte och huvudfunktionalitet. Beskriv också hur den kopplas till API:et.*
 Som frontend-utvecklare har vår roll i detta projekt varit att skapa det användargränssnitt som både Hakims kunder och Hakim själv kommer att interagera med. 
 Vi har alltså haft i fokus att utveckla en användarvänlig samt responsiv webbshop för Hakims livsmedelsbutik.
 
