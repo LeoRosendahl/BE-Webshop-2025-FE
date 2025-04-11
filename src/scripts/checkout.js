@@ -110,6 +110,7 @@ function displayCartItems() {
   
 
   cartContainer.innerHTML = cartHTML;
+  summaryContainer.innerHTML = summaryHTML
 }
 
 
