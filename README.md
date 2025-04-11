@@ -13,57 +13,36 @@
 ## Kodstruktur och arkitektur
 # Projektstruktur
 
-* BE-WEBSHOP-2025-FE/
-  * documentation/
-    * popup-documentation.md
-    * API-documentation.md
-  * pages/
-    * admin.html
-    * checkout.html
-    * index.html
-    * login.html
-  * partials/
-    * _mixins.scss
-    * _variables.scss
-  * src/
-    * scripts/
-      * admin.js
-      * checkout.js
-      * index.js
-    * utils/
-      * addCustomer.js
-      * api.js
-      * checkIfSignedIn.js
-      * isUserAdmin.js
-      * signin.js
-  * styles/
-    * admin/
-      * admin.css
-      * admin.css.map
-      * admin.scss
-    * checkout/
-      * checkout.css
-      * checkout.css.map
-      * checkout.scss
-    * footer/
-      * footer.css
-      * footer.css.map
-      * footer.scss
-    * index/
-      * index.css
-      * index.css.map
-      * index.scss
-    * login/
-      * login.css
-      * login.css.map
-      * login.scss
-    * navbar/
-      * navbar.css
-      * navbar.css.map
-      * navbar.scss
-
-
-
+* BE-WEBSHOP-2025-FE/ - Huvudmapp för projektet
+  * documentation/ - Dokumentation och hjälpfiler
+    * popup-documentation.md - Dokumentation för popup-funktion
+    * API-documentation.md - API-dokumentation
+  * pages/ - HTML-sidor
+    * admin.html - Admin-panel
+    * checkout.html - Kassa-sida
+    * index.html - Huvudsida
+    * login.html - Inloggningssida
+  * partials/ - SCSS-delkomponenter
+    * _mixins.scss - Sass mixins
+    * _variables.scss - Sass variabler
+  * src/ - Källkod
+    * scripts/ - JavaScript för sidor
+      * admin.js - Admin-funktionalitet
+      * checkout.js - Kassa-funktionalitet 
+      * index.js - Huvudsidans funktionalitet
+    * utils/ - Hjälpfunktioner
+      * addCustomer.js - Funktion för att lägga till kunder
+      * api.js - API-integration
+      * checkIfSignedIn.js - Kontroll av inloggning
+      * isUserAdmin.js - Kontroll av admin-behörighet
+      * signin.js - Inloggningsfunktion
+  * styles/ - Stilmallar
+    * admin/ - Admin-stilar
+    * checkout/ - Kassa-stilar
+    * footer/ - Sidfots-stilar
+    * index/ - Huvudsidans stilar
+    * login/ - Inloggningssidans stilar
+    * navbar/ - Navigationsmenyns stilar
 
 ## Setup och installation
 
