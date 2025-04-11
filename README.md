@@ -9,40 +9,68 @@
 - [SCSS/Sass](https://sass-lang.com/) - CSS-preprocessor för förbättrad styling
 - JavaScript (ES6+) - Interaktivitet och API-integration
 
-
-## Kodstruktur och arkitektur
 # Projektstruktur
 
-* BE-WEBSHOP-2025-FE/ - Huvudmapp för projektet
-  * documentation/ - Dokumentation och hjälpfiler
-    * popup-documentation.md - Dokumentation för popup-funktion
-    * API-documentation.md - API-dokumentation
-  * pages/ - HTML-sidor
-    * admin.html - Admin-panel
-    * checkout.html - Kassa-sida
-    * index.html - Huvudsida
-    * login.html - Inloggningssida
-  * partials/ - SCSS-delkomponenter
-    * _mixins.scss - Sass mixins
-    * _variables.scss - Sass variabler
-  * src/ - Källkod
-    * scripts/ - JavaScript för sidor
-      * admin.js - Admin-funktionalitet
-      * checkout.js - Kassa-funktionalitet 
-      * index.js - Huvudsidans funktionalitet
-    * utils/ - Hjälpfunktioner
-      * addCustomer.js - Funktion för att lägga till kunder
-      * api.js - API-integration
-      * checkIfSignedIn.js - Kontroll av inloggning
-      * isUserAdmin.js - Kontroll av admin-behörighet
-      * signin.js - Inloggningsfunktion
-  * styles/ - Stilmallar
-    * admin/ - Admin-stilar
-    * checkout/ - Kassa-stilar
-    * footer/ - Sidfots-stilar
-    * index/ - Huvudsidans stilar
-    * login/ - Inloggningssidans stilar
-    * navbar/ - Navigationsmenyns stilar
+``` BE-WEBSHOP-2025-FE/
+│
+├── documentation/                    
+│   ├── popup-documentation.md
+│   └── API-documentation.md
+│
+├── pages/                   
+│   ├── admin.html            
+│   ├── checkout.html            
+│   ├── index.html
+│   └── login.html        
+│
+├── partials/
+│   ├── _mixins.scss
+│   └── _variables.scss
+│
+├── src/
+│   ├── scripts/
+│   │   ├── admin.js
+│   │   ├── checkout.js
+│   │   └── index.js
+│   │
+│   └── utils/
+│       ├── addCustomer.js
+│       ├── api.js
+│       ├── checkIfSignedIn.js
+│       ├── isUserAdmin.js
+│       └── signin.js
+│
+└── styles/
+    ├── admin/
+    │   ├── admin.css
+    │   ├── admin.css.map
+    │   └── admin.scss
+    │
+    ├── checkout/
+    │   ├── checkout.css
+    │   ├── checkout.css.map
+    │   └── checkout.scss
+    │
+    ├── footer/
+    │   ├── footer.css
+    │   ├── footer.css.map
+    │   └── footer.scss
+    │
+    ├── index/
+    │   ├── index.css
+    │   ├── index.css.map
+    │   └── index.scss
+    │
+    ├── login/
+    │   ├── login.css
+    │   ├── login.css.map
+    │   └── login.scss
+    │
+    └── navbar/
+        ├── navbar.css
+        ├── navbar.css.map
+        └── navbar.scss
+```
 
 ## Setup och installation
 
@@ -75,9 +103,6 @@ För att kompilera SCSS-filerna till CSS kan du använda något av följande alt
 ### Köra projektet lokalt
 Öppna helt enkelt `index.html` i din webbläsare, eller använd en lokal server som Live Server (VS Code-tillägg) för att undvika CORS-problem vid API-anrop.
 
-## Kodbibliotek & teknologier
-*Detaljerad beskrivning av de JavaScript-bibliotek som eventuellt används i projektet.*
-
 ### API-kommunikation
 - Fetch API - Inbyggd browser-API för att göra HTTP-anrop
 
@@ -99,14 +124,18 @@ Viktigt att notera:
 - Kundvagn sparas också i localStorage för att bibehållas mellan sessioner
 
 ## Förbättringspunkter
-*Lista över områden där koden skulle kunna förbättras i framtiden.*
+- Skapa en mer logisk kodstruktur med mindre upprepning
+- Slå ihop liknande funktioner till återanvändbara komponenter
+- Förbättra mappstrukturen för enklare underhåll
+- Konsolidera CSS-filer för att minska duplicering av stilar
+- Implementera bättre felhantering för API-anrop
 
 ## Kända problem
-I checkout fungerar inte Varukorg eller Mina sidor
--
--
--
--
+- I checkout fungerar inte Varukorg eller Mina sidor
+- 
+- 
+- 
+- 
 ## API-integration
 
 - **Basendpoint**: `https://webshop-2025-be-g8.vercel.app/`
