@@ -6,6 +6,7 @@ import {
   fetchCategories,
   addCategory,
   deleteCategory,
+  deleteUser
 } from "../utils/api.js";
 import { closePopup, openPopup } from "../../script.js";
 import { isUserAdmin } from "../utils/isUserAdmin.js";
@@ -687,3 +688,17 @@ if (categoryInput) {
     }
   });
 }
+
+document.getElementById("delete-user-btn").addEventListener("click", async () => {
+  const confirmed = confirm("Är du säker på att du vill radera användaren?");
+  if (!confirmed) return;
+
+  const success = await deleteUser(userId); // <- använd ditt userId här
+  if (success) {
+    // Gör något, t.ex. visa ett meddelande eller redirecta
+    alert("Användare raderades!");
+    window.location.reload(); // eller redirecta till en annan sida
+  } else {
+    alert("Kunde inte radera användaren.");
+  }
+});
