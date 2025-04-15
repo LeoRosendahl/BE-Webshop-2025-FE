@@ -265,7 +265,7 @@ export async function deleteCategory(categoryId) {
 }
 
 export async function deleteUser(userId) {
-  const url = `${getBaseUrl()}api/auth/minasidor/${userId}`;
+  const url = `${getBaseUrl()}api/minasidor/${userId}`;
   const token = localStorage.getItem('token');
   try {
     const response = await fetch(url, {
