@@ -266,9 +266,14 @@ export async function deleteCategory(categoryId) {
 
 export async function deleteUser(userId) {
   const url = `${getBaseUrl()}api/minasidor/${userId}`;
+  const token = localStorage.getItem('token');
   try {
     const response = await fetch(url, {
       method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
     });
 
     if (!response.ok) {

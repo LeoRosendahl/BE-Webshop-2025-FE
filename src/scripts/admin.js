@@ -690,6 +690,7 @@ if (categoryInput) {
 }
 
 document.getElementById("delete-user-btn").addEventListener("click", async () => {
+  const userId = localStorage.getItem("userId");
   const confirmed = confirm("Är du säker på att du vill radera användaren?");
   if (!confirmed) return;
 
