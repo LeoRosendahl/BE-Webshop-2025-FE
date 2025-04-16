@@ -132,7 +132,7 @@ const clearForm = () => {
   document.getElementById("product-img").value = "";
 };
 
-const renderSingleProduct = async(product) => {
+const renderSingleProduct = async (product) => {
   // Hämta DOM-element
   const productName = document.querySelector(".single-product-title");
   const productNameTop = document.querySelector(".title");
@@ -146,7 +146,7 @@ const renderSingleProduct = async(product) => {
 
 
   const categoryData = await fetchCategories()
-  const categories = categoryData.map((category)=>category.name)
+  const categories = categoryData.map((category) => category.name)
 
   // Rensa bort eventuella redigeringsläget-element
   const existingImageContainer = document.querySelector(
@@ -194,7 +194,7 @@ const renderSingleProduct = async(product) => {
   });
 
   // Lägg till eventlyssnare för update-knappen
-  updatedUpdateBtn.addEventListener("click", async() => {
+  updatedUpdateBtn.addEventListener("click", async () => {
     // Dölj uppdateringsknappen när den klickas
     updatedUpdateBtn.style.display = "none";
 
@@ -304,7 +304,7 @@ const renderSingleProduct = async(product) => {
     // Gör kategorin redigerbar
     const categorySelect = document.createElement("select");
     categorySelect.classList.add("edit-input");
-    
+
     categories.forEach((cat) => {
       const option = document.createElement("option");
       option.value = cat;
@@ -384,10 +384,10 @@ sortSelect.addEventListener("change", function () {
 
 const updateProducts = () => {
   //Filter
-  filteredAndSortedProducts = 
-  currentCategory === "All" 
-    ? [...allProducts] 
-    : allProducts.filter((product) => product.category?.name === currentCategory)
+  filteredAndSortedProducts =
+    currentCategory === "All"
+      ? [...allProducts]
+      : allProducts.filter((product) => product.category?.name === currentCategory)
 
   //Sortering
   if (currentSortOption) {
@@ -515,28 +515,28 @@ fetchAndRenderProducts();
 function displayOrderHistory() {
   const orderHistoryContainer = document.querySelector('.order-history');
   if (!orderHistoryContainer) return;
-  
+
   // Get all orders from localStorage
   const orders = JSON.parse(localStorage.getItem('orders')) || [];
-  
+
   if (orders.length === 0) {
     orderHistoryContainer.innerHTML = '<p>Inga beställningar har gjorts ännu.</p>';
     return;
   }
-  
+
   // Sort orders by date (newest first)
   orders.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
-  
+
   let orderHistoryHTML = '<div class="orders-list">';
-  
+
   orders.forEach((order) => {
     // Generate a random 5-digit order number if it doesn't already exist
     if (!order.orderNumber) {
       order.orderNumber = Math.floor(10000 + Math.random() * 90000);
     }
-    
+
     const orderDate = new Date(order.orderDate).toLocaleString('sv-SE');
-    
+
     orderHistoryHTML += `
       <div class="order-card">
         <div class="order-header">
@@ -552,7 +552,7 @@ function displayOrderHistory() {
           <h4>Produkter:</h4>
           <ul>
     `;
-    
+
     order.items.forEach(item => {
       orderHistoryHTML += `
         <li>
@@ -560,7 +560,7 @@ function displayOrderHistory() {
         </li>
       `;
     });
-    
+
     orderHistoryHTML += `
           </ul>
         </div>
@@ -570,10 +570,10 @@ function displayOrderHistory() {
       </div>
     `;
   });
-  
+
   orderHistoryHTML += '</div>';
   orderHistoryContainer.innerHTML = orderHistoryHTML;
-  
+
   // Save back to localStorage to persist the order numbers
   localStorage.setItem('orders', JSON.stringify(orders));
 }
@@ -609,7 +609,7 @@ const categoryBtnsContainers = document.querySelectorAll(".category-btns");
 const renderCategories = async () => {
   const categoryList = await fetchCategories();
   categoryBtnsContainers.forEach(categoryBtnsContainer => {
-    
+
     const AllcategoryButton = document.createElement("button");
     categoryBtnsContainer.innerHTML = "";
     categorySelect.innerHTML = ""
@@ -619,43 +619,43 @@ const renderCategories = async () => {
     AllcategoryButton.addEventListener("click", () => setFilter("All"));
     categoryBtnsContainer.appendChild(AllcategoryButton);
 
-  categoryList.forEach((category) => {
-    const btnContainer = document.createElement("div");
-    btnContainer.classList.add("btn-container");
+    categoryList.forEach((category) => {
+      const btnContainer = document.createElement("div");
+      btnContainer.classList.add("btn-container");
 
-    const catButton = document.createElement("button");
-    catButton.classList.add("category-btn");
-    catButton.textContent = category.name;
-    catButton.addEventListener('click', ()=>setFilter(category.name))
-    const closeIcon = document.createElement("i");
-    closeIcon.classList.add("fa-solid", "fa-xmark", "fa-xl");
-    closeIcon.addEventListener('click', async()=> {
-      await deleteCategory(category._id);
-      renderCategories();
-      fetchAndRenderProducts();
+      const catButton = document.createElement("button");
+      catButton.classList.add("category-btn");
+      catButton.textContent = category.name;
+      catButton.addEventListener('click', () => setFilter(category.name))
+      const closeIcon = document.createElement("i");
+      closeIcon.classList.add("fa-solid", "fa-xmark", "fa-xl");
+      closeIcon.addEventListener('click', async () => {
+        await deleteCategory(category._id);
+        renderCategories();
+        fetchAndRenderProducts();
+      })
+
+      btnContainer.appendChild(catButton);
+      btnContainer.appendChild(closeIcon);
+
+      categoryBtnsContainer.appendChild(btnContainer);
+    });
+    categoryList.forEach((category) => {
+      const categoryOption = document.createElement("option");
+      categoryOption.textContent = category.name;
+      categoryOption.value = category.name;
+      categorySelect.appendChild(categoryOption);
+    });
+  });
+  const catSelect = document.querySelector('.edit-input')
+  if (catSelect) {
+    categoryList.forEach((category) => {
+      const catOption = document.createElement('option')
+      catOption.textContent = category.name
+      catOption.value = category.name
+      catSelect.appendChild(catOption)
     })
-
-    btnContainer.appendChild(catButton);
-    btnContainer.appendChild(closeIcon);
-
-    categoryBtnsContainer.appendChild(btnContainer);
-  });
-  categoryList.forEach((category) => {
-    const categoryOption = document.createElement("option");
-    categoryOption.textContent = category.name;
-    categoryOption.value = category.name;
-    categorySelect.appendChild(categoryOption);
-  });
-});
-const catSelect  = document.querySelector('.edit-input')
-if(catSelect){
-  categoryList.forEach((category)=>{
-    const catOption = document.createElement('option')
-    catOption.textContent = category.name
-    catOption.value = category.name
-    catSelect.appendChild(catOption)
-  })
-}
+  }
 
 };
 
@@ -694,11 +694,11 @@ document.getElementById("delete-user-btn").addEventListener("click", async () =>
   const confirmed = confirm("Är du säker på att du vill radera användaren?");
   if (!confirmed) return;
 
-  const success = await deleteUser(userId); // <- använd ditt userId här
+  const success = await deleteUser(); // <- använd ditt userId här
   if (success) {
-    // Gör något, t.ex. visa ett meddelande eller redirecta
+
     alert("Användare raderades!");
-    window.location.reload(); // eller redirecta till en annan sida
+    window.location.reload();
   } else {
     alert("Kunde inte radera användaren.");
   }
