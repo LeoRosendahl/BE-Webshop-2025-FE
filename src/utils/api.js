@@ -1,3 +1,5 @@
+import jwt_decode from 'jwt-decode';
+
 export function getBaseUrl() {
   return 'https://webshop-2025-be-g8.vercel.app/'
 }
@@ -264,23 +266,43 @@ export async function deleteCategory(categoryId) {
   }
 }
 
-export async function deleteUser(userId) {
-  const url = `${getBaseUrl()}api/minasidor/${userId}`;
+export async function deleteUser() {
   const token = localStorage.getItem('token');
 
+  // Kontrollera om token finns och är giltig
+  if (!token || token === 'undefined' || token === 'null' || token.trim() === '') {
+    console.error('Ingen giltig token hittades.');
+    return false;
+  }
+
   try {
-    const response = await fetch(url, {
-      method: "DELETE",
+    const decoded = jwt_decode(token);
+
+    // Kontrollera om token har gått ut
+    if (decoded.exp && Date.now() >= decoded.exp * 1000) {
+      console.warn('Token har gått ut.');
+      localStorage.removeItem('token');
+      return false;
+    }
+
+    // Skicka DELETE-förfrågan till backend
+    const response = await fetch(`${getBaseUrl()}api/minasidor/`, {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
     });
-    
-  return response.ok;
 
+    if (response.ok) {
+      console.log('Användare raderades.');
+      return true;
+    } else {
+      console.error('Misslyckades med att radera användare.');
+      return false;
+    }
   } catch (error) {
-    console.error("Error deleting user", error);
+    console.error('Fel vid radering av användare:', error);
     return false;
   }
 }

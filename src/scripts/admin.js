@@ -691,11 +691,10 @@ if (categoryInput) {
 
 document.querySelectorAll(".delete-user-btn").forEach((btn) => {
   btn.addEventListener("click", async () => {
-    const userId = localStorage.getItem("token");
-    /* const confirmed = confirm("Är du säker på att du vill radera användaren?");
-    if (!confirmed) return; */
+    const confirmed = confirm("Är du säker på att du vill radera användaren?");
+    if (!confirmed) return;
 
-    const success = await deleteUser(userId); // använd userId som argument
+    const success = await deleteUser();
     if (success) {
       alert("Användare raderades!");
       window.location.reload();
