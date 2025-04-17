@@ -271,10 +271,6 @@ export async function deleteUser(userId) {
   try {
     const response = await fetch(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
     });
 
     if (!response.ok) {
