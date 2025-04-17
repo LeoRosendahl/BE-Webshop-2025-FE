@@ -689,20 +689,18 @@ if (categoryInput) {
   });
 }
 
-document.getElementsByClassName("delete-user-btn").addEventListener("click", async () => {
-  const userId = localStorage.getItem("userId");
-  /* const confirmed = confirm("Är du säker på att du vill radera användaren?");
-  if (!confirmed) return; */
+document.querySelectorAll(".delete-user-btn").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const userId = localStorage.getItem("userId");
+    /* const confirmed = confirm("Är du säker på att du vill radera användaren?");
+    if (!confirmed) return; */
 
-  const success = await deleteUser(user._id);
-  if (success) {
-
-    alert("Användare raderades!");
-    console.log(user._id)
-    window.location.reload();
-  } else {
-    console.log(user._id)
-    alert("Kunde inte radera användaren.");
-    
-  }
+    const success = await deleteUser(userId); // använd userId som argument
+    if (success) {
+      alert("Användare raderades!");
+      window.location.reload();
+    } else {
+      alert("Kunde inte radera användaren.");
+    }
+  });
 });
