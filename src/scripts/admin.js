@@ -689,20 +689,23 @@ if (categoryInput) {
   });
 }
 
-/* document.querySelectorAll(".delete-user-btn").forEach((btn) => {
+document.querySelectorAll(".delete-user-btn").forEach((btn) => {
   btn.addEventListener("click", async () => {
     const confirmed = confirm("Är du säker på att du vill radera användaren?");
     if (!confirmed) return;
 
-    const userId = localStorage.getItem("userId");
-    if (!userId) return;
-
-    const success = await deleteUser(userId);
-    if (success) {
-      alert("Användare raderades!");
-      window.location.reload();
-    } else {
-      alert("Kunde inte radera användaren.");
+    try {
+      const success = await deleteUser();
+      if (success) {
+        alert("Användare raderades!");
+        window.location.reload();
+      } else {
+        alert("Kunde inte radera användaren.");
+      }
+    } catch (err) {
+      alert("Ett fel inträffade vid radering.");
+      console.error(err);
     }
   });
-}); */
+});
+

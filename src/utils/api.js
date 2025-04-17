@@ -264,18 +264,12 @@ export async function deleteCategory(categoryId) {
   }
 }
 
-/* export async function deleteUser(userId) {
+export async function deleteUser() {
   const token = localStorage.getItem('token');
-  if (!token) return false;
+  const url = `${getBaseUrl()}api/minasidor`;
 
   try {
-    const decoded = jwt_decode(token);
-    if (decoded.exp && Date.now() >= decoded.exp * 1000) {
-      localStorage.removeItem('token');
-      return false;
-    }
-
-    const res = await fetch(`${getBaseUrl()}api/minasidor/${userId}`, {
+    const response = await fetch(url, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -283,9 +277,15 @@ export async function deleteCategory(categoryId) {
       },
     });
 
-    return res.ok;
-  } catch {
-    return false;
+    if (!response.ok) {
+      throw new Error('Failed to delete profile');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+    throw error;
   }
-} */
+}
 
