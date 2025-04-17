@@ -689,7 +689,7 @@ if (categoryInput) {
   });
 }
 
-document.querySelectorAll(".delete-user-btn").forEach((btn) => {
+/* document.querySelectorAll(".delete-user-btn").forEach((btn) => {
   btn.addEventListener("click", async () => {
     const confirmed = confirm("Är du säker på att du vill radera användaren?");
     if (!confirmed) return;
@@ -705,4 +705,4 @@ document.querySelectorAll(".delete-user-btn").forEach((btn) => {
       alert("Kunde inte radera användaren.");
     }
   });
-});
+}); */

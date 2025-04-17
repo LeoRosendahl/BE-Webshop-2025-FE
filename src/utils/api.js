@@ -266,7 +266,7 @@ export async function deleteCategory(categoryId) {
   }
 }
 
-export async function deleteUser(userId) {
+/* export async function deleteUser(userId) {
   const token = localStorage.getItem('token');
   if (!token) return false;
 
@@ -289,5 +289,5 @@ export async function deleteUser(userId) {
   } catch {
     return false;
   }
-}
+} */
 
