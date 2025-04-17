@@ -24,6 +24,8 @@ export const addNewCustomer = async () => {
     try {
         const result = await addCustomer(newCustomer);
         if (result) {
+
+            alert('Kontot har skapats!')
             // Clear form on success
             document.querySelector('.username').value = '';
             document.querySelector('.password').value = '';
