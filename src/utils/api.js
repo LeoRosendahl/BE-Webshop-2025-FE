@@ -266,10 +266,9 @@ export async function deleteCategory(categoryId) {
   }
 }
 
-export async function deleteUser() {
+export async function deleteUser(userId) {
   const token = localStorage.getItem('token');
 
-  // Kontrollera om token finns och är giltig
   if (!token || token === 'undefined' || token === 'null' || token.trim() === '') {
     console.error('Ingen giltig token hittades.');
     return false;
@@ -278,15 +277,14 @@ export async function deleteUser() {
   try {
     const decoded = jwt_decode(token);
 
-    // Kontrollera om token har gått ut
     if (decoded.exp && Date.now() >= decoded.exp * 1000) {
       console.warn('Token har gått ut.');
       localStorage.removeItem('token');
       return false;
     }
 
-    // Skicka DELETE-förfrågan till backend
-    const response = await fetch(`${getBaseUrl()}api/minasidor/`, {
+    //fetching direct from userId
+    const response = await fetch(`${getBaseUrl()}api/minasidor/${userId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
