@@ -695,7 +695,7 @@ document.querySelectorAll(".delete-user-btn").forEach((btn) => {
     if (!confirmed) return;
 
     try {
-      const success = await deleteUser();
+      const success = await deleteUser(user._id);
       if (success) {
         alert("Användare raderades!");
         window.location.reload();
