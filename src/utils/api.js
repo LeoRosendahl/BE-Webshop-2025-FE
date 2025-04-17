@@ -264,10 +264,10 @@ export async function deleteCategory(categoryId) {
   }
 }
 
-export async function deleteUser() {
-  const url = `${getBaseUrl()}api/minasidor`;
+export async function deleteUser(userId) {
+  const url = `${getBaseUrl()}api/minasidor/${userId}`;
   const token = localStorage.getItem('token');
-  
+
   try {
     const response = await fetch(url, {
       method: "DELETE",
@@ -276,12 +276,8 @@ export async function deleteUser() {
         'Authorization': `Bearer ${token}`,
       },
     });
-
-    if (!response.ok) {
-      throw new Error(`Failed to delete user: ${response.statusText}`);
-    }
-    console.log("User deleted successfully");
-    return true;
+    
+  return response.ok;
 
   } catch (error) {
     console.error("Error deleting user", error);
