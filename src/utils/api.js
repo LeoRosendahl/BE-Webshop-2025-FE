@@ -268,23 +268,16 @@ export async function deleteCategory(categoryId) {
 
 export async function deleteUser(userId) {
   const token = localStorage.getItem('token');
-
-  if (!token || token === 'undefined' || token === 'null' || token.trim() === '') {
-    console.error('Ingen giltig token hittades.');
-    return false;
-  }
+  if (!token) return false;
 
   try {
     const decoded = jwt_decode(token);
-
     if (decoded.exp && Date.now() >= decoded.exp * 1000) {
-      console.warn('Token har gått ut.');
       localStorage.removeItem('token');
       return false;
     }
 
-    //fetching direct from userId
-    const response = await fetch(`${getBaseUrl()}api/minasidor/${userId}`, {
+    const res = await fetch(`${getBaseUrl()}api/minasidor/${userId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -292,15 +285,9 @@ export async function deleteUser(userId) {
       },
     });
 
-    if (response.ok) {
-      console.log('Användare raderades.');
-      return true;
-    } else {
-      console.error('Misslyckades med att radera användare.');
-      return false;
-    }
-  } catch (error) {
-    console.error('Fel vid radering av användare:', error);
+    return res.ok;
+  } catch {
     return false;
   }
 }
+
