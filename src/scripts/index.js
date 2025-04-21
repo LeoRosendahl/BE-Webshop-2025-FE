@@ -655,9 +655,9 @@ document.querySelectorAll(".delete-user-btn").forEach((btn) => {
   btn.addEventListener("click", async () => {
     const confirmed = confirm("Är du säker på att du vill radera användaren?");
     if (!confirmed) return;
-
+    const userId = localStorage.getItem("userId");
     try {
-      const success = await deleteUser(user._id);
+      const success = await deleteUser(userId);
       if (success) {
         alert("Användare raderades!");
         window.location.reload();
