@@ -1,3 +1,4 @@
+import jwt_decode from "jwt-decode";
 export function getBaseUrl() {
   return 'https://webshop-2025-be-g8.vercel.app/'
 }
@@ -264,8 +265,10 @@ export async function deleteCategory(categoryId) {
   }
 }
 
-export async function deleteUser(userId) {
+export async function deleteUser() {
   const token = localStorage.getItem('token');
+  const decoded = jwt_decode(token);
+  const userId = decoded.id; 
   const url = `${getBaseUrl()}api/minasidor/${userId}`;
 
   try {
