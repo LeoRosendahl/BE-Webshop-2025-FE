@@ -1,4 +1,3 @@
-import jwt_decode from "jwt-decode";
 export function getBaseUrl() {
   return 'https://webshop-2025-be-g8.vercel.app/'
 }
