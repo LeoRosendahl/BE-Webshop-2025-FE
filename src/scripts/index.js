@@ -1,4 +1,4 @@
-import { addProduct, fetchProducts, deleteProduct, signIn, getUserProfile, updateUserInfo, fetchCategories,} from "../utils/api.js"
+import { addProduct, fetchProducts, deleteProduct, signIn, getUserProfile, updateUserInfo, fetchCategories,deleteUser} from "../utils/api.js"
 import {closePopup, openPopup} from '../../script.js'
 import { addCustomer } from "../utils/api.js";
 import { addNewCustomer } from "../utils/addCustomer.js";
@@ -651,6 +651,25 @@ saveBtn.addEventListener('click', async() => {
   await updateUserInfo(dataToSave);
 });
 
+document.querySelectorAll(".delete-user-btn").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const confirmed = confirm("Är du säker på att du vill radera användaren?");
+    if (!confirmed) return;
+
+    try {
+      const success = await deleteUser(user._id);
+      if (success) {
+        alert("Användare raderades!");
+        window.location.reload();
+      } else {
+        alert("Kunde inte radera användaren.");
+      }
+    } catch (err) {
+      alert("Ett fel inträffade vid radering.");
+      console.error(err);
+    }
+  });
+});
 
 document.addEventListener('DOMContentLoaded', renderProfile);
 renderCategories()
