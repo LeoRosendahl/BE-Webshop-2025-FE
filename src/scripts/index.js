@@ -655,11 +655,13 @@ document.querySelectorAll(".delete-user-btn").forEach((btn) => {
   btn.addEventListener("click", async () => {
     const confirmed = confirm("Är du säker på att du vill radera användaren?");
     if (!confirmed) return;
-    
+
     try {
       const success = await deleteUser();
       if (success) {
+        localStorage.removeItem('token')
         alert("Användare raderades!");
+        closePopup()
         window.location.reload();
       } else {
         alert("Kunde inte radera användaren.");
