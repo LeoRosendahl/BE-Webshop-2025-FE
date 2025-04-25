@@ -878,4 +878,20 @@ main {
       display: none;
     }
 
+
+    .delete-user-btn {
+      @include button-base;
+      font-size: 18px;
+      font-weight: 700;
+      height: 40px;
+      background-color: red;
+     
+    }
+
+    .delete-user{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
    
