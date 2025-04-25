@@ -480,10 +480,10 @@ main {
 
 .single-product-image {
     max-height: 260px;
-    width: 250px;
+    width: auto;
     margin: 0 auto;
     @media (min-width: 768px) {
-        margin: 0;
+        margin: 0 auto;
     
     }
     
@@ -872,6 +872,7 @@ main {
       display: flex;
       justify-content: center;
       gap: 15px;
+      flex-wrap: wrap;
     }
 
     .admin-page-link {
